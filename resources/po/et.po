@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-04-24 15:09+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -105,15 +105,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Ma saan sellest aru"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Järeltöötluse argumendid"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Tuvastusandmed"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Nimi"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -138,6 +143,32 @@ msgstr "Nimi"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "Võrguaadress"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Valikud"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Kasutajanimi"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Salasõna"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Järeltöötluse argumendid"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -247,11 +278,66 @@ msgstr "Argument"
 msgid "History"
 msgstr "Ajalugu"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Viga"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Kustuta salasõna/kasutajanimi"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Lisa tuvastusandmed käsitsi"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Kasutajanime/salasõna ei leidu"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Kas oled kindel, et soovid selle argumendi kustutada?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Võtmerõngas"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+"Lisa, kustuta ja muuda kasutajanimesid/salasõnu kasutamiseks autentimisel "
+"veebisaitides"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Lisa"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Muuda"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -337,11 +423,6 @@ msgstr "TXT-failid (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Uus argument"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "Kas oled kindel, et soovid selle argumendi kustutada?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -725,10 +806,6 @@ msgstr "Kiiruspiirang allalaadimisel (KiB/s)"
 msgid "Proxy"
 msgstr "Proksiserveri aadress"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "Võrguaadress"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -874,17 +951,8 @@ msgstr "Piira ffmpeg-i kasutatavate protsessorilõimede arvu"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "Allalaadimise vaates saad valikust lisada soovitud argumente"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Lisa"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Muuda"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "tuvastusandmed"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1057,15 +1125,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Kasuta autentimist"
 
-#~ msgid "Credential"
-#~ msgstr "Tuvastusandmed"
-
-#~ msgid "Username"
-#~ msgstr "Kasutajanimi"
-
-#~ msgid "Password"
-#~ msgstr "Salasõna"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Laadi kohe alla videona"
 
@@ -1127,9 +1186,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Eemalda kogu valik"
-
-#~ msgid "Options"
-#~ msgstr "Valikud"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Jaga videod peatükkide kaupa failideks"
@@ -1222,9 +1278,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Tühjenda kõik"
-
-#~ msgid "Credentials"
-#~ msgstr "tuvastusandmed"
 
 #~ msgid "Loading"
 #~ msgstr "Laadin andmeid"
@@ -1349,9 +1402,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Teadmata"
 
-#~ msgid "Error"
-#~ msgstr "Viga"
-
 #~ msgid "Success"
 #~ msgstr "Õnnestus"
 
@@ -1401,9 +1451,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Ajalugu puudub"
-
-#~ msgid "No Credentials"
-#~ msgstr "Kasutajanime/salasõna ei leidu"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Kas kustutame tuvastusandmed?"
@@ -1506,9 +1553,6 @@ msgstr ""
 
 #~ msgid "An error occurred while discovering media"
 #~ msgstr "Meediumi tuvastamisel tekkis viga"
-
-#~ msgid "Use manual credential"
-#~ msgstr "Lisa tuvastusandmed käsitsi"
 
 #~ msgid "A credential with that name already exists"
 #~ msgstr "Selline salasõna/kasutajanimi on juba olemas"
@@ -2139,9 +2183,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "Muuda tuvastusandmeid"
 
-#~ msgid "Delete Credential"
-#~ msgstr "Kustuta salasõna/kasutajanimi"
-
 #~ msgid "Start"
 #~ msgstr "Alusta"
 
@@ -2248,12 +2289,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Laadi alla meediat"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Lisa, kustuta ja muuda kasutajanimesid/salasõnu kasutamiseks autentimisel "
-#~ "veebisaitides"
 
 #, fuzzy
 #~ msgid "Revert File Name"

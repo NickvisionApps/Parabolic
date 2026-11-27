@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-02-19 13:09+0000\n"
 "Last-Translator: Sudhev <sudhevkunnathu2k16@gmail.com>\n"
 "Language-Team: Malayalam <https://hosted.weblate.org/projects/nickvision-"
@@ -102,16 +102,21 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "പോസ്റ്റ് പ്രോസസർ ആർഗ്യുമെന്റ്"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "ലോഗിൻ വിവരങ്ങൾ"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 #, fuzzy
 msgid "Name"
 msgstr "ഫയലിന്റെ പേര്"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -136,6 +141,33 @@ msgstr "ഫയലിന്റെ പേര്"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "ഓപ്ഷനുകൾ"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#, fuzzy
+msgid "Username"
+msgstr "ഉപയോക്തൃനാമം"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "പാസ്‌വേഡ്"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "പോസ്റ്റ് പ്രോസസർ ആർഗ്യുമെന്റ്"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #, fuzzy
@@ -243,10 +275,60 @@ msgstr ""
 msgid "History"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+msgid "Unable to add the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+msgid "Unable to update the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "ലോഗിൻ വിവരങ്ങൾ"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
@@ -326,11 +408,6 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:356
 msgid "Remove Argument"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
@@ -685,10 +762,6 @@ msgstr ""
 msgid "Proxy"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr ""
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 msgid "Cookies"
 msgstr ""
@@ -825,17 +898,8 @@ msgstr ""
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "ലോഗിൻ വിവരങ്ങൾ"
 
 #, fuzzy
 #~ msgid "View"
@@ -852,12 +916,6 @@ msgstr ""
 
 #~ msgid "Use Authentication"
 #~ msgstr "ഓതന്റിക്കേഷൻ ഉപയോഗിക്കുക"
-
-#~ msgid "Credential"
-#~ msgstr "ലോഗിൻ വിവരങ്ങൾ"
-
-#~ msgid "Password"
-#~ msgstr "പാസ്‌വേഡ്"
 
 #, fuzzy
 #~ msgid "Download Immediately as Video"
@@ -906,9 +964,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "എല്ലാം തിരഞ്ഞെടുക്കാതിരിക്കുക"
-
-#~ msgid "Options"
-#~ msgstr "ഓപ്ഷനുകൾ"
 
 #~ msgid "Export Description to File"
 #~ msgstr "വിവരണം ഫയലിലേക്ക് എക്സ്പോർട്ട് ചെയ്യുക"
@@ -981,9 +1036,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "ലോഗ് വിവരങ്ങൾ ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തുക"
-
-#~ msgid "Credentials"
-#~ msgstr "ലോഗിൻ വിവരങ്ങൾ"
 
 #, fuzzy
 #~ msgid "Password Required"

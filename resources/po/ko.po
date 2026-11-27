@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-02-06 14:33+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -102,15 +102,20 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "후처리 스레드"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "자격 증명"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "이름"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -135,6 +140,32 @@ msgstr "이름"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "웹주소"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "고급 옵션"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "사용자 이름"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "비밀번호"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "후처리 스레드"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #, fuzzy
@@ -246,11 +277,63 @@ msgstr "새 자격 증명"
 msgid "History"
 msgstr "기록"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "오류"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "자격 증명을 삭제하시겠습니까?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "수동 자격 증명 사용"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "자격 증명"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "이 자격 증명을 삭제하시겠습니까?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "암호 저장소"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "추가"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "편집"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -338,11 +421,6 @@ msgstr "TXT 파일 (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "새 자격 증명"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "이 자격 증명을 삭제하시겠습니까?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -717,10 +795,6 @@ msgstr "속도 제한 (KiB/초)"
 msgid "Proxy"
 msgstr "프록시 URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "웹주소"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -861,17 +935,8 @@ msgstr ""
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "추가"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "편집"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "자격 증명"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1011,15 +1076,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "인증"
 
-#~ msgid "Credential"
-#~ msgstr "자격 증명"
-
-#~ msgid "Username"
-#~ msgstr "사용자 이름"
-
-#~ msgid "Password"
-#~ msgstr "비밀번호"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "미디어 다운로드"
@@ -1064,10 +1120,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "모두 선택 해제"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "고급 옵션"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -1126,9 +1178,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "지우기"
-
-#~ msgid "Credentials"
-#~ msgstr "자격 증명"
 
 #, fuzzy
 #~ msgid "Loading"
@@ -1246,9 +1295,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "알 수 없음"
 
-#~ msgid "Error"
-#~ msgstr "오류"
-
 #~ msgid "Success"
 #~ msgstr "성공"
 
@@ -1278,10 +1324,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "기록"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "자격 증명"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "자격 증명을 삭제하시겠습니까?"
@@ -1370,9 +1412,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "OGG (Audio)"
 #~ msgstr "OPUS (오디오)"
-
-#~ msgid "Use manual credential"
-#~ msgstr "수동 자격 증명 사용"
 
 #, fuzzy
 #~ msgid "A credential with that name already exists"
@@ -1801,10 +1840,6 @@ msgstr ""
 
 #~ msgid "Edit Credential"
 #~ msgstr "자격 증명 편집"
-
-#, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "자격 증명을 삭제하시겠습니까?"
 
 #, fuzzy
 #~ msgid "Start"

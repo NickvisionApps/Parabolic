@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-04-18 14:09+0000\n"
 "Last-Translator: Andrey Nazarenko <andrey.naz4renko@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -107,15 +107,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Понимаю"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Аргументы постобработки"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Учётные данные"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Имя"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -140,6 +145,32 @@ msgstr "Имя"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "Ссылка"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Параметры"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Пароль"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Аргументы постобработки"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -248,11 +279,65 @@ msgstr "Аргумент"
 msgid "History"
 msgstr "История"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Ошибка"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Удалить учётные данные"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Невозможно отключить связку ключей."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Нет учетных данных"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "Невозможно сбросить связку ключей."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Связка ключей"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "Добавляйте и управляйте учётными данными для медиавебсайтов."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Добавить"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Редактировать"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -338,11 +423,6 @@ msgstr "Текстовые файлы (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Новый аргумент"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -728,10 +808,6 @@ msgstr "Ограничение скорости (в КиБ/с)"
 msgid "Proxy"
 msgstr "Ссылка на прокси"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "Ссылка"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -875,17 +951,8 @@ msgstr "Ограничивать количество потоков, выдел
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "Список аргументов отобразится в диалоге добавления загрузки"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Добавить"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Редактировать"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Учётные данные"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1057,15 +1124,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Использовать авторизацию"
 
-#~ msgid "Credential"
-#~ msgstr "Учётные данные"
-
-#~ msgid "Username"
-#~ msgstr "Имя пользователя"
-
-#~ msgid "Password"
-#~ msgstr "Пароль"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Загрузить немедленно как видео"
 
@@ -1126,9 +1184,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Убрать всё"
-
-#~ msgid "Options"
-#~ msgstr "Параметры"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Разделение видео по главам"
@@ -1221,9 +1276,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Очистить"
-
-#~ msgid "Credentials"
-#~ msgstr "Учётные данные"
 
 #~ msgid "Loading"
 #~ msgstr "Загружается"
@@ -1351,9 +1403,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Неизвестно"
 
-#~ msgid "Error"
-#~ msgstr "Ошибка"
-
 #~ msgid "Success"
 #~ msgstr "Успех"
 
@@ -1403,9 +1452,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Нет истории"
-
-#~ msgid "No Credentials"
-#~ msgstr "Нет учетных данных"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Удалить учётные данные?"
@@ -2151,9 +2197,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "Редактировать учётные данные"
 
-#~ msgid "Delete Credential"
-#~ msgstr "Удалить учётные данные"
-
 #~ msgid "Start"
 #~ msgstr "Начало"
 
@@ -2267,10 +2310,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Загрузить медиа"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr "Добавляйте и управляйте учётными данными для медиавебсайтов."
 
 #, fuzzy
 #~ msgid "Add a credential to get started"
@@ -2672,12 +2711,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Это приведёт к удалению предыдущей связки ключей вместе со всеми паролями "
 #~ "в ней. Это действие необратимо."
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Невозможно отключить связку ключей."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "Невозможно сбросить связку ключей."
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "Отменить изменение заголовка"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-02-15 18:12+0000\n"
 "Last-Translator: jensdl <JDL_bakugan@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -102,15 +102,20 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Nabewerkings­threads"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Inloggegevens"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Naam"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -135,6 +140,32 @@ msgstr "Naam"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Geavanceerde opties"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Nabewerkings­threads"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #, fuzzy
@@ -247,11 +278,63 @@ msgstr "Nieuwe inlog­gegevens"
 msgid "History"
 msgstr "Geschiedenis"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Fout"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Inloggegevens verwijderen?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Sleutelbos uitschakelen"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Inlog­gegevens"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Sleutelbos"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Toevoegen"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Bewerken"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -339,11 +422,6 @@ msgstr "Gebruikmaken van aria2"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Nieuwe inlog­gegevens"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -719,10 +797,6 @@ msgstr "Snelheidslimiet"
 msgid "Proxy"
 msgstr "Proxy-URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -857,17 +931,8 @@ msgstr ""
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Toevoegen"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Bewerken"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Inlog­gegevens"
 
 #, fuzzy
 #~ msgid "Browse…"
@@ -1008,15 +1073,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Gebruik Authenticatie"
 
-#~ msgid "Credential"
-#~ msgstr "Inloggegevens"
-
-#~ msgid "Username"
-#~ msgstr "Gebruikersnaam"
-
-#~ msgid "Password"
-#~ msgstr "Wachtwoord"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Download Onmiddelijk"
@@ -1070,10 +1126,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Alles deselecteren"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "Geavanceerde opties"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -1137,9 +1189,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "Wissen"
-
-#~ msgid "Credentials"
-#~ msgstr "Inlog­gegevens"
 
 #, fuzzy
 #~ msgid "Loading"
@@ -1265,9 +1314,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Onbekend"
 
-#~ msgid "Error"
-#~ msgstr "Fout"
-
 #~ msgid "Success"
 #~ msgstr "Voltooid"
 
@@ -1295,10 +1341,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "Geschiedenis"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "Inlog­gegevens"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Inloggegevens verwijderen?"
@@ -1746,10 +1788,6 @@ msgstr ""
 #~ msgstr "Inlog­gegevens bewerken"
 
 #, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "Inloggegevens verwijderen?"
-
-#, fuzzy
 #~ msgid "Start"
 #~ msgstr "Starten"
 
@@ -2068,10 +2106,6 @@ msgstr ""
 
 #~ msgid "Subtitle Languages (Invalid)"
 #~ msgstr "Ondertitel­talen (ongeldig)"
-
-#, fuzzy
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Sleutelbos uitschakelen"
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "Titelbewerking ongedaan maken"

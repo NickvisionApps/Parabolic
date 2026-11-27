@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-05-03 08:09+0000\n"
 "Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -105,15 +105,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Tôi hiểu"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Đối số xử lý hậu kỳ"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Thông tin xác thực"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Tên"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -138,6 +143,32 @@ msgstr "Tên"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Tùy chọn"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Tên đăng nhập"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Đối số xử lý hậu kỳ"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -247,11 +278,64 @@ msgstr "Đối số"
 msgid "History"
 msgstr "Lịch sử"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Lỗi"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Xóa thông tin xác thực"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Không thể vô hiệu hóa keyring."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Không có thông tin xác thực"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Bạn có chắc chắn muốn xóa đối số này?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "Không thể đặt lại keyring."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Keyring"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Thêm"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -337,11 +421,6 @@ msgstr "Tệp TXT (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Đối số mới"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "Bạn có chắc chắn muốn xóa đối số này?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -728,10 +807,6 @@ msgstr "Giới hạn tốc độ (KiB/s)"
 msgid "Proxy"
 msgstr "URL của proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -874,17 +949,8 @@ msgstr "Giới hạn số luồng được ffmpeg sử dụng"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "Các đối số sẽ được hiển thị để lựa chọn trong hộp thoại thêm tải xuống"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Thêm"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Chỉnh sửa"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Thông tin xác thực"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1058,15 +1124,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Sử dụng Xác thực"
 
-#~ msgid "Credential"
-#~ msgstr "Thông tin xác thực"
-
-#~ msgid "Username"
-#~ msgstr "Tên đăng nhập"
-
-#~ msgid "Password"
-#~ msgstr "Mật khẩu"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Tải xuống ngay lập tức dưới dạng Video"
 
@@ -1127,9 +1184,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Bỏ chọn tất cả"
-
-#~ msgid "Options"
-#~ msgstr "Tùy chọn"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Tách thành nhiều tệp theo chương"
@@ -1222,9 +1276,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Xóa tất cả"
-
-#~ msgid "Credentials"
-#~ msgstr "Thông tin xác thực"
 
 #~ msgid "Loading"
 #~ msgstr "Đang tải"
@@ -1351,9 +1402,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Không xác định"
 
-#~ msgid "Error"
-#~ msgstr "Lỗi"
-
 #~ msgid "Success"
 #~ msgstr "Thành công"
 
@@ -1403,9 +1451,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Không có lịch sử"
-
-#~ msgid "No Credentials"
-#~ msgstr "Không có thông tin xác thực"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Xóa thông tin xác thực?"
@@ -2143,9 +2188,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "Chỉnh sửa thông tin xác thực"
 
-#~ msgid "Delete Credential"
-#~ msgstr "Xóa thông tin xác thực"
-
 #~ msgid "Start"
 #~ msgstr "Bắt đầu"
 
@@ -2566,12 +2608,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Tác vụ này sẽ xóa keyring trước đó và mọi mật khẩu trong đó. Bạn sẽ không "
 #~ "thể khôi phục lại keyring."
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Không thể vô hiệu hóa keyring."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "Không thể đặt lại keyring."
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "Hoàn lại các chỉnh sửa trong tiêu đề"

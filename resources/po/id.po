@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-04-20 23:20+0000\n"
 "Last-Translator: Indie Gozal <83010300+diego-gz@users.noreply.github.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -106,15 +106,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Saya mengerti"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Argumen Postprocessing"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Kredensial"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Nama"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -139,6 +144,32 @@ msgstr "Nama"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Pengaturan"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Nama pengguna"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Kata sandi"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Argumen Postprocessing"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -248,11 +279,63 @@ msgstr "Argumen"
 msgid "History"
 msgstr "Riwayat"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Kesalahan"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Hapus Kredensial?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Nonaktifkan Keyring?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Tidak Ada Kredensial"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Keyring"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Tambah"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Ubah"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -339,11 +422,6 @@ msgstr "File TXT (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Tidak ada kredensial"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -730,10 +808,6 @@ msgstr "Batas Kecepatan (KiB/s)"
 msgid "Proxy"
 msgstr "URL Proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -876,17 +950,8 @@ msgstr "Batasi jumlah thread yang digunakan oleh ffmpeg"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "Argumen akan ditampilkan sebagai pilihan di dialog tambah unduhan"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Tambah"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Ubah"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Kredensial"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1056,15 +1121,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Gunakan Autentikasi"
 
-#~ msgid "Credential"
-#~ msgstr "Kredensial"
-
-#~ msgid "Username"
-#~ msgstr "Nama pengguna"
-
-#~ msgid "Password"
-#~ msgstr "Kata sandi"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Langsung Unduh sebagai Video"
 
@@ -1125,9 +1181,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Batalkan Semua Pilihan"
-
-#~ msgid "Options"
-#~ msgstr "Pengaturan"
 
 #~ msgid "Export Description to File"
 #~ msgstr "Ekspor Deskripsi menjadi File"
@@ -1217,9 +1270,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Hapus Semua"
-
-#~ msgid "Credentials"
-#~ msgstr "Kredensial"
 
 #~ msgid "Loading"
 #~ msgstr "Memuat"
@@ -1343,9 +1393,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Tidak Diketahui"
 
-#~ msgid "Error"
-#~ msgstr "Kesalahan"
-
 #~ msgid "Success"
 #~ msgstr "Sukses"
 
@@ -1395,9 +1442,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Belum Ada Riwayat"
-
-#~ msgid "No Credentials"
-#~ msgstr "Tidak Ada Kredensial"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Hapus Kredensial?"
@@ -1988,10 +2032,6 @@ msgstr ""
 #~ msgstr "Tambah Kredensial"
 
 #, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "Hapus Kredensial?"
-
-#, fuzzy
 #~ msgid "Start"
 #~ msgstr "Pengaturan"
 
@@ -2277,10 +2317,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Subtitle Languages (Invalid)"
 #~ msgstr "Folder Penyimpanan (tidak sah)"
-
-#, fuzzy
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Nonaktifkan Keyring?"
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "Urungkan menyunting judul"

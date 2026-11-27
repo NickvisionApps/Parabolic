@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-02-06 14:32+0000\n"
 "Last-Translator: micke <micke@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -102,15 +102,20 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Efterbearbetning av trådar"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Inloggningsuppgifter"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Namn"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -135,6 +140,32 @@ msgstr "Namn"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Avancerade inställningar"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Användarnamn"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Lösenord"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Efterbearbetning av trådar"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #, fuzzy
@@ -247,11 +278,66 @@ msgstr "Nya inloggningsuppgifter"
 msgid "History"
 msgstr "Historik"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Fel"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Ta bort inloggningsuppgifter?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Det går inte att inaktivera nyckelringen."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Inloggningsuppgifter"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Är du säker på att du vill ta bort den här inloggningsuppgiften?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "Det gick inte att nollställa nyckelringen."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Nyckelring"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+"Skapa, spara och hantera dina Inloggningsuppgifter för mediewebbplatser."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Lägg till"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Redigera"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -339,11 +425,6 @@ msgstr "TXT-filer (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Nya inloggningsuppgifter"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "Är du säker på att du vill ta bort den här inloggningsuppgiften?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -718,10 +799,6 @@ msgstr "Hastighetsgräns (KiB/s)"
 msgid "Proxy"
 msgstr "Proxy URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -867,17 +944,8 @@ msgstr ""
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Lägg till"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Redigera"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Inloggningsuppgifter"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1035,15 +1103,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Autentisera"
 
-#~ msgid "Credential"
-#~ msgstr "Inloggningsuppgifter"
-
-#~ msgid "Username"
-#~ msgstr "Användarnamn"
-
-#~ msgid "Password"
-#~ msgstr "Lösenord"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Ladda ned media"
@@ -1100,10 +1159,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Avmarkera alla"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "Avancerade inställningar"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -1166,9 +1221,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "Rensa"
-
-#~ msgid "Credentials"
-#~ msgstr "Inloggningsuppgifter"
 
 #, fuzzy
 #~ msgid "Loading"
@@ -1293,9 +1345,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Okänd"
 
-#~ msgid "Error"
-#~ msgstr "Fel"
-
 #~ msgid "Success"
 #~ msgstr "Klar"
 
@@ -1329,10 +1378,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "Historik"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "Inloggningsuppgifter"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Ta bort inloggningsuppgifter?"
@@ -1914,10 +1959,6 @@ msgstr ""
 #~ msgstr "Redigera inloggningsuppgifter"
 
 #, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "Ta bort inloggningsuppgifter?"
-
-#, fuzzy
 #~ msgid "Start"
 #~ msgstr "Börjar"
 
@@ -1978,11 +2019,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Ladda ned media"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Skapa, spara och hantera dina Inloggningsuppgifter för mediewebbplatser."
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2387,12 +2423,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Detta tar bort den tidigare nyckelringen, och tar bort alla lösenord med "
 #~ "den. Denna åtgärd är oåterkallelig."
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Det går inte att inaktivera nyckelringen."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "Det gick inte att nollställa nyckelringen."
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "Ångra titelredigering"

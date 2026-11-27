@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-03-21 02:09+0000\n"
 "Last-Translator: Noobz4Ever <pnsupermoderator@hotmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -105,15 +105,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Ymmärrän"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Jälkikäsittelyn määritykset"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Tunnistetieto"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Nimi"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -138,6 +143,32 @@ msgstr "Nimi"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL-osoite"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Valinnat"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Käyttäjätunnus"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Salasana"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Jälkikäsittelyn määritykset"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -248,11 +279,67 @@ msgstr "Argumentti"
 msgid "History"
 msgstr "Historia"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Virhe"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Poista kirjautuminen"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Avainnippua ei voitu poistaa käytöstä."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Ei kirjautumistietoja"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Haluatko varmasti poistaa tämän argumentin?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "Avainnippua ei voitu nollata."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Avainnippu"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+"Lisää, poista, ja muokkaa kirjautumistietoja eri verkkosivujen latausten "
+"valtuuttamiseksi"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Lisää"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -338,11 +425,6 @@ msgstr "TXT-tiedostot (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Uusi argumentti"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "Haluatko varmasti poistaa tämän argumentin?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -724,10 +806,6 @@ msgstr "Nopeusrajoitus (KiB/s)"
 msgid "Proxy"
 msgstr "Välityspalvelimen URL-osoite"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL-osoite"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -871,17 +949,8 @@ msgstr "Rajoita ffmpeg:n käyttämien säikeiden määrää"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "Argumentit näytetään valintaa varten lataamisen valintaikkunassa"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Lisää"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Muokkaa"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Kirjautumistiedot"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1056,15 +1125,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Käytä todennusta"
 
-#~ msgid "Credential"
-#~ msgstr "Tunnistetieto"
-
-#~ msgid "Username"
-#~ msgstr "Käyttäjätunnus"
-
-#~ msgid "Password"
-#~ msgstr "Salasana"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Lataa välittömästi"
@@ -1129,9 +1189,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Älä valitse mitään"
-
-#~ msgid "Options"
-#~ msgstr "Valinnat"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Jaa tiedostoihin kappaleiden mukaisesti"
@@ -1223,9 +1280,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Tyhjennä kaikki"
-
-#~ msgid "Credentials"
-#~ msgstr "Kirjautumistiedot"
 
 #~ msgid "Loading"
 #~ msgstr "Ladataan"
@@ -1353,9 +1407,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Tuntematon"
 
-#~ msgid "Error"
-#~ msgstr "Virhe"
-
 #~ msgid "Success"
 #~ msgstr "Onnistui"
 
@@ -1401,9 +1452,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Ei historiaa"
-
-#~ msgid "No Credentials"
-#~ msgstr "Ei kirjautumistietoja"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Poistetaanko kirjautumistieto?"
@@ -2132,9 +2180,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "Muokkaa kirjautumistietoa"
 
-#~ msgid "Delete Credential"
-#~ msgstr "Poista kirjautuminen"
-
 #~ msgid "Start"
 #~ msgstr "Käynnistä"
 
@@ -2217,12 +2262,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Lataa mediaa"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Lisää, poista, ja muokkaa kirjautumistietoja eri verkkosivujen latausten "
-#~ "valtuuttamiseksi"
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2482,12 +2521,6 @@ msgstr ""
 
 #~ msgid "Subtitle Languages (Invalid)"
 #~ msgstr "Tekstityksen kielet (virheellinen)"
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Avainnippua ei voitu poistaa käytöstä."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "Avainnippua ei voitu nollata."
 
 #~ msgid "Unlock Keyring"
 #~ msgstr "Avaa avainnippu"

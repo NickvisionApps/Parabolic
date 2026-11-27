@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-04-15 07:09+0000\n"
 "Last-Translator: Pavel Miniutka <pavel.miniutka@gmail.com>\n"
 "Language-Team: Belarusian <https://hosted.weblate.org/projects/nickvision-"
@@ -106,15 +106,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Я разумею"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Аргументы постапрацоўкі"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Уліковыя даныя"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Назва"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -139,6 +144,32 @@ msgstr "Назва"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL-адрас"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Параметры"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Імя карыстальніка"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Пароль"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Аргументы постапрацоўкі"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -248,11 +279,64 @@ msgstr "Аргумент"
 msgid "History"
 msgstr "Гісторыя"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Памылка"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Выдаліць уліковыя даныя"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Увесці ўліковыя даныя ўручную"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Няма ўліковых даных"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Бірулька"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "Дадавайце, выдаляйце і змяняйце ўліковыя даныя для праверкі вэб-сайтаў"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Дадаць"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Рэдагаваць"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -338,11 +422,6 @@ msgstr "TXT-файлы (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Новы аргумент"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -731,10 +810,6 @@ msgstr "Абмежаванне хуткасці (KiB/s)"
 msgid "Proxy"
 msgstr "URL-адрас проксі-сервера"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL-адрас"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -881,17 +956,8 @@ msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 "Паказваць гэтыя аргументы для выбару ў дыялогавым акне дадавання спампоўкі"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Дадаць"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Рэдагаваць"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Уліковыя даныя"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1063,15 +1129,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Выкарыстоўваць аўтэнтыфікацыю"
 
-#~ msgid "Credential"
-#~ msgstr "Уліковыя даныя"
-
-#~ msgid "Username"
-#~ msgstr "Імя карыстальніка"
-
-#~ msgid "Password"
-#~ msgstr "Пароль"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Спампаваць адразу як відэа"
 
@@ -1132,9 +1189,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Зняць выбар з усіх"
-
-#~ msgid "Options"
-#~ msgstr "Параметры"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Падзяліць на файлы па раздзелах"
@@ -1227,9 +1281,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Ачысціць усе"
-
-#~ msgid "Credentials"
-#~ msgstr "Уліковыя даныя"
 
 #~ msgid "Loading"
 #~ msgstr "Загрузка"
@@ -1353,9 +1404,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Невядомы"
 
-#~ msgid "Error"
-#~ msgstr "Памылка"
-
 #~ msgid "Success"
 #~ msgstr "Поспех"
 
@@ -1405,9 +1453,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Няма гісторыі"
-
-#~ msgid "No Credentials"
-#~ msgstr "Няма ўліковых даных"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Выдаліць уліковыя даныя?"
@@ -1510,9 +1555,6 @@ msgstr ""
 
 #~ msgid "An error occurred while discovering media"
 #~ msgstr "Падчас пошуку медыя адбылася памылка"
-
-#~ msgid "Use manual credential"
-#~ msgstr "Увесці ўліковыя даныя ўручную"
 
 #~ msgid "A credential with that name already exists"
 #~ msgstr "Уліковыя даныя з такім імем ужо існуюць"
@@ -2146,9 +2188,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "Рэдагаваць уліковыя даныя"
 
-#~ msgid "Delete Credential"
-#~ msgstr "Выдаліць уліковыя даныя"
-
 #~ msgid "Start"
 #~ msgstr "Пачаць"
 
@@ -2312,10 +2351,6 @@ msgstr ""
 
 #~ msgid "Enter end time here"
 #~ msgstr "Увядзіце тут час заканчэння"
-
-#~ msgid "Add, delete, and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Дадавайце, выдаляйце і змяняйце ўліковыя даныя для праверкі вэб-сайтаў"
 
 #~ msgid "Add a credential to get started"
 #~ msgstr "Дадайце ўліковыя даныя, каб пачаць"

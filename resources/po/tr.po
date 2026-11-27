@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-04-18 23:38+0000\n"
 "Last-Translator: Bai <bai@baturax.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -105,15 +105,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Anladım"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Son İşleme Argümanları"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Kimlik Bilgileri"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Ad"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -138,6 +143,32 @@ msgstr "Ad"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Seçenekler"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Parola"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Son İşleme Argümanları"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -247,11 +278,66 @@ msgstr "Argüman"
 msgid "History"
 msgstr "Geçmiş"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Hata"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Kimlik Bilgilerini Sil"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Anahtarlık devre dışı bırakılamadı."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Kimlik Bilgileri Yok"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Bu argümanı silmek istediğinizden emin misiniz?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "Anahtarlık sıfırlanamadı."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Anahtarlık"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+"Medya web siteleri için kimlik bilgilerinizi oluşturun, kaydedin ve yönetin."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Ekle"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Düzenle"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -337,11 +423,6 @@ msgstr "TXT Dosyaları (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Yeni Argüman"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "Bu argümanı silmek istediğinizden emin misiniz?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -724,10 +805,6 @@ msgstr "Hız Sınırı (KiB/s)"
 msgid "Proxy"
 msgstr "Proxy URLʼsi"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -870,17 +947,8 @@ msgstr "ffmpeg tarafından kullanılan iş parçacığı sayısını sınırla"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Ekle"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Düzenle"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Kimlik Bilgileri"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1055,15 +1123,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Kimlik Doğrulama Kullan"
 
-#~ msgid "Credential"
-#~ msgstr "Kimlik Bilgileri"
-
-#~ msgid "Username"
-#~ msgstr "Kullanıcı adı"
-
-#~ msgid "Password"
-#~ msgstr "Parola"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Hemen Video olarak İndir"
 
@@ -1127,9 +1186,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Tüm Seçimi Kaldır"
-
-#~ msgid "Options"
-#~ msgstr "Seçenekler"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Bölümlere Göre Dosyalara Böl"
@@ -1220,9 +1276,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Tümünü Temizle"
-
-#~ msgid "Credentials"
-#~ msgstr "Kimlik Bilgileri"
 
 #~ msgid "Loading"
 #~ msgstr "Yükleniyor"
@@ -1348,9 +1401,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Bilinmeyen"
 
-#~ msgid "Error"
-#~ msgstr "Hata"
-
 #~ msgid "Success"
 #~ msgstr "Başarılı"
 
@@ -1400,9 +1450,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Geçmiş Yok"
-
-#~ msgid "No Credentials"
-#~ msgstr "Kimlik Bilgileri Yok"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Kimlik Bilgileri Silinsin mi?"
@@ -2129,9 +2176,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "Kimlik Bilgilerini Düzenle"
 
-#~ msgid "Delete Credential"
-#~ msgstr "Kimlik Bilgilerini Sil"
-
 #~ msgid "Start"
 #~ msgstr "Başlat"
 
@@ -2210,12 +2254,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Ortam İndirici"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Medya web siteleri için kimlik bilgilerinizi oluşturun, kaydedin ve "
-#~ "yönetin."
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2610,12 +2648,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Bu, tüm şifreleri kaldırarak önceki anahtarlığı silecektir. Bu işlem geri "
 #~ "alınamaz."
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Anahtarlık devre dışı bırakılamadı."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "Anahtarlık sıfırlanamadı."
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "Başlık Düzenlemesini Geri Al"

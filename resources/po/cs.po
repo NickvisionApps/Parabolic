@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-02-14 14:09+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -106,15 +106,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Rozumím"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Argumenty postprocesoru"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Údaj"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Název"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -139,6 +144,32 @@ msgstr "Název"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "Adresa URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Možnosti"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Heslo"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Argumenty postprocesoru"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -247,11 +278,65 @@ msgstr "Argument"
 msgid "History"
 msgstr "Historie"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Chyba"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Odstranit údaj"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Nepodařilo se zakázat klíčenku."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Žádné údaje"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Opravdu chcete odstranit tento argument?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "Nepodařilo se resetovat klíčenku."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Klíčenka"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "Přidávejte, odstraňujte a upravujte své údaje pro ověřování webů"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Přidat"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Upravit"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -337,11 +422,6 @@ msgstr "Soubory TXT (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Nový argument"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "Opravdu chcete odstranit tento argument?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -722,10 +802,6 @@ msgstr "Omezení rychlosti (KiB/s)"
 msgid "Proxy"
 msgstr "URL proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "Adresa URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -868,17 +944,8 @@ msgstr "Omezit počet vláken používaných službou ffmpeg"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "Argumenty budou zobrazeny k výběru v dialogu přidání stahování"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Přidat"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Upravit"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Údaje"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1055,15 +1122,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Použít přihlášení"
 
-#~ msgid "Credential"
-#~ msgstr "Údaj"
-
-#~ msgid "Username"
-#~ msgstr "Uživatelské jméno"
-
-#~ msgid "Password"
-#~ msgstr "Heslo"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Stáhnout okamžitě"
@@ -1128,9 +1186,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Zrušit výběr"
-
-#~ msgid "Options"
-#~ msgstr "Možnosti"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Rozdělit na soubory podle kapitol"
@@ -1222,9 +1277,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Vymazat vše"
-
-#~ msgid "Credentials"
-#~ msgstr "Údaje"
 
 #~ msgid "Loading"
 #~ msgstr "Načítání"
@@ -1348,9 +1400,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Neznámý"
 
-#~ msgid "Error"
-#~ msgstr "Chyba"
-
 #~ msgid "Success"
 #~ msgstr "Úspěch"
 
@@ -1399,9 +1448,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Žádná historie"
-
-#~ msgid "No Credentials"
-#~ msgstr "Žádné údaje"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Odstranit údaje?"
@@ -2130,9 +2176,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "Upravit údaj"
 
-#~ msgid "Delete Credential"
-#~ msgstr "Odstranit údaj"
-
 #~ msgid "Start"
 #~ msgstr "Spustit"
 
@@ -2270,10 +2313,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Stáhnout okamžitě"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr "Přidávejte, odstraňujte a upravujte své údaje pro ověřování webů"
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2678,12 +2717,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Tato akce odstraní předchozí klíčenku, což také odstraní všechna hesla "
 #~ "uvnitř klíčenky. Tato akce je nevratná."
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Nepodařilo se zakázat klíčenku."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "Nepodařilo se resetovat klíčenku."
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "Vrátit úpravu názvu"

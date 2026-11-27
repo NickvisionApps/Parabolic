@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-02-06 14:34+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -106,15 +106,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Разумем"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Аргументи за Постпроцесирања"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Акредитив"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Име"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -139,6 +144,32 @@ msgstr "Име"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "УРЛ"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Опције"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Корисничко име"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Лозинка"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Аргументи за Постпроцесирања"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #, fuzzy
@@ -249,11 +280,63 @@ msgstr "Аргумент"
 msgid "History"
 msgstr "Историја"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Грешка"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Обриши Акредитив"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Користи ручни аркедитив"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Без акредитива"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Да ли сте сигурни да желите да избришете овај аргумент?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Акредитиви"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Додај"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Измени"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -340,11 +423,6 @@ msgstr "Текстуалне Датотеке (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Нови Аргумент"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "Да ли сте сигурни да желите да избришете овај аргумент?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -738,10 +816,6 @@ msgstr "Ограничење Брзине (KiB/s)"
 msgid "Proxy"
 msgstr "URL проксија"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "УРЛ"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -888,17 +962,8 @@ msgstr "Ограничи број нити које користи ffmpeg"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "Аргументи ће бити приказани за избор у дијалогу за додавање преузимања"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Додај"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Измени"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Аркедитиви"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1068,15 +1133,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Користи Аутентификацију"
 
-#~ msgid "Credential"
-#~ msgstr "Акредитив"
-
-#~ msgid "Username"
-#~ msgstr "Корисничко име"
-
-#~ msgid "Password"
-#~ msgstr "Лозинка"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Преузми Одмах као Видео"
@@ -1143,9 +1199,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Опозови Избор Свега"
-
-#~ msgid "Options"
-#~ msgstr "Опције"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -1243,9 +1296,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "Уклони Све"
-
-#~ msgid "Credentials"
-#~ msgstr "Аркедитиви"
 
 #, fuzzy
 #~ msgid "Loading"
@@ -1390,9 +1440,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Непознато"
 
-#~ msgid "Error"
-#~ msgstr "Грешка"
-
 #~ msgid "Success"
 #~ msgstr "Успешно"
 
@@ -1445,10 +1492,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "Нема Историје"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "Без акредитива"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Избриши Акредитив?"
@@ -1557,9 +1600,6 @@ msgstr ""
 
 #~ msgid "An error occurred while discovering media"
 #~ msgstr "Дошло је до грешке приликом откривања медија"
-
-#~ msgid "Use manual credential"
-#~ msgstr "Користи ручни аркедитив"
 
 #, fuzzy
 #~ msgid "A credential with that name already exists"
@@ -2207,9 +2247,6 @@ msgstr ""
 
 #~ msgid "Edit Credential"
 #~ msgstr "Измени Акредитив"
-
-#~ msgid "Delete Credential"
-#~ msgstr "Обриши Акредитив"
 
 #~ msgid "Start"
 #~ msgstr "Започни"

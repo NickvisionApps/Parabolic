@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-05-14 08:11+0000\n"
 "Last-Translator: jlnord006 <nordhagen.julian@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -102,15 +102,20 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Behandlingstråder"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Innlogging"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Navn"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -135,6 +140,32 @@ msgstr "Navn"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "Nettadresse"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Instillinger"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Brukernavn"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Passord"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Behandlingstråder"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #, fuzzy
@@ -246,11 +277,66 @@ msgstr "Ny innlogging"
 msgid "History"
 msgstr "Logg"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Feil"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Slette innlogging?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "Manuelt"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "innlogginger"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Er du sikker på at du ønsker å slette innloggingen?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Nøkkelring"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+"Opprett, lagre og rediger innloggingene dine til nettsteder du laster ned "
+"fra."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Legg til"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Rediger"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -338,11 +424,6 @@ msgstr "Tekstfiler (.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Ny innlogging"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "Er du sikker på at du ønsker å slette innloggingen?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -716,10 +797,6 @@ msgstr "Hastighetsgrense (KiB/s)"
 msgid "Proxy"
 msgstr "Mellomtjeneradresse"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "Nettadresse"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -860,17 +937,8 @@ msgstr ""
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Legg til"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Rediger"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "innlogginger"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1019,15 +1087,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Bruk Autentisering"
 
-#~ msgid "Credential"
-#~ msgstr "Innlogging"
-
-#~ msgid "Username"
-#~ msgstr "Brukernavn"
-
-#~ msgid "Password"
-#~ msgstr "Passord"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Last ned ummidelbart som video"
 
@@ -1085,9 +1144,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Fjern markering"
-
-#~ msgid "Options"
-#~ msgstr "Instillinger"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -1170,9 +1226,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "Fjern alt"
-
-#~ msgid "Credentials"
-#~ msgstr "innlogginger"
 
 #~ msgid "Loading"
 #~ msgstr "Laster Inn"
@@ -1301,9 +1354,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Ukjent"
 
-#~ msgid "Error"
-#~ msgstr "Feil"
-
 #~ msgid "Success"
 #~ msgstr "Fullført"
 
@@ -1337,10 +1387,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "Logg"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "innlogginger"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Slette innlogging?"
@@ -1429,9 +1475,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "OGG (Audio)"
 #~ msgstr "Opus (lyd)"
-
-#~ msgid "Use manual credential"
-#~ msgstr "Manuelt"
 
 #, fuzzy
 #~ msgid "A credential with that name already exists"
@@ -1881,10 +1924,6 @@ msgstr ""
 #~ msgstr "Rediger innlogging"
 
 #, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "Slette innlogging?"
-
-#, fuzzy
 #~ msgid "Start"
 #~ msgstr "Starter"
 
@@ -1937,12 +1976,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Last ned lyd og video"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Opprett, lagre og rediger innloggingene dine til nettsteder du laster ned "
-#~ "fra."
 
 #, fuzzy
 #~ msgid "Revert File Name"

@@ -2,6 +2,7 @@ qt_standard_project_setup()
 
 qt_add_executable("${PROJECT_NAME}.qt" WIN32 MACOSX_BUNDLE
     "include/app.h"
+    "include/controls/keyring_credential_dialog.h"
     "include/controls/postprocessing_argument_dialog.h"
     "include/helpers/translation_notifier.h"
     "include/pages/downloads_page.h"
@@ -13,6 +14,8 @@ qt_add_executable("${PROJECT_NAME}.qt" WIN32 MACOSX_BUNDLE
     "include/views/main_window.h"
     "include/views/settings_dialog.h"
     "src/app.cpp"
+    "src/controls/keyring_credential_dialog.cpp"
+    "src/controls/keyring_credential_dialog.ui"
     "src/controls/postprocessing_argument_dialog.cpp"
     "src/controls/postprocessing_argument_dialog.ui"
     "src/helpers/translation_notifier.cpp"

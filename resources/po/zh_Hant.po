@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-04-24 15:10+0000\n"
 "Last-Translator: Max Chen <ckyb63@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -102,15 +102,20 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "後製參數"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "驗證資訊"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "名稱"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -135,6 +140,32 @@ msgstr "名稱"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "選項"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "使用者名稱"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "密碼"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "後製參數"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #, fuzzy
@@ -246,11 +277,64 @@ msgstr "新的身份驗證資訊"
 msgid "History"
 msgstr "歷史記錄"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "錯誤"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "刪除身份驗證資訊"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "使用手動身份驗證"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "沒有身份驗證資訊"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Unable to remove the credential."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "金鑰環"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "新增、刪除和修改身分驗證資訊來驗證網站"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "增加"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "編輯"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -337,11 +421,6 @@ msgstr "TXT 檔案 (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "新的身份驗證資訊"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -716,10 +795,6 @@ msgstr "速度限制 (KiB/s)"
 msgid "Proxy"
 msgstr "代理 URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -857,17 +932,8 @@ msgstr ""
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "增加"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "編輯"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "身份驗證"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1010,15 +1076,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "使用驗證"
 
-#~ msgid "Credential"
-#~ msgstr "驗證資訊"
-
-#~ msgid "Username"
-#~ msgstr "使用者名稱"
-
-#~ msgid "Password"
-#~ msgstr "密碼"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "立刻下載成影片"
 
@@ -1070,9 +1127,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "全部不選"
-
-#~ msgid "Options"
-#~ msgstr "選項"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "依照章節分割影片"
@@ -1148,9 +1202,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "清除所有"
-
-#~ msgid "Credentials"
-#~ msgstr "身份驗證"
 
 #~ msgid "Loading"
 #~ msgstr "載入中"
@@ -1263,9 +1314,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "未知"
 
-#~ msgid "Error"
-#~ msgstr "錯誤"
-
 #~ msgid "Success"
 #~ msgstr "成功"
 
@@ -1295,9 +1343,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "歷史記錄"
-
-#~ msgid "No Credentials"
-#~ msgstr "沒有身份驗證資訊"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "刪除身份驗證？"
@@ -1380,9 +1425,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "OGG (Audio)"
 #~ msgstr "OPUS (音訊)"
-
-#~ msgid "Use manual credential"
-#~ msgstr "使用手動身份驗證"
 
 #, fuzzy
 #~ msgid "A credential with that name already exists"
@@ -1833,9 +1875,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "編輯身份驗證資訊"
 
-#~ msgid "Delete Credential"
-#~ msgstr "刪除身份驗證資訊"
-
 #, fuzzy
 #~ msgid "Start"
 #~ msgstr "開始"
@@ -1932,9 +1971,6 @@ msgstr ""
 
 #~ msgid "Enter end time here"
 #~ msgstr "在這裡輸入結束時間"
-
-#~ msgid "Add, delete, and modify credentials for validating websites"
-#~ msgstr "新增、刪除和修改身分驗證資訊來驗證網站"
 
 #, fuzzy
 #~ msgid "Add a credential to get started"

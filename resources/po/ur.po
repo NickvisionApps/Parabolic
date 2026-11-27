@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-02-06 14:36+0000\n"
 "Last-Translator: duckienome <xvchattw@duck.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -103,15 +103,21 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
 #, fuzzy
-msgid "Postprocessing Argument"
-msgstr "عمل کر رہے ہیں ..."
+msgid "Credential"
+msgstr "کوئی اسناد نہیں"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "نام"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -136,6 +142,32 @@ msgstr "نام"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "یو-آر-ایل"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "اعلی درجے کے اختیارات"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "صارف کا نام"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "پاس ورڈ"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "عمل کر رہے ہیں ..."
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #, fuzzy
@@ -248,11 +280,64 @@ msgstr "کوئی اسناد نہیں"
 msgid "History"
 msgstr "تاریخ"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "خرابی"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "اسناد کو حذف کریں؟"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "کیرنگ کو غیر فعال کرنے سے قاصر۔"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "کوئی اسناد نہیں"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "کیرنگ کو دوبارہ ترتیب دینے سے قاصر۔"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "کیڑیگ"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "اضافہ کریں"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "ترمیم کریں"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -340,11 +425,6 @@ msgstr "aria2 کا استعمال کریں"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "کوئی اسناد نہیں"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 msgctxt "Settings"
@@ -713,10 +793,6 @@ msgstr "رفتار کی حد"
 msgid "Proxy"
 msgstr "پراکسی یو-آر-ایل"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "یو-آر-ایل"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -855,17 +931,9 @@ msgstr ""
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "اضافہ کریں"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "ترمیم کریں"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#, fuzzy
+#~ msgid "Credentials"
+#~ msgstr "کوئی اسناد نہیں"
 
 #, fuzzy
 #~ msgid "Browse…"
@@ -997,16 +1065,6 @@ msgstr ""
 #~ msgstr "تصدیق کریں"
 
 #, fuzzy
-#~ msgid "Credential"
-#~ msgstr "کوئی اسناد نہیں"
-
-#~ msgid "Username"
-#~ msgstr "صارف کا نام"
-
-#~ msgid "Password"
-#~ msgstr "پاس ورڈ"
-
-#, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "فورا ڈائون لوڈ کریں"
 
@@ -1050,10 +1108,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "تمام چیزوں کو نہ چنیں"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "اعلی درجے کے اختیارات"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -1114,10 +1168,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "صاف کریں"
-
-#, fuzzy
-#~ msgid "Credentials"
-#~ msgstr "کوئی اسناد نہیں"
 
 #, fuzzy
 #~ msgid "Loading"
@@ -1235,9 +1285,6 @@ msgstr ""
 #~ msgid "Starting"
 #~ msgstr "ترتیبات"
 
-#~ msgid "Error"
-#~ msgstr "خرابی"
-
 #~ msgid "Success"
 #~ msgstr "کامیابی"
 
@@ -1266,10 +1313,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "تاریخ"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "کوئی اسناد نہیں"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "اسناد کو حذف کریں؟"
@@ -1703,10 +1746,6 @@ msgstr ""
 #~ msgstr "کوئی اسناد نہیں"
 
 #, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "اسناد کو حذف کریں؟"
-
-#, fuzzy
 #~ msgid "Start"
 #~ msgstr "ترتیبات"
 
@@ -2102,12 +2141,6 @@ msgstr ""
 #~ msgstr ""
 #~ "یہ پچھلی کیرنگ کو حذف کر دے گا اور اس کے ساتھ تمام پاس ورڈز کو ہٹا دے گا۔ "
 #~ "یہ عمل ناقابل واپسی ہے۔"
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "کیرنگ کو غیر فعال کرنے سے قاصر۔"
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "کیرنگ کو دوبارہ ترتیب دینے سے قاصر۔"
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "عنوان میں ترمیم کو کالعدم کریں"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-04-24 15:09+0000\n"
 "Last-Translator: Jerry <dugoat@protonmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -105,15 +105,20 @@ msgstr ""
 msgid "I understand"
 msgstr "Entiendo"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Argumentos de postprocesamiento"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "Credencial"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Nombre"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -138,6 +143,32 @@ msgstr "Nombre"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "Opciones"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "Contraseña"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Argumentos de postprocesamiento"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -246,11 +277,66 @@ msgstr "Argumento"
 msgid "History"
 msgstr "Historial"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "Error"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "Eliminar credencial"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "No se puede desactivar el llavero."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Sin Credenciales"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "¿Está seguro de que quiere borrar este argumento?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "No se puede restablecer el llavero."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "Llavero"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+"Cree, guarde y gestione sus credenciales para sitios web de multimedia."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "Añadir"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "Editar"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -337,11 +423,6 @@ msgstr "Archivos TXT (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Nuevo argumento"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "¿Está seguro de que quiere borrar este argumento?"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -733,10 +814,6 @@ msgstr "Límite de velocidad (KiB/s)"
 msgid "Proxy"
 msgstr "URL del proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -883,17 +960,8 @@ msgstr ""
 "Los argumentos se mostrarán para su selección en el cuadro de diálogo de "
 "añadir descarga"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "Añadir"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "Editar"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "Credenciales"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1069,15 +1137,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Usar Autentificación"
 
-#~ msgid "Credential"
-#~ msgstr "Credencial"
-
-#~ msgid "Username"
-#~ msgstr "Nombre de usuario"
-
-#~ msgid "Password"
-#~ msgstr "Contraseña"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Descargar Inmediatamente como Vídeo"
 
@@ -1140,9 +1199,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Deseleccionar todo"
-
-#~ msgid "Options"
-#~ msgstr "Opciones"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Dividir en Archivos por Capítulos"
@@ -1235,9 +1291,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Limpiar todo"
-
-#~ msgid "Credentials"
-#~ msgstr "Credenciales"
 
 #~ msgid "Loading"
 #~ msgstr "Cargando"
@@ -1368,9 +1421,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Desconocido"
 
-#~ msgid "Error"
-#~ msgstr "Error"
-
 #~ msgid "Success"
 #~ msgstr "Éxito"
 
@@ -1420,9 +1470,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Sin Historial"
-
-#~ msgid "No Credentials"
-#~ msgstr "Sin Credenciales"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "¿Borrar credencial?"
@@ -2142,9 +2189,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "Editar credencial"
 
-#~ msgid "Delete Credential"
-#~ msgstr "Eliminar credencial"
-
 #, fuzzy
 #~ msgid "Start"
 #~ msgstr "Iniciando"
@@ -2234,11 +2278,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Descargar medios"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Cree, guarde y gestione sus credenciales para sitios web de multimedia."
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2645,12 +2684,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Esto borrará el llavero anterior eliminando todas las contraseñas con él. "
 #~ "Esta acción es irreversible."
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "No se puede desactivar el llavero."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "No se puede restablecer el llavero."
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "Deshacer la edición de los títulos"

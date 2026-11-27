@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-02-27 16:32+0000\n"
 "Last-Translator: sotohi <c6h4ohcooc6h5@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -105,15 +105,20 @@ msgstr ""
 msgid "I understand"
 msgstr "理解しました"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "ポストプロセスの引数"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "認証情報"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "名前"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -138,6 +143,32 @@ msgstr "名前"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "オプション"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "ユーザー名"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "パスワード"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "ポストプロセスの引数"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -247,11 +278,65 @@ msgstr "引数"
 msgid "History"
 msgstr "履歴"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "エラー"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "認証情報を削除しますか？"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "キーリングを無効化できません。"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "資格情報なし"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "本当にこの認証情報を削除しますか？"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "キーリングをリセットできません。"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "キーリング"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "メディアサイトの資格情報を作成・保存・管理できます。"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "追加"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "編集"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -338,11 +423,6 @@ msgstr "TXT ファイル (*.txt)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "新しい認証情報"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, fuzzy, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr "本当にこの認証情報を削除しますか？"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -721,10 +801,6 @@ msgstr "スピード制限 (KiB/毎秒)"
 msgid "Proxy"
 msgstr "プロキシ URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "URL"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -867,17 +943,8 @@ msgstr "ffmpge のスレッド数を制限"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "引数はダウンロード追加ダイアログで選択できます"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "追加"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "編集"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "認証情報"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1049,15 +1116,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "認証を使用する"
 
-#~ msgid "Credential"
-#~ msgstr "認証情報"
-
-#~ msgid "Username"
-#~ msgstr "ユーザー名"
-
-#~ msgid "Password"
-#~ msgstr "パスワード"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "今すぐダウンロード"
@@ -1122,9 +1180,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "すべて選択解除"
-
-#~ msgid "Options"
-#~ msgstr "オプション"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "チャプターごとにファイルを分割"
@@ -1215,9 +1270,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "全てクリア"
-
-#~ msgid "Credentials"
-#~ msgstr "認証情報"
 
 #~ msgid "Loading"
 #~ msgstr "読み込み中"
@@ -1341,9 +1393,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "不明"
 
-#~ msgid "Error"
-#~ msgstr "エラー"
-
 #~ msgid "Success"
 #~ msgstr "成功"
 
@@ -1387,9 +1436,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "履歴なし"
-
-#~ msgid "No Credentials"
-#~ msgstr "資格情報なし"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "資格情報を削除しますか？"
@@ -2057,10 +2103,6 @@ msgstr ""
 #~ msgstr "認証情報の編集"
 
 #, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "認証情報を削除しますか？"
-
-#, fuzzy
 #~ msgid "Start"
 #~ msgstr "開始中"
 
@@ -2119,10 +2161,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "メディアをダウンロード"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr "メディアサイトの資格情報を作成・保存・管理できます。"
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2523,12 +2561,6 @@ msgstr ""
 #~ msgstr ""
 #~ "以前のキーリングとすべてのパスワードは削除されます。この動作は元に戻せませ"
 #~ "ん。"
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "キーリングを無効化できません。"
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "キーリングをリセットできません。"
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "タイトルの編集を取り消し"

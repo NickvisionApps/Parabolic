@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QWidget>
+#include <vector>
+#include "keyring.h"
 
 namespace Ui
 {
@@ -24,7 +26,12 @@ namespace parabolic::qt::views
         KeyringDialog& operator=(KeyringDialog&&) = delete;
 
     private:
+        Q_SLOT void add_credential();
+        Q_SLOT void edit_credential();
+        Q_SLOT void reload();
+        Q_SLOT void remove_credential();
         Q_SLOT void translate();
+        std::vector<keyring::Credential> m_credentials;
         Ui::KeyringDialog* m_ui{ nullptr };
     };
 }

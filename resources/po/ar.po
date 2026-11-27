@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:00-0500\n"
+"POT-Creation-Date: 2026-11-27 14:12-0500\n"
 "PO-Revision-Date: 2026-04-15 07:09+0000\n"
 "Last-Translator: jonnysemon <jonnysemon@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -106,15 +106,20 @@ msgstr ""
 msgid "I understand"
 msgstr "فهمت"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "معطيات ما بعد المعالجة"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+msgid "Credential"
+msgstr "بيانات إعتماد"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "الاسم"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
@@ -139,6 +144,32 @@ msgstr "الاسم"
 #, c++-format
 msgid "{}:"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "URL"
+msgstr "الرابط"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#, fuzzy
+msgid "Optional"
+msgstr "خيارات"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+msgid "Password"
+msgstr "كلمة السر"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "معطيات ما بعد المعالجة"
 
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
 msgid "Post Processor"
@@ -248,11 +279,65 @@ msgstr "المعطي"
 msgid "History"
 msgstr "السجل"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+msgid "Error"
+msgstr "خطأ"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:73
+#, fuzzy
+msgid "Unable to add the credential."
+msgstr "حذف بيانات الاعتماد"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:94
+#, fuzzy
+msgid "Unable to update the credential."
+msgstr "تعذَّر تعطيل حلقة المفاتيح."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:128
+#, fuzzy
+msgid "Remove Credential"
+msgstr "لا يوجد بيانات اعتماد"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:136
+#, fuzzy
+msgid "Unable to remove the credential."
+msgstr "تعذَّر تصفير حلقة المفاتيح."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "حلقة المفاتيح"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "أدخل، إحذف، وعدّل مُعتمدات بياناتك لمواقع الوسائط."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+msgid "Add"
+msgstr "أضف"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Edit"
+msgstr "تعديل"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Remove"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 #, fuzzy
@@ -338,11 +423,6 @@ msgstr "ملفات نصية (txt.*)"
 #, fuzzy
 msgid "Remove Argument"
 msgstr "بيانات اعتماد جديدة"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
-#, c++-format
-msgid "Are you sure you want to remove \"{}\"?"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
 #, fuzzy
@@ -725,10 +805,6 @@ msgstr "حدّ السرعة (كيبيبايت/ث)"
 msgid "Proxy"
 msgstr "رابط الوكيل"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
-msgid "URL"
-msgstr "الرابط"
-
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:606
 #, fuzzy
 msgid "Cookies"
@@ -867,17 +943,8 @@ msgstr "تقييد عدد المسارات المستخدمة بواسطة ffmpe
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "ستظهر المعطيات للإختيار في مربع حوار إضافة التنزيل"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
-msgid "Add"
-msgstr "أضف"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
-msgid "Edit"
-msgstr "تعديل"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
-msgid "Remove"
-msgstr ""
+#~ msgid "Credentials"
+#~ msgstr "بيانات الاعتماد"
 
 #, fuzzy
 #~ msgid "Text Files"
@@ -1051,15 +1118,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "استخدم الاستيثاق"
 
-#~ msgid "Credential"
-#~ msgstr "بيانات إعتماد"
-
-#~ msgid "Username"
-#~ msgstr "اسم المستخدم"
-
-#~ msgid "Password"
-#~ msgstr "كلمة السر"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "نزّل فورًا كفيديو"
 
@@ -1120,9 +1178,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "ألغِ تحديد الكل"
-
-#~ msgid "Options"
-#~ msgstr "خيارات"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "قسّم لملفات حسب الفصول"
@@ -1212,9 +1267,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "مسح الكل"
-
-#~ msgid "Credentials"
-#~ msgstr "بيانات الاعتماد"
 
 #~ msgid "Loading"
 #~ msgstr "جارٍ التحميل"
@@ -1340,9 +1392,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "غير معروف"
 
-#~ msgid "Error"
-#~ msgstr "خطأ"
-
 #~ msgid "Success"
 #~ msgstr "نجاح"
 
@@ -1390,9 +1439,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "لا سجل"
-
-#~ msgid "No Credentials"
-#~ msgstr "لا يوجد بيانات اعتماد"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "حذف بيانات الاعتماد؟"
@@ -2124,9 +2170,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "تعديل بيانات الاعتماد"
 
-#~ msgid "Delete Credential"
-#~ msgstr "حذف بيانات الاعتماد"
-
 #~ msgid "Start"
 #~ msgstr "ابدأ"
 
@@ -2263,10 +2306,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "حمّل الوسائط"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr "أدخل، إحذف، وعدّل مُعتمدات بياناتك لمواقع الوسائط."
 
 #~ msgid "Add a credential to get started"
 #~ msgstr "أضف بيان توثيق لتبدأ."
@@ -2634,12 +2673,6 @@ msgstr ""
 #~ msgstr ""
 #~ "سيؤدي هذا إلى حذف حلقة المفاتيح السابقة وإزالة جميع كلمات المرور معها. "
 #~ "هذا الإجراء لا رجعة فيه."
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "تعذَّر تعطيل حلقة المفاتيح."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "تعذَّر تصفير حلقة المفاتيح."
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "تراجع عن تحرير العناوين"
