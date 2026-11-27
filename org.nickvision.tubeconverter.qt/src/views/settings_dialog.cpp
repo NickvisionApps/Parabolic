@@ -395,8 +395,8 @@ namespace parabolic::qt::views
           m_cmb_video_codec{ new QComboBox(m_grp_preferences) },
           m_cmb_subtitle_format{ new QComboBox(m_grp_preferences) },
           m_cmb_frame_rate{ new QComboBox(m_grp_preferences) },
-          m_grp_arguments{ new oclero::qlementine::GroupBox(this) },
-          m_txt_arguments{ new QLineEdit(m_grp_arguments) }
+          m_grp_advanced{ new oclero::qlementine::GroupBox(this) },
+          m_txt_arguments{ new QLineEdit(m_grp_advanced) }
     {
         QWidget* content{ new QWidget() };
         QVBoxLayout* layout{ new QVBoxLayout(content) };
@@ -436,9 +436,14 @@ namespace parabolic::qt::views
         preferences_layout->addRow(m_lbl_subtitle_format, m_cmb_subtitle_format);
         m_lbl_frame_rate = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
         preferences_layout->addRow(m_lbl_frame_rate, m_cmb_frame_rate);
-        QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
-        layout->addWidget(m_grp_arguments);
-        arguments_layout->addWidget(m_txt_arguments);
+        QFormLayout* advanced_layout{ new QFormLayout(m_grp_advanced) };
+        advanced_layout->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
+        layout->addWidget(m_grp_advanced);
+        m_lbl_arguments = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_advanced);
+        advanced_layout->addRow(m_lbl_arguments, m_txt_arguments);
+        m_lbl_arguments_description = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_advanced);
+        m_lbl_arguments_description->setWordWrap(true);
+        advanced_layout->addRow(m_lbl_arguments_description);
         layout->addStretch();
         translate();
         discovery::Options options{ configuration.discovery_options() };
@@ -532,8 +537,10 @@ namespace parabolic::qt::views
         m_cmb_frame_rate->addItems(
                 { translator._("Any"), translator._("24 FPS"), translator._("30 FPS"), translator._("60 FPS") });
         m_cmb_frame_rate->setCurrentIndex(std::max(frame_rate_index, 0));
-        m_grp_arguments->setTitle(translator._("Arguments"));
-        m_grp_arguments->setDescription(translator._("These arguments will be appended to yt-dlp during the discovery phase."));
+        m_grp_advanced->setTitle(translator._("Advanced"));
+        m_lbl_arguments->setText(QString::fromStdString(translator._("{}:", translator._("Arguments"))));
+        m_lbl_arguments_description->setText(
+                translator._("These arguments will be appended to yt-dlp during the discovery phase."));
     }
 
     SettingsDownloadsPage::SettingsDownloadsPage(QWidget* parent)
@@ -547,8 +554,8 @@ namespace parabolic::qt::views
           m_btn_learn_more{ new QToolButton(m_grp_aria) },
           m_spn_aria_connections{ new QSpinBox(m_grp_aria) },
           m_spn_aria_split_size{ new QSpinBox(m_grp_aria) },
-          m_grp_arguments{ new oclero::qlementine::GroupBox(this) },
-          m_txt_arguments{ new QLineEdit(m_grp_arguments) }
+          m_grp_advanced{ new oclero::qlementine::GroupBox(this) },
+          m_txt_arguments{ new QLineEdit(m_grp_advanced) }
     {
         QWidget* content{ new QWidget() };
         QVBoxLayout* layout{ new QVBoxLayout(content) };
@@ -588,9 +595,14 @@ namespace parabolic::qt::views
         m_lbl_aria_split_size = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_aria);
         m_spn_aria_split_size->setRange(1, 1024);
         aria_form_layout->addRow(m_lbl_aria_split_size, m_spn_aria_split_size);
-        QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
-        layout->addWidget(m_grp_arguments);
-        arguments_layout->addWidget(m_txt_arguments);
+        QFormLayout* advanced_layout{ new QFormLayout(m_grp_advanced) };
+        advanced_layout->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
+        layout->addWidget(m_grp_advanced);
+        m_lbl_arguments = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_advanced);
+        advanced_layout->addRow(m_lbl_arguments, m_txt_arguments);
+        m_lbl_arguments_description = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_advanced);
+        m_lbl_arguments_description->setWordWrap(true);
+        advanced_layout->addRow(m_lbl_arguments_description);
         layout->addStretch();
         translate();
         download::Options download_options{ configuration.download_options() };
@@ -656,8 +668,10 @@ namespace parabolic::qt::views
         m_lbl_aria_connections->setText(
                 QString::fromStdString(translator._("{}:", translator._("Maximum Connections Per Server"))));
         m_lbl_aria_split_size->setText(QString::fromStdString(translator._("{}:", translator._("Minimum Split Size (MiB)"))));
-        m_grp_arguments->setTitle(translator._("Arguments"));
-        m_grp_arguments->setDescription(translator._("These arguments will be appended to yt-dlp during the download phase."));
+        m_grp_advanced->setTitle(translator._("Advanced"));
+        m_lbl_arguments->setText(QString::fromStdString(translator._("{}:", translator._("Arguments"))));
+        m_lbl_arguments_description->setText(
+                translator._("These arguments will be appended to yt-dlp during the download phase."));
     }
 
     SettingsExtractorPage::SettingsExtractorPage(QWidget* parent)
@@ -723,8 +737,16 @@ namespace parabolic::qt::views
         layout->addWidget(m_grp_cookies);
         m_lbl_cookies_browser = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_cookies);
         cookies_layout->addRow(m_lbl_cookies_browser, m_cmb_cookies_browser);
+        m_lbl_cookies_browser_description =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_cookies);
+        m_lbl_cookies_browser_description->setWordWrap(true);
+        cookies_layout->addRow(m_lbl_cookies_browser_description);
         m_lbl_cookies_file = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_cookies);
         m_txt_cookies_path->setReadOnly(true);
+        m_btn_cookies_browse->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::File_Folder)));
+        m_btn_cookies_clear->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Clear)));
         QHBoxLayout* cookies_file_row{ new QHBoxLayout() };
         cookies_file_row->addWidget(m_txt_cookies_path, 1);
         cookies_file_row->addWidget(m_btn_cookies_browse);
@@ -760,7 +782,10 @@ namespace parabolic::qt::views
 
     void SettingsExtractorPage::browse_cookies_file()
     {
-        QString path{ QFileDialog::getOpenFileName(this, application::State::instance().translator()._("Cookies File")) };
+        const translation::Translator& translator{ application::State::instance().translator() };
+        QString path{
+            QFileDialog::getOpenFileName(this, translator._("Cookies File"), {}, translator._("Text Files (*.txt)"))
+        };
         if (!path.isEmpty())
         {
             m_txt_cookies_path->setText(path);
@@ -815,9 +840,11 @@ namespace parabolic::qt::views
                                           translator._("Vivaldi"),
                                           translator._("Whale") });
         m_cmb_cookies_browser->setCurrentIndex(std::max(cookies_browser_index, 0));
+        m_lbl_cookies_browser_description->setText(
+                translator._("Selecting a browser other than \"None\" will use it instead of the cookies file."));
         m_lbl_cookies_file->setText(QString::fromStdString(translator._("{}:", translator._("File"))));
-        m_btn_cookies_browse->setText(translator._("Browse…"));
-        m_btn_cookies_clear->setText(translator._("Clear"));
+        m_btn_cookies_browse->setToolTip(translator._("Browse"));
+        m_btn_cookies_clear->setToolTip(translator._("Clear"));
     }
 
     SettingsPostprocessingPage::SettingsPostprocessingPage(QWidget* parent)

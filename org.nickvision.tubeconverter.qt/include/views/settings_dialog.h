@@ -115,8 +115,10 @@ namespace parabolic::qt::views
         QComboBox* m_cmb_subtitle_format{ nullptr };
         oclero::qlementine::Label* m_lbl_frame_rate{ nullptr };
         QComboBox* m_cmb_frame_rate{ nullptr };
-        oclero::qlementine::GroupBox* m_grp_arguments{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_advanced{ nullptr };
+        oclero::qlementine::Label* m_lbl_arguments{ nullptr };
         QLineEdit* m_txt_arguments{ nullptr };
+        oclero::qlementine::Label* m_lbl_arguments_description{ nullptr };
     };
 
     class SettingsDownloadsPage : public QScrollArea
@@ -147,8 +149,10 @@ namespace parabolic::qt::views
         QSpinBox* m_spn_aria_connections{ nullptr };
         oclero::qlementine::Label* m_lbl_aria_split_size{ nullptr };
         QSpinBox* m_spn_aria_split_size{ nullptr };
-        oclero::qlementine::GroupBox* m_grp_arguments{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_advanced{ nullptr };
+        oclero::qlementine::Label* m_lbl_arguments{ nullptr };
         QLineEdit* m_txt_arguments{ nullptr };
+        oclero::qlementine::Label* m_lbl_arguments_description{ nullptr };
     };
 
     class SettingsExtractorPage : public QScrollArea
@@ -184,6 +188,7 @@ namespace parabolic::qt::views
         oclero::qlementine::GroupBox* m_grp_cookies{ nullptr };
         oclero::qlementine::Label* m_lbl_cookies_browser{ nullptr };
         QComboBox* m_cmb_cookies_browser{ nullptr };
+        oclero::qlementine::Label* m_lbl_cookies_browser_description{ nullptr };
         oclero::qlementine::Label* m_lbl_cookies_file{ nullptr };
         QLineEdit* m_txt_cookies_path{ nullptr };
         QPushButton* m_btn_cookies_browse{ nullptr };
