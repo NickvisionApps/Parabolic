@@ -804,12 +804,18 @@
         </item>
         <item>
          <widget class="QListWidget" name="lst_arguments">
+          <property name="contextMenuPolicy">
+           <enum>Qt::ActionsContextMenu</enum>
+          </property>
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>120</height>
            </size>
           </property>
+          <addaction name="act_add_argument"/>
+          <addaction name="act_edit_argument"/>
+          <addaction name="act_remove_argument"/>
          </widget>
         </item>
        </layout>
@@ -831,6 +837,9 @@
     </layout>
    </widget>
   </widget>
+  <action name="act_add_argument"/>
+  <action name="act_edit_argument"/>
+  <action name="act_remove_argument"/>
  </widget>
  <customwidgets>
   <customwidget>

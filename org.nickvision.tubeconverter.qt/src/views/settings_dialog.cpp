@@ -1,4 +1,5 @@
 #include "views/settings_dialog.h"
+#include <QAction>
 #include <QApplication>
 #include <QCheckBox>
 #include <QCollator>
@@ -103,12 +104,15 @@ namespace parabolic::qt::views
         m_ui->btn_cookies_clear->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Clear)));
         m_ui->spn_threads->setRange(1, static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
-        m_ui->btn_add->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+        m_ui->act_add_argument->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Document_New)));
-        m_ui->btn_edit->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+        m_ui->act_edit_argument->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Pen)));
-        m_ui->btn_remove->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+        m_ui->act_remove_argument->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Trash)));
+        m_ui->btn_add->setDefaultAction(m_ui->act_add_argument);
+        m_ui->btn_edit->setDefaultAction(m_ui->act_edit_argument);
+        m_ui->btn_remove->setDefaultAction(m_ui->act_remove_argument);
         translate();
         std::vector<std::string>::iterator language_it{ std::ranges::find(m_languages,
                                                                           configuration.translation_options().language()) };
@@ -190,6 +194,7 @@ namespace parabolic::qt::views
         {
             m_ui->lst_arguments->addItem(QString::fromStdString(argument.name()));
         }
+        argument_selection_changed();
         connect(m_ui->cmb_theme, &QComboBox::currentIndexChanged, this, &SettingsDialog::change_theme);
         connect(m_ui->cmb_language, &QComboBox::currentIndexChanged, this, &SettingsDialog::change_language);
         connect(m_ui->chk_automatic_updates, &QCheckBox::toggled, this, &SettingsDialog::save);
@@ -229,10 +234,11 @@ namespace parabolic::qt::views
         connect(m_ui->chk_embed_chapters, &QCheckBox::toggled, this, &SettingsDialog::save);
         connect(m_ui->chk_embed_subtitles, &QCheckBox::toggled, this, &SettingsDialog::save);
         connect(m_ui->spn_threads, &QSpinBox::valueChanged, this, &SettingsDialog::save);
-        connect(m_ui->btn_add, &QToolButton::clicked, this, &SettingsDialog::add_argument);
-        connect(m_ui->btn_edit, &QToolButton::clicked, this, &SettingsDialog::edit_argument);
-        connect(m_ui->btn_remove, &QToolButton::clicked, this, &SettingsDialog::remove_argument);
+        connect(m_ui->act_add_argument, &QAction::triggered, this, &SettingsDialog::add_argument);
+        connect(m_ui->act_edit_argument, &QAction::triggered, this, &SettingsDialog::edit_argument);
+        connect(m_ui->act_remove_argument, &QAction::triggered, this, &SettingsDialog::remove_argument);
         connect(m_ui->lst_arguments, &QListWidget::itemDoubleClicked, this, &SettingsDialog::edit_argument);
+        connect(m_ui->lst_arguments, &QListWidget::currentRowChanged, this, &SettingsDialog::argument_selection_changed);
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed,
                 this,
@@ -265,6 +271,12 @@ namespace parabolic::qt::views
         m_ui->lst_arguments->addItem(QString::fromStdString(argument.name()));
         m_ui->lst_arguments->setCurrentRow(m_ui->lst_arguments->count() - 1);
         save();
+    }
+
+    void SettingsDialog::argument_selection_changed()
+    {
+        m_ui->act_edit_argument->setEnabled(m_ui->lst_arguments->currentRow() >= 0);
+        m_ui->act_remove_argument->setEnabled(m_ui->lst_arguments->currentRow() >= 0);
     }
 
     void SettingsDialog::browse_cookies_file()
@@ -644,8 +656,8 @@ namespace parabolic::qt::views
         m_ui->grp_arguments->setTitle(translator._("Arguments"));
         m_ui->grp_arguments->setDescription(
                 translator._("Arguments will be shown for selection in the download discovery dialog."));
-        m_ui->btn_add->setToolTip(translator._("Add"));
-        m_ui->btn_edit->setToolTip(translator._("Edit"));
-        m_ui->btn_remove->setToolTip(translator._("Remove"));
+        m_ui->act_add_argument->setText(translator._("Add"));
+        m_ui->act_edit_argument->setText(translator._("Edit"));
+        m_ui->act_remove_argument->setText(translator._("Remove"));
     }
 }

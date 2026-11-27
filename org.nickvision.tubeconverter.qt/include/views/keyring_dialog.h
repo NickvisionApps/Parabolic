@@ -27,6 +27,7 @@ namespace parabolic::qt::views
 
     private:
         Q_SLOT void add_credential();
+        Q_SLOT void credential_selection_changed();
         Q_SLOT void edit_credential();
         Q_SLOT void reload();
         Q_SLOT void remove_credential();

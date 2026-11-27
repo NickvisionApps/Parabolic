@@ -1,4 +1,5 @@
 #include "views/keyring_dialog.h"
+#include <QAction>
 #include <QApplication>
 #include <QDialog>
 #include <QKeySequence>
@@ -8,7 +9,6 @@
 #include <QString>
 #include <QTableWidget>
 #include <QTableWidgetItem>
-#include <QToolButton>
 #include <QWidget>
 #include <cstddef>
 #include <oclero/qlementine/icons/Icons16.hpp>
@@ -30,12 +30,15 @@ namespace parabolic::qt::views
           m_ui{ new Ui::KeyringDialog() }
     {
         m_ui->setupUi(this);
-        m_ui->btn_add->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+        m_ui->act_add_credential->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Document_New)));
-        m_ui->btn_edit->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+        m_ui->act_edit_credential->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Pen)));
-        m_ui->btn_remove->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+        m_ui->act_remove_credential->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Trash)));
+        m_ui->btn_add->setDefaultAction(m_ui->act_add_credential);
+        m_ui->btn_edit->setDefaultAction(m_ui->act_edit_credential);
+        m_ui->btn_remove->setDefaultAction(m_ui->act_remove_credential);
         translate();
         reload();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
@@ -43,10 +46,11 @@ namespace parabolic::qt::views
                 this,
                 &KeyringDialog::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QDialog::reject);
-        connect(m_ui->btn_add, &QToolButton::clicked, this, &KeyringDialog::add_credential);
-        connect(m_ui->btn_edit, &QToolButton::clicked, this, &KeyringDialog::edit_credential);
-        connect(m_ui->btn_remove, &QToolButton::clicked, this, &KeyringDialog::remove_credential);
+        connect(m_ui->act_add_credential, &QAction::triggered, this, &KeyringDialog::add_credential);
+        connect(m_ui->act_edit_credential, &QAction::triggered, this, &KeyringDialog::edit_credential);
+        connect(m_ui->act_remove_credential, &QAction::triggered, this, &KeyringDialog::remove_credential);
         connect(m_ui->tbl_credentials, &QTableWidget::itemDoubleClicked, this, &KeyringDialog::edit_credential);
+        connect(m_ui->tbl_credentials, &QTableWidget::itemSelectionChanged, this, &KeyringDialog::credential_selection_changed);
     }
 
     KeyringDialog::~KeyringDialog()
@@ -74,6 +78,12 @@ namespace parabolic::qt::views
             return;
         }
         reload();
+    }
+
+    void KeyringDialog::credential_selection_changed()
+    {
+        m_ui->act_edit_credential->setEnabled(m_ui->tbl_credentials->currentRow() >= 0);
+        m_ui->act_remove_credential->setEnabled(m_ui->tbl_credentials->currentRow() >= 0);
     }
 
     void KeyringDialog::edit_credential()
@@ -113,6 +123,7 @@ namespace parabolic::qt::views
                                            2,
                                            new QTableWidgetItem(QString::fromStdString(m_credentials[i].username())));
         }
+        credential_selection_changed();
     }
 
     void KeyringDialog::remove_credential()
@@ -146,9 +157,9 @@ namespace parabolic::qt::views
         m_ui->lbl_description->setText(
                 translator._("Add, delete, and modify credentials for validating websites. These will show in the add download "
                              "dialog for selection."));
-        m_ui->btn_add->setToolTip(translator._("Add"));
-        m_ui->btn_edit->setToolTip(translator._("Edit"));
-        m_ui->btn_remove->setToolTip(translator._("Remove"));
+        m_ui->act_add_credential->setText(translator._("Add"));
+        m_ui->act_edit_credential->setText(translator._("Edit"));
+        m_ui->act_remove_credential->setText(translator._("Remove"));
         m_ui->tbl_credentials->setHorizontalHeaderLabels(
                 { translator._("Name"), translator._("URL"), translator._("Username") });
     }

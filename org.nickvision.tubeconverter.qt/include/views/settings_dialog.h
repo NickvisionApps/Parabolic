@@ -28,6 +28,7 @@ namespace parabolic::qt::views
 
     private:
         Q_SLOT void add_argument();
+        Q_SLOT void argument_selection_changed();
         Q_SLOT void browse_cookies_file();
         Q_SLOT void change_language();
         Q_SLOT void change_theme();
