@@ -4,6 +4,7 @@
 #include <SQLiteCpp/SQLiteCpp.h>
 #include <chrono>
 #include <cstdint>
+#include <expected>
 #include <filesystem>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
@@ -65,11 +66,11 @@ namespace parabolic::history
     {
     public:
         Store(std::string_view app_name);
-        [[nodiscard]] bool add_or_update(const Record& record);
-        [[nodiscard]] bool add_or_update(const std::vector<Record>& records);
-        [[nodiscard]] bool clear();
+        [[nodiscard]] std::expected<void, std::string> add_or_update(const Record& record);
+        [[nodiscard]] std::expected<void, std::string> add_or_update(const std::vector<Record>& records);
+        [[nodiscard]] std::expected<void, std::string> clear();
         [[nodiscard]] std::vector<Record> get_all();
-        [[nodiscard]] bool remove(const std::string& url);
+        [[nodiscard]] std::expected<void, std::string> remove(const std::string& url);
         void set_options(const Options& options);
 
     private:

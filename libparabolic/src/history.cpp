@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <chrono>
 #include <compare>
+#include <expected>
 #include <filesystem>
 #include <functional>
 #include <nlohmann/json.hpp>
@@ -104,45 +105,64 @@ namespace parabolic::history
                         " (url TEXT PRIMARY KEY, title TEXT, path TEXT, downloaded_on INTEGER)");
     }
 
-    bool Store::add_or_update(const Record& record)
+    std::expected<void, std::string> Store::add_or_update(const Record& record)
     {
         if (m_options.length() == Length::Never)
         {
-            return true;
+            return {};
         }
-        SQLite::Statement query{ m_database,
-                                 "INSERT OR REPLACE INTO " TABLE_NAME
-                                 " (url, title, path, downloaded_on) VALUES (?, ?, ?, ?)" };
-        query.bind(1, record.url());
-        query.bind(2, record.title());
-        query.bind(3, record.path());
-        query.bind(4, std::chrono::duration_cast<std::chrono::seconds>(record.downloaded_on().time_since_epoch()).count());
-        return query.exec() > 0;
+        try
+        {
+            SQLite::Statement query{ m_database,
+                                     "INSERT OR REPLACE INTO " TABLE_NAME
+                                     " (url, title, path, downloaded_on) VALUES (?, ?, ?, ?)" };
+            query.bind(1, record.url());
+            query.bind(2, record.title());
+            query.bind(3, record.path());
+            query.bind(4, std::chrono::duration_cast<std::chrono::seconds>(record.downloaded_on().time_since_epoch()).count());
+            query.exec();
+        }
+        catch (const SQLite::Exception& e)
+        {
+            return std::unexpected<std::string>(e.what());
+        }
+        return {};
     }
 
-    bool Store::add_or_update(const std::vector<Record>& records)
+    std::expected<void, std::string> Store::add_or_update(const std::vector<Record>& records)
     {
-        SQLite::Transaction transaction{ m_database };
-        bool success{ true };
-        for (const Record& record : records)
+        try
         {
-            success &= add_or_update(record);
-        }
-        if (!success)
-        {
-            transaction.rollback();
-        }
-        else
-        {
+            SQLite::Transaction transaction{ m_database };
+            for (const Record& record : records)
+            {
+                std::expected<void, std::string> result{ add_or_update(record) };
+                if (!result)
+                {
+                    return result;
+                }
+            }
             transaction.commit();
         }
-        return success;
+        catch (const SQLite::Exception& e)
+        {
+            return std::unexpected<std::string>(e.what());
+        }
+        return {};
     }
 
-    bool Store::clear()
+    std::expected<void, std::string> Store::clear()
     {
-        SQLite::Statement query{ m_database, "DELETE FROM " TABLE_NAME };
-        return query.exec() > 0;
+        try
+        {
+            SQLite::Statement query{ m_database, "DELETE FROM " TABLE_NAME };
+            query.exec();
+        }
+        catch (const SQLite::Exception& e)
+        {
+            return std::unexpected<std::string>(e.what());
+        }
+        return {};
     }
 
     std::vector<Record> Store::get_all()
@@ -174,7 +194,7 @@ namespace parabolic::history
             bool success{ true };
             for (const std::string& url : marked)
             {
-                success &= remove(url);
+                success &= remove(url).has_value();
             }
             if (!success)
             {
@@ -196,11 +216,22 @@ namespace parabolic::history
         return result;
     }
 
-    bool Store::remove(const std::string& url)
+    std::expected<void, std::string> Store::remove(const std::string& url)
     {
-        SQLite::Statement query{ m_database, "DELETE FROM " TABLE_NAME " WHERE url = ?" };
-        query.bind(1, url);
-        return query.exec() > 0;
+        try
+        {
+            SQLite::Statement query{ m_database, "DELETE FROM " TABLE_NAME " WHERE url = ?" };
+            query.bind(1, url);
+            if (query.exec() == 0)
+            {
+                return std::unexpected<std::string>("The history record could not be found.");
+            }
+        }
+        catch (const SQLite::Exception& e)
+        {
+            return std::unexpected<std::string>(e.what());
+        }
+        return {};
     }
 
     void Store::set_options(const Options& options)
