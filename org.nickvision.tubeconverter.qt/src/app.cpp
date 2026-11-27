@@ -68,7 +68,6 @@ namespace parabolic::qt
     int App::run()
     {
         views::MainWindow window;
-        m_translation_notifier.translation_changed();
         window.show();
         configuration::Configuration& configuration{ application::State::instance().configuration() };
         if (configuration.show_disclaimer_on_startup())

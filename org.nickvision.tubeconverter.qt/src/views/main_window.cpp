@@ -70,6 +70,7 @@ namespace parabolic::qt::views
                 m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                              oclero::qlementine::icons::Icons16::Navigation_Settings)),
                                      {});
+        translate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed,
                 this,

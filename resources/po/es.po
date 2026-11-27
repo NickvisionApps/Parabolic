@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 12:34-0500\n"
+"POT-Creation-Date: 2026-11-27 12:41-0500\n"
 "PO-Revision-Date: 2026-04-24 15:09+0000\n"
 "Last-Translator: Jerry <dugoat@protonmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,9 +58,9 @@ msgid "Worst"
 msgstr "Peor"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:151
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:833
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:192
 msgid "None"
 msgstr "Ninguna"
 
@@ -125,7 +125,7 @@ msgid "Downloads"
 msgstr "Descargas"
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:370
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:251
 #, fuzzy
 msgid "History"
 msgstr "Historial"
@@ -145,423 +145,363 @@ msgstr "Añadir Descarga"
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:147
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1129
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:66
 #, fuzzy
 msgid "Settings"
 msgstr "Ajustes"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:78
 #, fuzzy
 msgid "Postprocessing Argument"
 msgstr "Argumentos de postprocesamiento"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:79
 msgid "Name"
 msgstr "Nombre"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:123
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:124
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:327
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:334
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:371
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:504
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:516
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:533
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:669
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:670
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:672
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:825
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:827
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:829
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:845
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1078
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:79
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:102
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:109
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:161
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:171
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:178
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:147
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:159
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:184
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:188
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:204
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:208
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:215
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:252
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:266
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:124
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:80
 msgid "Post Processor"
 msgstr "Post Procesador"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:85
 msgid "Merger"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:130
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:86
 #, fuzzy
 msgid "Modify Chapters"
 msgstr "Incrustar capítulos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:87
 #, fuzzy
 msgid "Split Chapters"
 msgstr "Dividir vídeo por capítulos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:132
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:88
 msgid "Extract Audio"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:133
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:89
 #, fuzzy
 msgid "Video Remuxer"
 msgstr "Vídeo (Genérico)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:134
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:90
 #, fuzzy
 msgid "Video Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:135
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1061
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:249
 #, fuzzy
 msgid "Metadata"
 msgstr "Incrustar metadatos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:136
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:92
 msgid "Embed Subtitle"
 msgstr "Incrustar subtítulo"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:137
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:93
 #, fuzzy
 msgid "Embed Thumbnail"
 msgstr "Incrustar miniaturas"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:138
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:94
 #, fuzzy
 msgid "Subtitles Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:95
 #, fuzzy
 msgid "Thumbnails Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:140
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:96
 msgid "Fixup Stretched"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:141
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:97
 msgid "Fixup M4a"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:142
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:98
 msgid "Fixup M3u8"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:143
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:99
 msgid "Fixup Timestamp"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:144
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:100
 msgid "Fixup Duration"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:102
 msgid "Executable"
 msgstr "Ejecutable"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:107
 msgid "AtomicParsley"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:151
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1077
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:265
 #, fuzzy
 msgid "FFmpeg"
 msgstr "Hilos FFmpeg"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:107
 msgid "FFprobe"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:109
 msgid "Argument"
 msgstr "Argumento"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:326
-msgid "User Interface"
-msgstr "Interfaz de usuario"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:327
-msgid "Theme"
-msgstr "Tema"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:332
-msgctxt "Theme"
-msgid "Light"
-msgstr "Claro"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:332
-msgctxt "Theme"
-msgid "Dark"
-msgstr "Oscuro"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:332
-msgctxt "Theme"
-msgid "System"
-msgstr "Sistema"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:334
-msgid "Translation Language"
-msgstr "Idioma de traducción"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:335
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:67
 #, fuzzy
-msgctxt "Language"
-msgid "System"
-msgstr "Sistema"
+msgctxt "Settings"
+msgid "General"
+msgstr "General"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:366
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:68
 #, fuzzy
-msgid "Updates"
-msgstr "Actualizar"
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Descubrir"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:367
-msgid "Automatically Check for Updates"
-msgstr "Comprobar automáticamente las actualizaciones"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:69
 #, fuzzy
-msgid "Allow Preview Updates"
-msgstr "Recibir Actualizaciones Experimentales"
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Descargas"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:70
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:71
 #, fuzzy
-msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-msgstr "Actualizar dependencias, como yt-dlp, a versiones beta"
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Postprocesado"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:371
-#, fuzzy
-msgid "Keep Download History For"
-msgstr "Tamaño del historial de descargas"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:375
-msgid "Never"
-msgstr "Nunca"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:376
-msgid "1 Day"
-msgstr "1 Día"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:377
-msgid "1 Week"
-msgstr "1 Semana"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:378
-msgid "1 Month"
-msgstr "1 Mes"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:379
-msgid "3 Months"
-msgstr "3 Meses"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:380
-msgid "6 Months"
-msgstr "6 Meses"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:381
-msgid "1 Year"
-msgstr "1 Año"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:382
-msgid "Forever"
-msgstr "Siempre"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:814
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:138
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:173
 #, fuzzy
 msgid "Process"
 msgstr "Procesando"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:494
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:139
 msgid "Include Media Id in Title"
 msgstr "Incluir el Id del archivo multimedia en el título"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:495
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:140
 #, fuzzy
 msgid "Add the media entry's yt-dlp id to its default title."
 msgstr "Añade el id del medio a su título predeterminado"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:141
 msgid "Limit Filename Characters"
 msgstr "Limitar los caracteres del nombre del archivo"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:497
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:142
 #, fuzzy
 msgid "Restrict filename characters to those supported only by Windows."
 msgstr ""
 "Restringir caracteres en nombres de archivo a solo los soportados por Windows"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:143
 #, fuzzy
 msgid "Show Super Resolution Formats"
 msgstr "Incluir formatos de superresolución"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:500
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:145
 msgid ""
 "Super resolutions are resolutions that have been enhanced with artificial "
 "intelligence."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:501
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:146
 #, fuzzy
 msgid "Show Auto-Generated Subtitles"
 msgstr "Incluir Subtítulos Auto-Generados"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:502
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:147
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:503
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:148
 #, fuzzy
 msgid "Prefer these codecs and options when showing formats for download."
 msgstr ""
 "Preferir este códec al analizar los formatos de audio para mostrar los "
 "disponibles para descargar"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:504
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:149
 #, fuzzy
 msgid "Audio Codec"
 msgstr "Codec de Audio preferido"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:508
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:520
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:531
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:165
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:176
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:183
 msgid "Any"
 msgstr "Cualquiera"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:509
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:154
 msgid "FLAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:510
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:155
 msgid "WAV"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:511
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:156
 msgid "Opus"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:512
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:157
 msgid "AAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:513
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:158
 msgid "MP4A"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:514
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:159
 msgid "MP3"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:516
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:161
 #, fuzzy
 msgid "Video Codec"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:521
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:166
 #, fuzzy
 msgid "H.265"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:522
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:167
 msgid "VP9"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:523
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:168
 msgid "AV1"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:524
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:169
 #, fuzzy
 msgid "H.264"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:171
 #, fuzzy
 msgid "Subtitle Format"
 msgstr "Formato de subtítulos preferido"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:531
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:176
 msgid "VTT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:531
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:176
 msgid "SRT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:531
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:176
 msgid "ASS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:531
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:176
 msgid "LRC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:533
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:178
 #, fuzzy
 msgid "Frame Rate"
 msgstr "Tasa de Fotogramas Preferida"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:183
 #, fuzzy
 msgid "24 FPS"
 msgstr "{0} FPS"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:183
 #, fuzzy
 msgid "30 FPS"
 msgstr "{0} FPS"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:183
 #, fuzzy
 msgid "60 FPS"
 msgstr "{0} FPS"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:671
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:185
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:158
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:672
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1080
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:159
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:268
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:188
 #, fuzzy
 msgid "These arguments will be appended to yt-dlp during the discovery phase."
 msgstr ""
 "Los argumentos se mostrarán para su selección en el cuadro de diálogo de "
 "añadir descarga"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:147
 #, fuzzy
 msgid "Maximum Active Downloads"
 msgstr "Número máximo de descargas activas"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:148
 msgid "Overwrite Existing Files"
 msgstr "Sobreescribir Archivos Existentes"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:662
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:149
 msgid "Prevent Sleep During Downloads"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:663
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:150
 #, fuzzy
 msgid "aria2"
 msgstr "aria2c"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:664
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:151
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
@@ -570,45 +510,45 @@ msgstr ""
 "Un gestor de descargas alternativo que puede ser más rápido en algunas "
 "regiones en comparación con el gestor nativo: yt-dlp"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:666
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:153
 #, fuzzy
 msgid "Use aria2"
 msgstr "Usar aria2c"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:667
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:154
 msgid "Learn More"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:669
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:156
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Conexiones Máximas Por Servidor"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:670
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:157
 msgid "Minimum Split Size (MiB)"
 msgstr "Tamaño Mínimo de la División (MiB)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:674
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:161
 #, fuzzy
 msgid "These arguments will be appended to yt-dlp during the download phase."
 msgstr ""
 "Los argumentos se mostrarán para su selección en el cuadro de diálogo de "
 "añadir descarga"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:787
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:146
 msgid "Cookies File"
 msgstr "Archivo de las Cookies"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:787
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:146
 #, fuzzy
 msgid "Text Files (*.txt)"
 msgstr "Archivos TXT (*.txt)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:815
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:174
 msgid "Use Part Files"
 msgstr "Usar Archivos por Partes"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:817
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:176
 #, fuzzy
 msgid ""
 "Download media in separate .part files instead of directly into the output "
@@ -617,21 +557,21 @@ msgstr ""
 "Descarga de medios en archivos .part independientes en lugar de directamente "
 "en el archivo de salida"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:818
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:177
 #, fuzzy
 msgid "Enable SponsorBlock for YouTube"
 msgstr "Usar SponsorBlock para YouTube"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:819
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:178
 #, fuzzy
 msgid "Try to remove sponsored segments from videos."
 msgstr "Intenta eliminar los segmentos patrocinados de los vídeos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:820
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:179
 msgid "Translate Metadata and Chapters"
 msgstr "Traducir Metadatos y Capítulos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:821
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:180
 #, fuzzy
 msgid ""
 "Automatically translate embedded metadata and chapters using the app's set "
@@ -640,124 +580,213 @@ msgstr ""
 "Traducir automáticamente metadatos embebidos y capítulos al lenguaje de la "
 "aplicación en sitios y medios soportados"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:823
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:182
 #, fuzzy
 msgid "Speed"
 msgstr "Límite de velocidad"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:824
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:183
 msgid "Limit Download Speed"
 msgstr "Limitar la velocidad de descarga"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:825
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:184
 msgid "Speed Limit (KiB/s)"
 msgstr "Límite de velocidad (KiB/s)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:826
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:185
 #, fuzzy
 msgid "Proxy"
 msgstr "URL del proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:827
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:186
 msgid "URL"
 msgstr "URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:828
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:187
 #, fuzzy
 msgid "Cookies"
 msgstr "Archivo de las Cookies"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:829
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:188
 #, fuzzy
 msgid "Browser"
 msgstr "Cookies del Navegador"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:834
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:193
 msgid "Brave"
 msgstr "Brave"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:835
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:194
 msgid "Chrome"
 msgstr "Chrome"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:836
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:195
 msgid "Chromium"
 msgstr "Chromium"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:837
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:196
 msgid "Edge"
 msgstr "Edge"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:838
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:197
 msgid "Firefox"
 msgstr "Firefox"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:839
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:198
 msgid "Opera"
 msgstr "Opera"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:840
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:199
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:841
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:200
 msgid "Whale"
 msgstr "Whale"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:844
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:203
 msgid ""
 "Selecting a browser other than \"None\" will use it instead of the cookies "
 "file."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:845
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:204
 msgid "File"
 msgstr "Archivo"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:846
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:205
 #, fuzzy
 msgid "Browse"
 msgstr "Cookies del Navegador"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:847
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:206
 msgid "Clear"
 msgstr "Limpiar"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1029
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:207
+msgid "User Interface"
+msgstr "Interfaz de usuario"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:208
+msgid "Theme"
+msgstr "Tema"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:213
+msgctxt "Theme"
+msgid "Light"
+msgstr "Claro"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:213
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Oscuro"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:213
+msgctxt "Theme"
+msgid "System"
+msgstr "Sistema"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:215
+msgid "Translation Language"
+msgstr "Idioma de traducción"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:216
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Sistema"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:247
+#, fuzzy
+msgid "Updates"
+msgstr "Actualizar"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:248
+msgid "Automatically Check for Updates"
+msgstr "Comprobar automáticamente las actualizaciones"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:249
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Recibir Actualizaciones Experimentales"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:250
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Actualizar dependencias, como yt-dlp, a versiones beta"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:252
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Tamaño del historial de descargas"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:256
+msgid "Never"
+msgstr "Nunca"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:257
+msgid "1 Day"
+msgstr "1 Día"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:258
+msgid "1 Week"
+msgstr "1 Semana"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:259
+msgid "1 Month"
+msgstr "1 Mes"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:260
+msgid "3 Months"
+msgstr "3 Meses"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:261
+msgid "6 Months"
+msgstr "6 Meses"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:262
+msgid "1 Year"
+msgstr "1 Año"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:263
+msgid "Forever"
+msgstr "Siempre"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:217
 #, fuzzy
 msgid "Remove Argument"
 msgstr "Nuevo argumento"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1030
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:218
 #, fuzzy, c++-format
 msgid "Are you sure you want to remove \"{}\"?"
 msgstr "¿Está seguro de que quiere borrar este argumento?"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1062
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:250
 msgid "Embed Metadata"
 msgstr "Incrustar metadatos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1063
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:251
 msgid "Remove Source Data"
 msgstr "Eliminar los datos de origen"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1064
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:252
 #, fuzzy
 msgid "Clear metadata fields containing identifying download information."
 msgstr ""
 "Borrar los campos de metadatos que contienen información identificable de la "
 "descarga"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1065
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:253
 #, fuzzy
 msgid "Thumbnails"
 msgstr "Incrustar miniaturas"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1066
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:254
 msgid "Embed Thumbnails"
 msgstr "Incrustar miniaturas"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1067
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:255
 #, fuzzy
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
@@ -766,33 +795,33 @@ msgstr ""
 "Si el tipo de archivo no admite la incrustación, la miniatura se escribirá "
 "en un archivo de imagen separado"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1069
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:257
 msgid "Crop Audio Thumbnails"
 msgstr "Recortar miniaturas de audio"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1070
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:258
 #, fuzzy
 msgid "Crop thumbnails of audio files to squares."
 msgstr "Recorta miniaturas de archivos de audio a cuadrados"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1071
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:259
 #, fuzzy
 msgid "Chapters"
 msgstr "Incrustar capítulos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1072
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:260
 msgid "Embed Chapters"
 msgstr "Incrustar capítulos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1073
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:261
 msgid "Subtitles"
 msgstr "Subtítulos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1074
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:262
 msgid "Embed Subtitles"
 msgstr "Incrustar subtítulos"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1076
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:264
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
@@ -801,63 +830,34 @@ msgstr ""
 "Si se desactiva o no se admite la incrustación, los subtítulos descargados "
 "se guardarán en archivos independientes"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1078
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:266
 #, fuzzy
 msgid "Threads"
 msgstr "Hilos FFmpeg"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1079
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:267
 #, fuzzy
 msgid "Limit the number of threads used by ffmpeg."
 msgstr "Limitar el número de hilos usados por ffmpeg"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1082
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:270
 #, fuzzy
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 "Los argumentos se mostrarán para su selección en el cuadro de diálogo de "
 "añadir descarga"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1083
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:271
 msgid "Add"
 msgstr "Añadir"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1084
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:272
 msgid "Edit"
 msgstr "Editar"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1085
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:273
 msgid "Remove"
 msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1130
-#, fuzzy
-msgctxt "Settings"
-msgid "General"
-msgstr "General"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1131
-#, fuzzy
-msgctxt "Settings"
-msgid "Discovery"
-msgstr "Descubrir"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1132
-#, fuzzy
-msgctxt "Settings"
-msgid "Downloads"
-msgstr "Descargas"
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1133
-msgctxt "Settings"
-msgid "Extractor"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1134
-#, fuzzy
-msgctxt "Settings"
-msgid "Postprocessing"
-msgstr "Postprocesado"
 
 #, fuzzy
 #~ msgid "Text Files"
