@@ -1,4 +1,4 @@
-#include "views/downloads_page.h"
+#include "pages/downloads_page.h"
 #include <QApplication>
 #include <QObject>
 #include <QPalette>
@@ -7,7 +7,7 @@
 #include "helpers/translation_notifier.h"
 #include "ui_downloads_page.h"
 
-namespace parabolic::qt::views
+namespace parabolic::qt::pages
 {
     DownloadsPage::DownloadsPage(QWidget* parent)
         : QWidget{ parent },

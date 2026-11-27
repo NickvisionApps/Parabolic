@@ -8,7 +8,7 @@ namespace Ui
     class HistoryPage;
 }
 
-namespace parabolic::qt::views
+namespace parabolic::qt::pages
 {
     class HistoryPage : public QWidget
     {

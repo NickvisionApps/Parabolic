@@ -8,7 +8,7 @@ namespace Ui
     class HomePage;
 }
 
-namespace parabolic::qt::views
+namespace parabolic::qt::pages
 {
     class HomePage : public QWidget
     {

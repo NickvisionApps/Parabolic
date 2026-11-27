@@ -8,7 +8,7 @@ namespace Ui
     class DownloadsPage;
 }
 
-namespace parabolic::qt::views
+namespace parabolic::qt::pages
 {
     class DownloadsPage : public QWidget
     {

@@ -1,4 +1,4 @@
-#include "views/history_page.h"
+#include "pages/history_page.h"
 #include <QApplication>
 #include <QObject>
 #include <QPalette>
@@ -7,7 +7,7 @@
 #include "helpers/translation_notifier.h"
 #include "ui_history_page.h"
 
-namespace parabolic::qt::views
+namespace parabolic::qt::pages
 {
     HistoryPage::HistoryPage(QWidget* parent)
         : QWidget{ parent },

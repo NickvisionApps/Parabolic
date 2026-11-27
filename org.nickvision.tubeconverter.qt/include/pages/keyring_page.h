@@ -8,7 +8,7 @@ namespace Ui
     class KeyringPage;
 }
 
-namespace parabolic::qt::views
+namespace parabolic::qt::pages
 {
     class KeyringPage : public QWidget
     {

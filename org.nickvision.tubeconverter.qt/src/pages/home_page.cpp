@@ -1,17 +1,17 @@
-#include "views/keyring_page.h"
+#include "pages/home_page.h"
 #include <QApplication>
 #include <QObject>
 #include <QPalette>
 #include <QWidget>
 #include "app.h"
 #include "helpers/translation_notifier.h"
-#include "ui_keyring_page.h"
+#include "ui_home_page.h"
 
-namespace parabolic::qt::views
+namespace parabolic::qt::pages
 {
-    KeyringPage::KeyringPage(QWidget* parent)
+    HomePage::HomePage(QWidget* parent)
         : QWidget{ parent },
-          m_ui{ new Ui::KeyringPage() }
+          m_ui{ new Ui::HomePage() }
     {
         m_ui->setupUi(this);
         setBackgroundRole(QPalette::Base);
@@ -19,15 +19,15 @@ namespace parabolic::qt::views
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed,
                 this,
-                &KeyringPage::translate);
+                &HomePage::translate);
     }
 
-    KeyringPage::~KeyringPage()
+    HomePage::~HomePage()
     {
         delete m_ui;
     }
 
-    void KeyringPage::translate()
+    void HomePage::translate()
     {
     }
 }

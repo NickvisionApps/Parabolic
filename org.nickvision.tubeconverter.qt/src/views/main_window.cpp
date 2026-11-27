@@ -23,12 +23,12 @@
 #include "application.h"
 #include "configuration.h"
 #include "helpers/translation_notifier.h"
+#include "pages/downloads_page.h"
+#include "pages/history_page.h"
+#include "pages/home_page.h"
+#include "pages/keyring_page.h"
 #include "translation.h"
 #include "ui_main_window.h"
-#include "views/downloads_page.h"
-#include "views/history_page.h"
-#include "views/home_page.h"
-#include "views/keyring_page.h"
 #include "views/settings_dialog.h"
 
 namespace parabolic::qt::views
@@ -42,19 +42,19 @@ namespace parabolic::qt::views
         setLeadingWidget(m_ui->navigation_view->sidebar());
         setContentCornerRadius(12);
         titleBar()->setContentWidget(m_ui->toolbar);
-        m_ui->navigation_view->addPage(new HomePage(m_ui->navigation_view),
+        m_ui->navigation_view->addPage(new pages::HomePage(m_ui->navigation_view),
                                        {},
                                        oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                                oclero::qlementine::icons::Icons16::Navigation_Home)));
-        m_ui->navigation_view->addPage(new DownloadsPage(m_ui->navigation_view),
+        m_ui->navigation_view->addPage(new pages::DownloadsPage(m_ui->navigation_view),
                                        {},
                                        oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                                oclero::qlementine::icons::Icons16::Action_Download)));
-        m_ui->navigation_view->addBottomPage(new HistoryPage(m_ui->navigation_view),
+        m_ui->navigation_view->addBottomPage(new pages::HistoryPage(m_ui->navigation_view),
                                              {},
                                              oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                                      oclero::qlementine::icons::Icons16::Misc_Clock)));
-        m_ui->navigation_view->addBottomPage(new KeyringPage(m_ui->navigation_view),
+        m_ui->navigation_view->addBottomPage(new pages::KeyringPage(m_ui->navigation_view),
                                              {},
                                              oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                                      oclero::qlementine::icons::Icons16::Misc_Password)));

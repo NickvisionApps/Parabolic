@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsDialog</class>
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="layout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="oclero::qlementine::NavigationView" name="navigation_view"/>
+   </item>
+  </layout>
+  <widget class="QScrollArea" name="page_general">
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="general_content">
+    <layout class="QVBoxLayout" name="general_content_layout">
+     <property name="leftMargin">
+      <number>24</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
+     </property>
+     <property name="rightMargin">
+      <number>24</number>
+     </property>
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_user_interface">
+       <layout class="QFormLayout" name="user_interface_layout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_theme"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cmb_theme"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_language"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="cmb_language"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_updates">
+       <layout class="QVBoxLayout" name="updates_layout">
+        <item>
+         <widget class="QCheckBox" name="chk_automatic_updates"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_preview_updates"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_preview_updates">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_history">
+       <layout class="QFormLayout" name="history_layout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_history_length"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cmb_history_length"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="general_vertical_spacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QScrollArea" name="page_discovery">
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="discovery_content">
+    <layout class="QVBoxLayout" name="discovery_content_layout">
+     <property name="leftMargin">
+      <number>24</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
+     </property>
+     <property name="rightMargin">
+      <number>24</number>
+     </property>
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_discovery_process">
+       <layout class="QVBoxLayout" name="discovery_process_layout">
+        <item>
+         <widget class="QCheckBox" name="chk_media_id"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_media_id">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_limit_characters"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_limit_characters">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_super_resolutions"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_super_resolutions">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_auto_generated_subtitles"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_preferences">
+       <layout class="QFormLayout" name="preferences_layout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_audio_codec"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cmb_audio_codec"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_video_codec"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="cmb_video_codec"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_subtitle_format"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="cmb_subtitle_format"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_frame_rate"/>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="cmb_frame_rate"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_discovery_advanced">
+       <layout class="QFormLayout" name="discovery_advanced_layout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::ExpandingFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_discovery_arguments"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="txt_discovery_arguments"/>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="oclero::qlementine::Label" name="lbl_discovery_arguments_description">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="discovery_vertical_spacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QScrollArea" name="page_downloads">
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="downloads_content">
+    <layout class="QVBoxLayout" name="downloads_content_layout">
+     <property name="leftMargin">
+      <number>24</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
+     </property>
+     <property name="rightMargin">
+      <number>24</number>
+     </property>
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_downloads_process">
+       <layout class="QVBoxLayout" name="downloads_process_layout">
+        <item>
+         <layout class="QFormLayout" name="max_downloads_layout">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+          </property>
+          <item row="0" column="0">
+           <widget class="oclero::qlementine::Label" name="lbl_max_downloads"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spn_max_downloads">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_overwrite_existing_files"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_prevent_suspend"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_aria">
+       <layout class="QVBoxLayout" name="aria_layout">
+        <item>
+         <layout class="QHBoxLayout" name="use_aria_layout">
+          <item>
+           <widget class="QCheckBox" name="chk_use_aria"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_learn_more"/>
+          </item>
+          <item>
+           <spacer name="use_aria_spacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="aria_form_layout">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+          </property>
+          <item row="0" column="0">
+           <widget class="oclero::qlementine::Label" name="lbl_aria_connections"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spn_aria_connections">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>16</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="oclero::qlementine::Label" name="lbl_aria_split_size"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="spn_aria_split_size">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>1024</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_downloads_advanced">
+       <layout class="QFormLayout" name="downloads_advanced_layout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::ExpandingFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_downloads_arguments"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="txt_downloads_arguments"/>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="oclero::qlementine::Label" name="lbl_downloads_arguments_description">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="downloads_vertical_spacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QScrollArea" name="page_extractor">
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="extractor_content">
+    <layout class="QVBoxLayout" name="extractor_content_layout">
+     <property name="leftMargin">
+      <number>24</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
+     </property>
+     <property name="rightMargin">
+      <number>24</number>
+     </property>
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_extractor_process">
+       <layout class="QVBoxLayout" name="extractor_process_layout">
+        <item>
+         <widget class="QCheckBox" name="chk_part_files"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_part_files">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_sponsor_block"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_sponsor_block">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_translate_metadata"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_translate_metadata">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_speed">
+       <layout class="QVBoxLayout" name="speed_layout">
+        <item>
+         <widget class="QCheckBox" name="chk_speed_limit"/>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="speed_limit_layout">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+          </property>
+          <item row="0" column="0">
+           <widget class="oclero::qlementine::Label" name="lbl_speed_limit"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spn_speed_limit">
+            <property name="minimum">
+             <number>512</number>
+            </property>
+            <property name="maximum">
+             <number>10240</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_proxy">
+       <layout class="QFormLayout" name="proxy_layout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::ExpandingFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_proxy_url"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="txt_proxy_url"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_cookies">
+       <layout class="QFormLayout" name="cookies_layout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::ExpandingFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_cookies_browser"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cmb_cookies_browser"/>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="oclero::qlementine::Label" name="lbl_cookies_browser_description">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="oclero::qlementine::Label" name="lbl_cookies_file"/>
+        </item>
+        <item row="2" column="1">
+         <layout class="QHBoxLayout" name="cookies_file_layout">
+          <item>
+           <widget class="QLineEdit" name="txt_cookies_path">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_cookies_browse"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_cookies_clear"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="extractor_vertical_spacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QScrollArea" name="page_postprocessing">
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="postprocessing_content">
+    <layout class="QVBoxLayout" name="postprocessing_content_layout">
+     <property name="leftMargin">
+      <number>24</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
+     </property>
+     <property name="rightMargin">
+      <number>24</number>
+     </property>
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_metadata">
+       <layout class="QVBoxLayout" name="metadata_layout">
+        <item>
+         <widget class="QCheckBox" name="chk_embed_metadata"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_remove_source_data"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_remove_source_data">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_thumbnails">
+       <layout class="QVBoxLayout" name="thumbnails_layout">
+        <item>
+         <widget class="QCheckBox" name="chk_embed_thumbnails"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_embed_thumbnails">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="chk_crop_audio_thumbnails"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_crop_audio_thumbnails">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_chapters">
+       <layout class="QVBoxLayout" name="chapters_layout">
+        <item>
+         <widget class="QCheckBox" name="chk_embed_chapters"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_subtitles">
+       <layout class="QVBoxLayout" name="subtitles_layout">
+        <item>
+         <widget class="QCheckBox" name="chk_embed_subtitles"/>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_embed_subtitles">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_ffmpeg">
+       <layout class="QVBoxLayout" name="ffmpeg_layout">
+        <item>
+         <layout class="QFormLayout" name="threads_layout">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+          </property>
+          <item row="0" column="0">
+           <widget class="oclero::qlementine::Label" name="lbl_threads"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spn_threads"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="oclero::qlementine::Label" name="lbl_threads_description">
+          <property name="role">
+           <enum>oclero::qlementine::TextRole::Caption</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="oclero::qlementine::GroupBox" name="grp_arguments">
+       <layout class="QVBoxLayout" name="arguments_layout">
+        <item>
+         <layout class="QHBoxLayout" name="buttons_layout">
+          <item>
+           <widget class="QToolButton" name="btn_add"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_edit"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_remove"/>
+          </item>
+          <item>
+           <spacer name="buttons_spacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="lst_arguments">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>120</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="postprocessing_vertical_spacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>oclero::qlementine::NavigationView</class>
+   <extends>QWidget</extends>
+   <header location="global">oclero/qlementine/widgets/NavigationView.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>oclero::qlementine::GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header location="global">oclero/qlementine/widgets/GroupBox.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>oclero::qlementine::Label</class>
+   <extends>QLabel</extends>
+   <header location="global">oclero/qlementine/widgets/Label.hpp</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
