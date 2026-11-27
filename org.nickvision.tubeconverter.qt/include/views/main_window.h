@@ -30,6 +30,8 @@ namespace parabolic::qt::views
     private:
         Q_SLOT void about();
         Q_SLOT void add_download() const;
+        Q_SLOT void history();
+        Q_SLOT void keyring();
         Q_SLOT void settings();
         Q_SLOT void toggle_sidebar() const;
         Q_SLOT void translate();

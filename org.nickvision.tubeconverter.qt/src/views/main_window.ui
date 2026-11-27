@@ -21,6 +21,8 @@
    </property>
    <addaction name="act_toggle_sidebar"/>
    <addaction name="act_add_download"/>
+   <addaction name="act_history"/>
+   <addaction name="act_keyring"/>
    <addaction name="act_settings"/>
   </widget>
   <action name="act_about">
@@ -32,6 +34,12 @@
    </property>
   </action>
   <action name="act_add_download"/>
+  <action name="act_history"/>
+  <action name="act_keyring">
+   <property name="shortcut">
+    <string>Ctrl+K</string>
+   </property>
+  </action>
   <action name="act_settings">
    <property name="shortcut">
     <string>Ctrl+,</string>

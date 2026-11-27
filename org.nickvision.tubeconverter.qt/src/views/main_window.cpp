@@ -24,11 +24,13 @@
 #include "configuration.h"
 #include "helpers/translation_notifier.h"
 #include "pages/downloads_page.h"
-#include "pages/history_page.h"
 #include "pages/home_page.h"
-#include "pages/keyring_page.h"
+#include "pages/tagger_page.h"
+#include "pages/updates_page.h"
 #include "translation.h"
 #include "ui_main_window.h"
+#include "views/history_dialog.h"
+#include "views/keyring_dialog.h"
 #include "views/settings_dialog.h"
 
 namespace parabolic::qt::views
@@ -50,23 +52,32 @@ namespace parabolic::qt::views
                                        {},
                                        oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                                oclero::qlementine::icons::Icons16::Action_Download)));
-        m_ui->navigation_view->addBottomPage(new pages::HistoryPage(m_ui->navigation_view),
+        m_ui->navigation_view->addPage(new pages::TaggerPage(m_ui->navigation_view),
+                                       {},
+                                       oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                               oclero::qlementine::icons::Icons16::Misc_Tag)));
+        m_ui->navigation_view->addBottomPage(new pages::UpdatesPage(m_ui->navigation_view),
                                              {},
                                              oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                                     oclero::qlementine::icons::Icons16::Misc_Clock)));
-        m_ui->navigation_view->addBottomPage(new pages::KeyringPage(m_ui->navigation_view),
-                                             {},
-                                             oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                                     oclero::qlementine::icons::Icons16::Misc_Password)));
+                                                     oclero::qlementine::icons::Icons16::Action_Update)));
         m_ui->act_toggle_sidebar->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
         m_ui->act_add_download->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Plus)));
+        m_ui->act_history->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Clock)));
+        m_ui->act_keyring->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Password)));
         m_ui->act_settings->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Navigation_Settings)));
         QWidget* spacer{ new QWidget(m_ui->toolbar) };
         spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        m_ui->toolbar->insertWidget(m_ui->act_settings, spacer);
+        m_ui->toolbar->insertWidget(m_ui->act_history, spacer);
+#ifdef __APPLE__
+        m_ui->act_history->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Y));
+#else
+        m_ui->act_history->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_H));
+#endif
 #ifdef __APPLE__
         QMenu* app_menu{ (new QMenuBar(nullptr))->addMenu(QString()) };
         app_menu->addAction(m_ui->act_about);
@@ -80,6 +91,8 @@ namespace parabolic::qt::views
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QWidget::close);
         connect(m_ui->act_about, &QAction::triggered, this, &MainWindow::about);
         connect(m_ui->act_add_download, &QAction::triggered, this, &MainWindow::add_download);
+        connect(m_ui->act_history, &QAction::triggered, this, &MainWindow::history);
+        connect(m_ui->act_keyring, &QAction::triggered, this, &MainWindow::keyring);
         connect(m_ui->act_settings, &QAction::triggered, this, &MainWindow::settings);
         connect(m_ui->act_toggle_sidebar, &QAction::triggered, this, &MainWindow::toggle_sidebar);
         const configuration::Configuration& configuration{ application::State::instance().configuration() };
@@ -146,6 +159,18 @@ namespace parabolic::qt::views
     {
     }
 
+    void MainWindow::history()
+    {
+        HistoryDialog dialog{ this };
+        dialog.exec();
+    }
+
+    void MainWindow::keyring()
+    {
+        KeyringDialog dialog{ this };
+        dialog.exec();
+    }
+
     void MainWindow::settings()
     {
         SettingsDialog dialog{ this };
@@ -170,15 +195,28 @@ namespace parabolic::qt::views
         setWindowTitle(translator._p("AppName", "Parabolic"));
         m_ui->navigation_view->sidebar()->setItemText(0, translator._("Home"));
         m_ui->navigation_view->sidebar()->setItemText(1, translator._("Downloads"));
-        m_ui->navigation_view->sidebar()->setItemText(2, translator._("History"));
-        m_ui->navigation_view->sidebar()->setItemText(3, translator._("Keyring"));
+        m_ui->navigation_view->sidebar()->setItemText(2, translator._("Tagger"));
+        m_ui->navigation_view->sidebar()->setItemText(3, translator._("Updates"));
         m_ui->act_toggle_sidebar->setText(translator._("Toggle Sidebar"));
         m_ui->act_toggle_sidebar->setToolTip(m_ui->navigation_view->sidebar()->compact() ? translator._("Expand Sidebar")
                                                                                          : translator._("Collapse Sidebar"));
         m_ui->act_about->setText(translator._("About"));
         m_ui->act_add_download->setText(translator._("Add Download"));
         m_ui->act_add_download->setToolTip(translator._("Add Download"));
+        m_ui->act_history->setText(translator._("History"));
+        m_ui->act_history->setToolTip(QString::fromStdString(
+                translator._("{} ({})",
+                             translator._("History"),
+                             m_ui->act_history->shortcut().toString(QKeySequence::NativeText).toStdString())));
+        m_ui->act_keyring->setText(translator._("Keyring"));
+        m_ui->act_keyring->setToolTip(QString::fromStdString(
+                translator._("{} ({})",
+                             translator._("Keyring"),
+                             m_ui->act_keyring->shortcut().toString(QKeySequence::NativeText).toStdString())));
         m_ui->act_settings->setText(translator._("Settings"));
-        m_ui->act_settings->setToolTip(translator._("Settings"));
+        m_ui->act_settings->setToolTip(QString::fromStdString(
+                translator._("{} ({})",
+                             translator._("Settings"),
+                             m_ui->act_settings->shortcut().toString(QKeySequence::NativeText).toStdString())));
     }
 }

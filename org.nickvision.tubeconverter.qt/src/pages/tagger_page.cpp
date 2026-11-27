@@ -1,17 +1,17 @@
-#include "pages/history_page.h"
+#include "pages/tagger_page.h"
 #include <QApplication>
 #include <QObject>
 #include <QPalette>
 #include <QWidget>
 #include "app.h"
 #include "helpers/translation_notifier.h"
-#include "ui_history_page.h"
+#include "ui_tagger_page.h"
 
 namespace parabolic::qt::pages
 {
-    HistoryPage::HistoryPage(QWidget* parent)
+    TaggerPage::TaggerPage(QWidget* parent)
         : QWidget{ parent },
-          m_ui{ new Ui::HistoryPage() }
+          m_ui{ new Ui::TaggerPage() }
     {
         m_ui->setupUi(this);
         setBackgroundRole(QPalette::Base);
@@ -19,15 +19,15 @@ namespace parabolic::qt::pages
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed,
                 this,
-                &HistoryPage::translate);
+                &TaggerPage::translate);
     }
 
-    HistoryPage::~HistoryPage()
+    TaggerPage::~TaggerPage()
     {
         delete m_ui;
     }
 
-    void HistoryPage::translate()
+    void TaggerPage::translate()
     {
     }
 }
