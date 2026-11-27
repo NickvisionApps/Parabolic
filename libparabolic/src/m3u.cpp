@@ -1,9 +1,11 @@
 #include "m3u.h"
+#include <expected>
 #include <filesystem>
 #include <fstream>
 #include <ios>
 #include <string>
 #include <utility>
+#include "environment.h"
 #include "string_manip.h"
 
 namespace parabolic::m3u
@@ -24,18 +26,23 @@ namespace parabolic::m3u
         return m_title;
     }
 
-    bool M3uFile::write(std::filesystem::path path)
+    std::expected<void, std::string> M3uFile::write(std::filesystem::path path)
     {
         if (string_manip::lower(path.extension().string()) != ".m3u")
         {
             path += ".m3u";
         }
         std::ofstream file{ path, std::ios::out | std::ios::trunc };
-        if (file)
+        if (!file)
         {
-            file << m_stream.str();
-            return true;
+            return std::unexpected(environment::last_system_error());
         }
-        return false;
+        file << m_stream.str();
+        file.flush();
+        if (!file)
+        {
+            return std::unexpected(environment::last_system_error());
+        }
+        return {};
     }
 }
