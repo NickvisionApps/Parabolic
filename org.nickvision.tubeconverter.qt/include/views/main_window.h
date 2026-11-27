@@ -32,9 +32,12 @@ namespace parabolic::qt::views
         Q_SLOT void add_download() const;
         Q_SLOT void history();
         Q_SLOT void keyring();
+        Q_SLOT void page_changed();
         Q_SLOT void settings();
+        Q_SLOT void tag_music_library() const;
         Q_SLOT void toggle_sidebar() const;
         Q_SLOT void translate();
+        Q_SLOT void whats_new();
         Ui::MainWindow* m_ui{ nullptr };
     };
 }

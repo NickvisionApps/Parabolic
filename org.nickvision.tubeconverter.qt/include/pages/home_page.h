@@ -22,8 +22,18 @@ namespace parabolic::qt::pages
         HomePage& operator=(const HomePage&) = delete;
         HomePage& operator=(HomePage&&) = delete;
 
+    Q_SIGNALS:
+        void add_download_requested();
+        void keyring_requested();
+        void tag_music_library_requested();
+        void whats_new_requested();
+
     private:
+        Q_SLOT void discussions();
+        Q_SLOT void github_repository();
+        Q_SLOT void report_an_issue();
         Q_SLOT void translate();
+        Q_SLOT void whats_new();
         Ui::HomePage* m_ui{ nullptr };
     };
 }

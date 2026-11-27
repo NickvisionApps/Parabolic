@@ -17,7 +17,7 @@ if (POLICY CMP0141)
     set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project("org.nickvision.tubeconverter" LANGUAGES CXX VERSION 2026.10.0 DESCRIPTION "Download web video and audio.")
+project("org.nickvision.tubeconverter" LANGUAGES CXX VERSION 2026.11.0 DESCRIPTION "Download web video and audio.")
 set(SHORT_NAME "parabolic")
 set(DISPLAY_NAME "Parabolic")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")

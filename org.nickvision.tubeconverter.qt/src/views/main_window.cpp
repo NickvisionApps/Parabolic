@@ -10,6 +10,7 @@
 #include <QShortcut>
 #include <QSizePolicy>
 #include <QString>
+#include <QTextDocument>
 #include <QToolBar>
 #include <QWidget>
 #include <Qt>
@@ -40,11 +41,15 @@ namespace parabolic::qt::views
           m_ui{ new Ui::MainWindow() }
     {
         m_ui->setupUi(this);
-        setCentralWidget(m_ui->navigation_view);
+        m_ui->container->setWindowFlags(Qt::Widget);
+        m_ui->txt_changelog->document()->setDocumentMargin(0);
+        m_ui->txt_changelog->document()->setIndentWidth(16);
+        setCentralWidget(m_ui->container);
         setLeadingWidget(m_ui->navigation_view->sidebar());
         setContentCornerRadius(12);
         titleBar()->setContentWidget(m_ui->toolbar);
-        m_ui->navigation_view->addPage(new pages::HomePage(m_ui->navigation_view),
+        pages::HomePage* home_page{ new pages::HomePage(m_ui->navigation_view) };
+        m_ui->navigation_view->addPage(home_page,
                                        {},
                                        oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                                oclero::qlementine::icons::Icons16::Navigation_Home)));
@@ -62,8 +67,9 @@ namespace parabolic::qt::views
                                                      oclero::qlementine::icons::Icons16::Action_Update)));
         m_ui->act_toggle_sidebar->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
+        m_ui->act_add_download->setVisible(false);
         m_ui->act_add_download->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Plus)));
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Document_New)));
         m_ui->act_history->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Clock)));
         m_ui->act_keyring->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
@@ -89,6 +95,14 @@ namespace parabolic::qt::views
                 this,
                 &MainWindow::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QWidget::close);
+        connect(home_page, &pages::HomePage::add_download_requested, this, &MainWindow::add_download);
+        connect(home_page, &pages::HomePage::keyring_requested, this, &MainWindow::keyring);
+        connect(home_page, &pages::HomePage::tag_music_library_requested, this, &MainWindow::tag_music_library);
+        connect(home_page, &pages::HomePage::whats_new_requested, this, &MainWindow::whats_new);
+        connect(m_ui->navigation_view,
+                &oclero::qlementine::NavigationView::currentIndexChanged,
+                this,
+                &MainWindow::page_changed);
         connect(m_ui->act_about, &QAction::triggered, this, &MainWindow::about);
         connect(m_ui->act_add_download, &QAction::triggered, this, &MainWindow::add_download);
         connect(m_ui->act_history, &QAction::triggered, this, &MainWindow::history);
@@ -157,6 +171,7 @@ namespace parabolic::qt::views
 
     void MainWindow::add_download() const
     {
+        m_ui->navigation_view->setCurrentIndex(1);
     }
 
     void MainWindow::history()
@@ -171,10 +186,20 @@ namespace parabolic::qt::views
         dialog.exec();
     }
 
+    void MainWindow::page_changed()
+    {
+        m_ui->act_add_download->setVisible(m_ui->navigation_view->currentIndex() == 1);
+    }
+
     void MainWindow::settings()
     {
         SettingsDialog dialog{ this };
         dialog.exec();
+    }
+
+    void MainWindow::tag_music_library() const
+    {
+        m_ui->navigation_view->setCurrentIndex(2);
     }
 
     void MainWindow::toggle_sidebar() const
@@ -192,7 +217,10 @@ namespace parabolic::qt::views
     void MainWindow::translate()
     {
         const translation::Translator& translator{ application::State::instance().translator() };
+        const application::Product& product{ application::State::instance().product() };
         setWindowTitle(translator._p("AppName", "Parabolic"));
+        m_ui->dock_whats_new->setWindowTitle(translator._("What's New?"));
+        m_ui->txt_changelog->setMarkdown(QString::fromStdString(product.changelog()));
         m_ui->navigation_view->sidebar()->setItemText(0, translator._("Home"));
         m_ui->navigation_view->sidebar()->setItemText(1, translator._("Downloads"));
         m_ui->navigation_view->sidebar()->setItemText(2, translator._("Tagger"));
@@ -218,5 +246,10 @@ namespace parabolic::qt::views
                 translator._("{} ({})",
                              translator._("Settings"),
                              m_ui->act_settings->shortcut().toString(QKeySequence::NativeText).toStdString())));
+    }
+
+    void MainWindow::whats_new()
+    {
+        m_ui->dock_whats_new->setVisible(!m_ui->dock_whats_new->isVisible());
     }
 }

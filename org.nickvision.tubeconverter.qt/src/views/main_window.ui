@@ -2,7 +2,58 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="oclero::qlementine::UnifiedWindow" name="MainWindow">
-  <widget class="oclero::qlementine::NavigationView" name="navigation_view"/>
+  <widget class="QMainWindow" name="container">
+   <widget class="oclero::qlementine::NavigationView" name="navigation_view"/>
+   <widget class="QDockWidget" name="dock_whats_new">
+    <property name="visible">
+     <bool>false</bool>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>300</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="features">
+     <set>QDockWidget::DockWidgetClosable</set>
+    </property>
+    <property name="allowedAreas">
+     <set>Qt::RightDockWidgetArea</set>
+    </property>
+    <attribute name="dockWidgetArea">
+     <number>2</number>
+    </attribute>
+    <widget class="QWidget" name="dock_contents">
+     <layout class="QVBoxLayout" name="dock_layout">
+      <property name="leftMargin">
+       <number>16</number>
+      </property>
+      <property name="topMargin">
+       <number>16</number>
+      </property>
+      <property name="rightMargin">
+       <number>16</number>
+      </property>
+      <property name="bottomMargin">
+       <number>16</number>
+      </property>
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="QTextBrowser" name="txt_changelog">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="openExternalLinks">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
   <widget class="QToolBar" name="toolbar">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">

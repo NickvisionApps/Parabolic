@@ -131,8 +131,10 @@ namespace parabolic::application
         m_product->set_repo_owner("NickvisionApps");
         m_product->set_repo_name("Parabolic");
         m_product->set_description("Download web video and audio");
-        m_product->set_version(semver::from_string("2026.10.0-next"));
-        m_product->set_changelog("- Initial Release");
+        m_product->set_version(semver::from_string("2026.11.0-next"));
+        m_product->set_changelog(R"(- Rewrote Parabolic from C# to C++ and Qt6
+- Improved the storage of credentials directly to the system's keyring
+- Fixed an issue where cropping audio thumbnails failed)");
         m_configuration = std::make_unique<configuration::Configuration>(m_product->name());
         m_translator = std::make_unique<translation::Translator>(m_product->short_name());
         m_discovery = std::make_unique<discovery::Manager>();

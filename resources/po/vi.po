@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:43-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-05-03 08:09+0000\n"
 "Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -76,7 +76,7 @@ msgid "{}x{}"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/app.cpp:27
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:195
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
@@ -305,9 +305,84 @@ msgstr "Đối số"
 msgid "An argument with this name already exists."
 msgstr "Đã tồn tại một đối số có tên này"
 
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, c++-format
+msgid "Version {}"
+msgstr "Phiên bản {}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+msgid "Start"
+msgstr "Bắt đầu"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
+msgid "Add Download"
+msgstr "Thêm lượt tải"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "Keyring"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "GitHub Repo"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "Báo lỗi"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "Thảo luận"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:206
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
 #, fuzzy
 msgid "History"
@@ -339,12 +414,6 @@ msgstr "Không có thông tin xác thực"
 msgid "Are you sure you want to remove \"{}\"?"
 msgstr "Bạn có chắc chắn muốn xóa đối số này?"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
-msgid "Keyring"
-msgstr "Keyring"
-
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
 msgid ""
 "Add, delete, and modify credentials for validating websites. These will show "
@@ -366,72 +435,62 @@ msgstr "Chỉnh sửa"
 msgid "Remove"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
 #, fuzzy
 msgctxt "AppName"
 msgid "About Paraboloc"
 msgstr "Giới thiệu về Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:147
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
 msgid "Issues"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:151
-#, fuzzy
-msgid "Discussions"
-msgstr "Thảo luận"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:189
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:201
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
 msgid "Expand Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:189
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:202
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
 msgid "Collapse Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:196
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
 msgid "Home"
 msgstr "Trang chủ"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:197
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
 #, fuzzy
 msgid "Downloads"
 msgstr "Tải xuống"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
 msgid "Tagger"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
 msgid "Updates"
 msgstr "Cập nhật"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:200
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:203
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
 #, fuzzy
 msgid "About"
 msgstr "Giới thiệu {0}"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:204
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:205
-msgid "Add Download"
-msgstr "Thêm lượt tải"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:208
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:213
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:218
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
 #, c++-format
 msgid "{} ({})"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:219
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
 #, fuzzy
 msgid "Settings"
@@ -1018,20 +1077,9 @@ msgstr "Các đối số sẽ được hiển thị để lựa chọn trong h�
 #~ msgid "View"
 #~ msgstr "Xem"
 
-#~ msgid "Help"
-#~ msgstr "Trợ giúp"
-
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "Kiểm tra bản cập nhật"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "Báo lỗi"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "GitHub Repo"
 
 #, fuzzy
 #~ msgid "Search"
@@ -2215,9 +2263,6 @@ msgstr "Các đối số sẽ được hiển thị để lựa chọn trong h�
 #~ msgid "Edit Credential"
 #~ msgstr "Chỉnh sửa thông tin xác thực"
 
-#~ msgid "Start"
-#~ msgstr "Bắt đầu"
-
 #~ msgid "Documentation"
 #~ msgstr "Tài liệu"
 
@@ -2235,9 +2280,6 @@ msgstr "Các đối số sẽ được hiển thị để lựa chọn trong h�
 
 #~ msgid "Check for pre-release (beta) versions of {}"
 #~ msgstr "Kiểm tra các phiên bản tiền phát hành (beta) của {}"
-
-#~ msgid "Version {}"
-#~ msgstr "Phiên bản {}"
 
 #~ msgid "The installer will start once the download is complete"
 #~ msgstr "Trình cài đặt sẽ bắt đầu sau khi quá trình tải xuống hoàn tất"

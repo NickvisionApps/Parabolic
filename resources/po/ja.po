@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:43-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-02-27 16:32+0000\n"
 "Last-Translator: sotohi <c6h4ohcooc6h5@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -76,7 +76,7 @@ msgid "{}x{}"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/app.cpp:27
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:195
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
@@ -305,9 +305,85 @@ msgstr "引数"
 msgid "An argument with this name already exists."
 msgstr "同名の引数が既に存在します"
 
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, fuzzy, c++-format
+msgid "Version {}"
+msgstr "バージョン: {0}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+#, fuzzy
+msgid "Start"
+msgstr "開始中"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
+msgid "Add Download"
+msgstr "ダウンロードを追加"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "キーリング"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "ヘルプ"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "GitHub リポジトリ"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "バグを報告"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "ディスカッション"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:206
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
 #, fuzzy
 msgid "History"
@@ -339,12 +415,6 @@ msgstr "資格情報なし"
 msgid "Are you sure you want to remove \"{}\"?"
 msgstr "本当にこの認証情報を削除しますか？"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
-msgid "Keyring"
-msgstr "キーリング"
-
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
 #, fuzzy
 msgid ""
@@ -367,73 +437,63 @@ msgstr "編集"
 msgid "Remove"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
 #, fuzzy
 msgctxt "AppName"
 msgid "About Paraboloc"
 msgstr "Parabolic について"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:147
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
 msgid "Issues"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:151
-#, fuzzy
-msgid "Discussions"
-msgstr "ディスカッション"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:189
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:201
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
 msgid "Expand Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:189
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:202
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
 msgid "Collapse Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:196
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
 msgid "Home"
 msgstr "ホーム"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:197
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
 #, fuzzy
 msgid "Downloads"
 msgstr "ダウンロード"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
 msgid "Tagger"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
 #, fuzzy
 msgid "Updates"
 msgstr "アップデート"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:200
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:203
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
 #, fuzzy
 msgid "About"
 msgstr "Parabolic について {0}"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:204
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:205
-msgid "Add Download"
-msgstr "ダウンロードを追加"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:208
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:213
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:218
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
 #, c++-format
 msgid "{} ({})"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:219
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
 #, fuzzy
 msgid "Settings"
@@ -1011,20 +1071,9 @@ msgstr "引数はダウンロード追加ダイアログで選択できます"
 #~ msgid "View"
 #~ msgstr "表示"
 
-#~ msgid "Help"
-#~ msgstr "ヘルプ"
-
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "アップデートをチェック"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "バグを報告"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "GitHub リポジトリ"
 
 #, fuzzy
 #~ msgid "Search"
@@ -2129,20 +2178,12 @@ msgstr "引数はダウンロード追加ダイアログで選択できます"
 #~ msgid "Edit Credential"
 #~ msgstr "認証情報の編集"
 
-#, fuzzy
-#~ msgid "Start"
-#~ msgstr "開始中"
-
 #~ msgid "Documentation"
 #~ msgstr "ドキュメント"
 
 #, fuzzy
 #~ msgid "Downloading the update"
 #~ msgstr "ダウンロード中"
-
-#, fuzzy
-#~ msgid "Version {}"
-#~ msgstr "バージョン: {0}"
 
 #, fuzzy
 #~ msgid "Debug information copied to clipboard"

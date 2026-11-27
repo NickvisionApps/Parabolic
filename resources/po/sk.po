@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:43-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-04-15 07:09+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -76,7 +76,7 @@ msgid "{}x{}"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/app.cpp:27
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:195
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
@@ -306,9 +306,84 @@ msgstr "Argument"
 msgid "An argument with this name already exists."
 msgstr "Argument s týmto názvom už existuje"
 
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, c++-format
+msgid "Version {}"
+msgstr "Verzia {}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+msgid "Start"
+msgstr "Začať"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
+msgid "Add Download"
+msgstr "Pridať stiahnutie"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "Zväzok kľúčov"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "Pomoc"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "GitHub repozitár"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "Nahlásiť chybu"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "Diskusie"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:206
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
 #, fuzzy
 msgid "History"
@@ -340,12 +415,6 @@ msgstr "Žiadne poverenia"
 msgid "Are you sure you want to remove \"{}\"?"
 msgstr "Ste si istý, že chcete odstrániť tento argument?"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
-msgid "Keyring"
-msgstr "Zväzok kľúčov"
-
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
 #, fuzzy
 msgid ""
@@ -368,72 +437,62 @@ msgstr "Upraviť"
 msgid "Remove"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
 #, fuzzy
 msgctxt "AppName"
 msgid "About Paraboloc"
 msgstr "O aplikácii Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:147
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
 msgid "Issues"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:151
-#, fuzzy
-msgid "Discussions"
-msgstr "Diskusie"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:189
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:201
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
 msgid "Expand Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:189
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:202
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
 msgid "Collapse Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:196
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
 msgid "Home"
 msgstr "Domov"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:197
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
 #, fuzzy
 msgid "Downloads"
 msgstr "Stiahnutia"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
 msgid "Tagger"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
 msgid "Updates"
 msgstr "Aktualizácie"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:200
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:203
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
 #, fuzzy
 msgid "About"
 msgstr "O {0}"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:204
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:205
-msgid "Add Download"
-msgstr "Pridať stiahnutie"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:208
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:213
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:218
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
 #, c++-format
 msgid "{} ({})"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:219
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
 #, fuzzy
 msgid "Settings"
@@ -1019,20 +1078,9 @@ msgstr "Zobrazí argumenty na výber v dialógovom okne pridať stiahnutie"
 #~ msgid "View"
 #~ msgstr "Zobraziť"
 
-#~ msgid "Help"
-#~ msgstr "Pomoc"
-
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "Skontrolovať aktualizácie"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "Nahlásiť chybu"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "GitHub repozitár"
 
 #, fuzzy
 #~ msgid "Search"
@@ -2231,9 +2279,6 @@ msgstr "Zobrazí argumenty na výber v dialógovom okne pridať stiahnutie"
 #~ msgid "Edit Credential"
 #~ msgstr "Upraviť poverenie"
 
-#~ msgid "Start"
-#~ msgstr "Začať"
-
 #~ msgid "Documentation"
 #~ msgstr "Dokumentácia"
 
@@ -2251,9 +2296,6 @@ msgstr "Zobrazí argumenty na výber v dialógovom okne pridať stiahnutie"
 
 #~ msgid "Check for pre-release (beta) versions of {}"
 #~ msgstr "Skontroluje predbežné (beta) vydania aplikácie {}"
-
-#~ msgid "Version {}"
-#~ msgstr "Verzia {}"
 
 #~ msgid "The installer will start once the download is complete"
 #~ msgstr "Po dokončení sťahovania sa automaticky spustí inštalácia"
