@@ -53,7 +53,8 @@ namespace parabolic::qt::views
         m_cmb_step->setCurrentIndex(static_cast<int>(argument.step()));
         m_cmb_executable->setCurrentIndex(static_cast<int>(argument.executable()));
         m_txt_arguments->setText(QString::fromStdString(argument.args()));
-        m_buttons->button(QDialogButtonBox::Ok)->setEnabled(!argument.name().empty() && !std::ranges::contains(m_taken_names, argument.name()));
+        m_buttons->button(QDialogButtonBox::Ok)
+                ->setEnabled(!argument.name().empty() && !std::ranges::contains(m_taken_names, argument.name()));
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed,
                 this,

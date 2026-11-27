@@ -4,6 +4,7 @@
 #include <QCloseEvent>
 #include <QIcon>
 #include <QKeySequence>
+#include <QMenuBar>
 #include <QObject>
 #include <QShortcut>
 #include <QSizePolicy>
@@ -70,6 +71,11 @@ namespace parabolic::qt::views
                 m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                              oclero::qlementine::icons::Icons16::Navigation_Settings)),
                                      {});
+        m_act_settings->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Comma));
+        m_act_settings->setMenuRole(QAction::PreferencesRole);
+#ifdef __APPLE__
+        (new QMenuBar(nullptr))->addMenu(QString())->addAction(m_act_settings);
+#endif
         translate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed,
