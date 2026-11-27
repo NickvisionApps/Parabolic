@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="oclero::qlementine::UnifiedWindow" name="MainWindow">
+  <widget class="oclero::qlementine::NavigationView" name="navigation_view"/>
+  <widget class="QToolBar" name="toolbar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <addaction name="act_toggle_sidebar"/>
+   <addaction name="act_add_download"/>
+   <addaction name="act_settings"/>
+  </widget>
+  <action name="act_about">
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
+   </property>
+  </action>
+  <action name="act_add_download"/>
+  <action name="act_settings">
+   <property name="shortcut">
+    <string>Ctrl+,</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
+   </property>
+  </action>
+  <action name="act_toggle_sidebar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>oclero::qlementine::UnifiedWindow</class>
+   <extends>QWidget</extends>
+   <header location="global">oclero/qlementine/widgets/UnifiedWindow.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>oclero::qlementine::NavigationView</class>
+   <extends>QWidget</extends>
+   <header location="global">oclero/qlementine/widgets/NavigationView.hpp</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -24,64 +24,53 @@
 #include "configuration.h"
 #include "helpers/translation_notifier.h"
 #include "translation.h"
+#include "ui_main_window.h"
+#include "views/downloads_page.h"
+#include "views/history_page.h"
 #include "views/home_page.h"
+#include "views/keyring_page.h"
 #include "views/settings_dialog.h"
 
 namespace parabolic::qt::views
 {
     MainWindow::MainWindow(QWidget* parent)
         : UnifiedWindow{ parent },
-          m_navigation_view{ new oclero::qlementine::NavigationView(this) },
-          m_toolbar{ new QToolBar(titleBar()) },
-          m_act_about{ new QAction(this) }
+          m_ui{ new Ui::MainWindow() }
     {
-        setCentralWidget(m_navigation_view);
-        setLeadingWidget(m_navigation_view->sidebar());
+        m_ui->setupUi(this);
+        setCentralWidget(m_ui->navigation_view);
+        setLeadingWidget(m_ui->navigation_view->sidebar());
         setContentCornerRadius(12);
-        titleBar()->setContentWidget(m_toolbar);
-        m_navigation_view->addPage(new HomePage(m_navigation_view),
-                                   {},
-                                   oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                           oclero::qlementine::icons::Icons16::Navigation_Home)));
-        m_navigation_view->addPage(new QWidget(m_navigation_view),
-                                   {},
-                                   oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                           oclero::qlementine::icons::Icons16::Action_Download)));
-        m_navigation_view->addBottomPage(new QWidget(m_navigation_view),
-                                         {},
-                                         oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                                 oclero::qlementine::icons::Icons16::Misc_Clock)));
-        m_navigation_view->addBottomPage(new QWidget(m_navigation_view),
-                                         {},
-                                         oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                                 oclero::qlementine::icons::Icons16::Misc_Password)));
-        m_act_about->setShortcut(QKeySequence(Qt::Key_F1));
-        m_act_about->setMenuRole(QAction::AboutRole);
-        m_toolbar->setMovable(false);
-        m_toolbar->setFloatable(false);
-        m_toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
-        m_toolbar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        m_act_toggle_sidebar =
-                m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                             oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)),
-                                     {});
-        m_act_add_download =
-                m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                             oclero::qlementine::icons::Icons16::Action_Plus)),
-                                     {});
-        QWidget* spacer{ new QWidget(m_toolbar) };
+        titleBar()->setContentWidget(m_ui->toolbar);
+        m_ui->navigation_view->addPage(new HomePage(m_ui->navigation_view),
+                                       {},
+                                       oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                               oclero::qlementine::icons::Icons16::Navigation_Home)));
+        m_ui->navigation_view->addPage(new DownloadsPage(m_ui->navigation_view),
+                                       {},
+                                       oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                               oclero::qlementine::icons::Icons16::Action_Download)));
+        m_ui->navigation_view->addBottomPage(new HistoryPage(m_ui->navigation_view),
+                                             {},
+                                             oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                     oclero::qlementine::icons::Icons16::Misc_Clock)));
+        m_ui->navigation_view->addBottomPage(new KeyringPage(m_ui->navigation_view),
+                                             {},
+                                             oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                     oclero::qlementine::icons::Icons16::Misc_Password)));
+        m_ui->act_toggle_sidebar->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
+        m_ui->act_add_download->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Plus)));
+        m_ui->act_settings->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Navigation_Settings)));
+        QWidget* spacer{ new QWidget(m_ui->toolbar) };
         spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        m_toolbar->addWidget(spacer);
-        m_act_settings =
-                m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                             oclero::qlementine::icons::Icons16::Navigation_Settings)),
-                                     {});
-        m_act_settings->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Comma));
-        m_act_settings->setMenuRole(QAction::PreferencesRole);
+        m_ui->toolbar->insertWidget(m_ui->act_settings, spacer);
 #ifdef __APPLE__
         QMenu* app_menu{ (new QMenuBar(nullptr))->addMenu(QString()) };
-        app_menu->addAction(m_act_about);
-        app_menu->addAction(m_act_settings);
+        app_menu->addAction(m_ui->act_about);
+        app_menu->addAction(m_ui->act_settings);
 #endif
         translate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
@@ -89,10 +78,10 @@ namespace parabolic::qt::views
                 this,
                 &MainWindow::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QWidget::close);
-        connect(m_act_about, &QAction::triggered, this, &MainWindow::about);
-        connect(m_act_add_download, &QAction::triggered, this, &MainWindow::add_download);
-        connect(m_act_settings, &QAction::triggered, this, &MainWindow::settings);
-        connect(m_act_toggle_sidebar, &QAction::triggered, this, &MainWindow::toggle_sidebar);
+        connect(m_ui->act_about, &QAction::triggered, this, &MainWindow::about);
+        connect(m_ui->act_add_download, &QAction::triggered, this, &MainWindow::add_download);
+        connect(m_ui->act_settings, &QAction::triggered, this, &MainWindow::settings);
+        connect(m_ui->act_toggle_sidebar, &QAction::triggered, this, &MainWindow::toggle_sidebar);
         const configuration::Configuration& configuration{ application::State::instance().configuration() };
         resize(configuration.window_geometry().width(), configuration.window_geometry().height());
         move(configuration.window_geometry().x(), configuration.window_geometry().y());
@@ -102,8 +91,13 @@ namespace parabolic::qt::views
         }
         if (configuration.collapse_sidebar())
         {
-            m_navigation_view->sidebar()->toggleCompact();
+            m_ui->navigation_view->sidebar()->toggleCompact();
         }
+    }
+
+    MainWindow::~MainWindow()
+    {
+        delete m_ui;
     }
 
     void MainWindow::closeEvent(QCloseEvent* event)
@@ -161,30 +155,30 @@ namespace parabolic::qt::views
     void MainWindow::toggle_sidebar() const
     {
         const translation::Translator& translator{ application::State::instance().translator() };
-        bool is_collapsed{ m_navigation_view->sidebar()->compact() };
+        bool is_collapsed{ m_ui->navigation_view->sidebar()->compact() };
         application::State::instance().configuration().set_collapse_sidebar(!is_collapsed);
-        m_navigation_view->sidebar()->toggleCompact();
-        m_act_toggle_sidebar->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+        m_ui->navigation_view->sidebar()->toggleCompact();
+        m_ui->act_toggle_sidebar->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                 is_collapsed ? oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftExpand
                              : oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
-        m_act_toggle_sidebar->setToolTip(is_collapsed ? translator._("Expand Sidebar") : translator._("Collapse Sidebar"));
+        m_ui->act_toggle_sidebar->setToolTip(is_collapsed ? translator._("Expand Sidebar") : translator._("Collapse Sidebar"));
     }
 
     void MainWindow::translate()
     {
         const translation::Translator& translator{ application::State::instance().translator() };
         setWindowTitle(translator._p("AppName", "Parabolic"));
-        m_navigation_view->sidebar()->setItemText(0, translator._("Home"));
-        m_navigation_view->sidebar()->setItemText(1, translator._("Downloads"));
-        m_navigation_view->sidebar()->setItemText(2, translator._("History"));
-        m_navigation_view->sidebar()->setItemText(3, translator._("Keyring"));
-        m_act_toggle_sidebar->setText(translator._("Toggle Sidebar"));
-        m_act_toggle_sidebar->setToolTip(m_navigation_view->sidebar()->compact() ? translator._("Expand Sidebar")
-                                                                                 : translator._("Collapse Sidebar"));
-        m_act_about->setText(translator._("About"));
-        m_act_add_download->setText(translator._("Add Download"));
-        m_act_add_download->setToolTip(translator._("Add Download"));
-        m_act_settings->setText(translator._("Settings"));
-        m_act_settings->setToolTip(translator._("Settings"));
+        m_ui->navigation_view->sidebar()->setItemText(0, translator._("Home"));
+        m_ui->navigation_view->sidebar()->setItemText(1, translator._("Downloads"));
+        m_ui->navigation_view->sidebar()->setItemText(2, translator._("History"));
+        m_ui->navigation_view->sidebar()->setItemText(3, translator._("Keyring"));
+        m_ui->act_toggle_sidebar->setText(translator._("Toggle Sidebar"));
+        m_ui->act_toggle_sidebar->setToolTip(m_ui->navigation_view->sidebar()->compact() ? translator._("Expand Sidebar")
+                                                                                         : translator._("Collapse Sidebar"));
+        m_ui->act_about->setText(translator._("About"));
+        m_ui->act_add_download->setText(translator._("Add Download"));
+        m_ui->act_add_download->setToolTip(translator._("Add Download"));
+        m_ui->act_settings->setText(translator._("Settings"));
+        m_ui->act_settings->setToolTip(translator._("Settings"));
     }
 }

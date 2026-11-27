@@ -3,6 +3,11 @@
 
 #include <QWidget>
 
+namespace Ui
+{
+    class HomePage;
+}
+
 namespace parabolic::qt::views
 {
     class HomePage : public QWidget
@@ -11,7 +16,7 @@ namespace parabolic::qt::views
 
     public:
         HomePage(QWidget* parent = nullptr);
-        ~HomePage() override = default;
+        ~HomePage() override;
         HomePage(const HomePage&) = delete;
         HomePage(HomePage&&) = delete;
         HomePage& operator=(const HomePage&) = delete;
@@ -19,6 +24,7 @@ namespace parabolic::qt::views
 
     private:
         Q_SLOT void translate();
+        Ui::HomePage* m_ui{ nullptr };
     };
 }
 

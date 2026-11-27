@@ -1,12 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QAction>
 #include <QCloseEvent>
-#include <QToolBar>
 #include <QWidget>
-#include <oclero/qlementine/widgets/NavigationView.hpp>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
+
+namespace Ui
+{
+    class MainWindow;
+}
 
 namespace parabolic::qt::views
 {
@@ -16,7 +18,7 @@ namespace parabolic::qt::views
 
     public:
         MainWindow(QWidget* parent = nullptr);
-        ~MainWindow() override = default;
+        ~MainWindow() override;
         MainWindow(const MainWindow&) = delete;
         MainWindow(MainWindow&&) = delete;
         MainWindow& operator=(const MainWindow&) = delete;
@@ -31,12 +33,7 @@ namespace parabolic::qt::views
         Q_SLOT void settings();
         Q_SLOT void toggle_sidebar() const;
         Q_SLOT void translate();
-        oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
-        QToolBar* m_toolbar{ nullptr };
-        QAction* m_act_about{ nullptr };
-        QAction* m_act_add_download{ nullptr };
-        QAction* m_act_settings{ nullptr };
-        QAction* m_act_toggle_sidebar{ nullptr };
+        Ui::MainWindow* m_ui{ nullptr };
     };
 }
 
