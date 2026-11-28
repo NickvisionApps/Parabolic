@@ -10,8 +10,11 @@
 
 namespace oclero::qlementine {
 namespace {
+constexpr auto referenceIconExtent = 16.;
+
 // Helper function to generate icon from SVG renderer with optional colorization.
-QIcon makeIconFromRenderer(QSvgRenderer& svgRenderer, const QSize& size, const IconTheme* iconTheme = nullptr) {
+QIcon makeIconFromRenderer(
+  QSvgRenderer& svgRenderer, const QSize& size, const IconTheme* iconTheme = nullptr, qreal boldness = 0.) {
   if (size.isEmpty())
     return {};
 
@@ -25,6 +28,15 @@ QIcon makeIconFromRenderer(QSvgRenderer& svgRenderer, const QSize& size, const I
       QPainter painter(&pixmap);
       painter.setRenderHint(QPainter::Antialiasing, true);
       svgRenderer.render(&painter, pixmap.rect());
+      if (iconTheme && boldness > 0.) {
+        const auto offset = boldness * (size.width() / referenceIconExtent) * pxRatio;
+        for (const auto& delta : { QPointF(offset, 0.), QPointF(-offset, 0.), QPointF(0., offset), QPointF(0., -offset) }) {
+          painter.save();
+          painter.translate(delta);
+          svgRenderer.render(&painter, pixmap.rect());
+          painter.restore();
+        }
+      }
     }
     pixmap.setDevicePixelRatio(pxRatio);
 
@@ -77,12 +89,12 @@ QIcon makeIconFromSvg(const QString& svgPath, const QSize& size) {
   return makeIconFromRenderer(svgRenderer, size);
 }
 
-QIcon makeIconFromSvg(const QString& svgPath, const IconTheme& iconTheme, const QSize& size) {
+QIcon makeIconFromSvg(const QString& svgPath, const IconTheme& iconTheme, const QSize& size, qreal boldness) {
   if (svgPath.isEmpty() || size.isEmpty())
     return {};
 
   QSvgRenderer svgRenderer(svgPath);
-  return makeIconFromRenderer(svgRenderer, size, &iconTheme);
+  return makeIconFromRenderer(svgRenderer, size, &iconTheme, boldness);
 }
 
 QIcon makeIconFromSvgData(const QByteArray& svgData, const QSize& size) {
@@ -93,11 +105,11 @@ QIcon makeIconFromSvgData(const QByteArray& svgData, const QSize& size) {
   return makeIconFromRenderer(svgRenderer, size);
 }
 
-QIcon makeIconFromSvgData(const QByteArray& svgData, const IconTheme& iconTheme, const QSize& size) {
+QIcon makeIconFromSvgData(const QByteArray& svgData, const IconTheme& iconTheme, const QSize& size, qreal boldness) {
   if (svgData.isEmpty() || size.isEmpty())
     return {};
 
   QSvgRenderer svgRenderer(svgData);
-  return makeIconFromRenderer(svgRenderer, size, &iconTheme);
+  return makeIconFromRenderer(svgRenderer, size, &iconTheme, boldness);
 }
 } // namespace oclero::qlementine

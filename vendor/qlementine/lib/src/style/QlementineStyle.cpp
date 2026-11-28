@@ -564,7 +564,7 @@ QPixmap QlementineStyle::getColorizedPixmap(
 
 QIcon QlementineStyle::makeThemedIcon(const QString& svgPath, const QSize& size, ColorRole role) const {
   const auto iconTheme = _impl->iconThemeFromTheme(role);
-  return makeIconFromSvg(svgPath, iconTheme, size);
+  return makeIconFromSvg(svgPath, iconTheme, size, _impl->theme.iconBoldness);
 }
 
 QIcon QlementineStyle::makeThemedIconFromName(const QString& name, const QSize& size, ColorRole role) const {
@@ -578,7 +578,7 @@ QIcon QlementineStyle::makeThemedIconFromName(const QString& name, const QSize& 
 
 QIcon QlementineStyle::makeThemedIconFromData(const QByteArray& svgData, const QSize& size, ColorRole role) const {
   const auto iconTheme = _impl->iconThemeFromTheme(role);
-  return makeIconFromSvgData(svgData, iconTheme, size);
+  return makeIconFromSvgData(svgData, iconTheme, size, _impl->theme.iconBoldness);
 }
 
 void QlementineStyle::setIconPathGetter(const std::function<QString(QString)>& func) {

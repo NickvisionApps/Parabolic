@@ -185,6 +185,7 @@ public: // Values.
   QSize iconSizeMedium{ 24, 24 };
   QSize iconSizeLarge{ 24, 24 };
   QSize iconSizeExtraSmall{ 12, 12 };
+  double iconBoldness{ 0.1 };
   int sliderTickSize{ 3 };
   int sliderTickSpacing{ 2 };
   int sliderTickThickness{ 1 };

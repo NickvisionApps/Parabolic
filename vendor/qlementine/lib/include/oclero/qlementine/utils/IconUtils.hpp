@@ -27,12 +27,12 @@ struct QLEMENTINE_EXPORT IconTheme {
 
 /// Makes an icon from the file located at the path in parameter and colorizes the QPixmaps. Fixes the standard Qt behavior.
 [[maybe_unused]] QLEMENTINE_EXPORT QIcon makeIconFromSvg(
-  const QString& svgPath, const IconTheme& iconTheme, const QSize& size = QSize(16, 16));
+  const QString& svgPath, const IconTheme& iconTheme, const QSize& size = QSize(16, 16), qreal boldness = 0.);
 
 /// Makes an icon from SVG data in memory. Fixes the standard Qt behavior.
 [[maybe_unused]] QLEMENTINE_EXPORT QIcon makeIconFromSvgData(const QByteArray& svgData, const QSize& size);
 
 /// Makes an icon from SVG data in memory and colorizes the QPixmaps. Fixes the standard Qt behavior.
 [[maybe_unused]] QLEMENTINE_EXPORT QIcon makeIconFromSvgData(
-  const QByteArray& svgData, const IconTheme& iconTheme, const QSize& size = QSize(16, 16));
+  const QByteArray& svgData, const IconTheme& iconTheme, const QSize& size = QSize(16, 16), qreal boldness = 0.);
 } // namespace oclero::qlementine

@@ -27,20 +27,32 @@ namespace parabolic::qt::pages
         m_ui->setupUi(this);
         setBackgroundRole(QPalette::Base);
         m_ui->lbl_icon->setPixmap(QIcon(":/org.nickvision.tubeconverter.svg").pixmap(QSize(96, 96), devicePixelRatioF()));
-        m_ui->btn_add_download->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Document_New)));
-        m_ui->btn_tag_music_library->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Library)));
+        m_ui->btn_add_download->setIcon(
+                oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                                       oclero::qlementine::icons::Icons16::Document_New),
+                                                               oclero::qlementine::appStyle()->theme().iconSizeMedium));
+        m_ui->btn_tag_music_library->setIcon(
+                oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                                       oclero::qlementine::icons::Icons16::Misc_Library),
+                                                               oclero::qlementine::appStyle()->theme().iconSizeMedium));
         m_ui->btn_whats_new->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Stars)));
-        m_ui->btn_github->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Brand_Github)));
-        m_ui->btn_report_an_issue->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Debug)));
-        m_ui->btn_discussions->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Comment)));
-        m_ui->btn_keyring->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Password)));
+        m_ui->btn_github->setIcon(
+                oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                                       oclero::qlementine::icons::Icons16::Brand_Github),
+                                                               oclero::qlementine::appStyle()->theme().iconSizeMedium));
+        m_ui->btn_report_an_issue->setIcon(
+                oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                                       oclero::qlementine::icons::Icons16::Misc_Debug),
+                                                               oclero::qlementine::appStyle()->theme().iconSizeMedium));
+        m_ui->btn_discussions->setIcon(
+                oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                                       oclero::qlementine::icons::Icons16::Misc_Comment),
+                                                               oclero::qlementine::appStyle()->theme().iconSizeMedium));
+        m_ui->btn_keyring->setIcon(
+                oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                                       oclero::qlementine::icons::Icons16::Misc_Password),
+                                                               oclero::qlementine::appStyle()->theme().iconSizeMedium));
         m_ui->btn_whats_new->setBadgeVisible(true);
         translate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),

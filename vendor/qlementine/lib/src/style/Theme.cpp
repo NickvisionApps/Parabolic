@@ -550,6 +550,7 @@ bool Theme::initializeFromJson(QJsonDocument const& jsonDoc) {
     iconSizeMedium = iconSize * 1.5;
     iconSizeLarge = iconSize * 2;
     iconSizeExtraSmall = iconSize * 0.75;
+    TRY_GET_DOUBLE_ATTRIBUTE(jsonObj, iconBoldness);
 
     TRY_GET_INT_ATTRIBUTE(jsonObj, sliderTickSize);
     TRY_GET_INT_ATTRIBUTE(jsonObj, sliderTickSpacing);
@@ -699,6 +700,7 @@ QJsonDocument Theme::toJson() const {
   setInt(jsonObj, "iconSizeMedium", iconSizeMedium.width());
   setInt(jsonObj, "iconSizeLarge", iconSizeLarge.width());
   setInt(jsonObj, "iconSizeExtraSmall", iconSizeExtraSmall.width());
+  SET_DOUBLE(jsonObj, iconBoldness);
   SET_INT(jsonObj, sliderTickSize);
   SET_INT(jsonObj, sliderTickSpacing);
   SET_INT(jsonObj, sliderTickThickness);
@@ -824,6 +826,7 @@ bool Theme::operator==(const Theme& other) const {
     && iconSizeMedium == other.iconSizeMedium
     && iconSizeLarge == other.iconSizeLarge
     && iconSizeExtraSmall == other.iconSizeExtraSmall
+    && iconBoldness == other.iconBoldness
     && sliderTickSize == other.sliderTickSize
     && sliderTickThickness == other.sliderTickThickness
     && sliderGrooveHeight == other.sliderGrooveHeight
