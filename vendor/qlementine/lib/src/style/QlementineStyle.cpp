@@ -5225,7 +5225,7 @@ void QlementineStyle::polish(QWidget* w) {
   const auto eventFiltersInstalled = !polishedWidgetInfo.eventFilters.empty();
 
   // Not yet ideal, but still better than a huge fonction.
-  polishToolTip(w);
+  polishToolTip(*this, w);
   polishLineEditIconButton(*this, _impl->animations, w, polishedWidgetInfo, eventFiltersInstalled);
   polishCommonWidget(w);
   polishExternalFocusFrame(w, _impl->polishedWidgets, polishedWidgetInfo, eventFiltersInstalled);

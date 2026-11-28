@@ -27,7 +27,14 @@
 #include <QToolButton>
 
 namespace oclero::qlementine {
-void polishToolTip(QWidget* widget) {
+void polishToolTip(const QlementineStyle& style, QWidget* widget) {
+  if (widget->inherits("QTipLabel")) {
+    auto palette = widget->palette();
+    palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipBase, style.toolTipBackgroundColor());
+    palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipText, style.toolTipForegroundColor());
+    palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::WindowText, style.toolTipForegroundColor());
+    widget->setPalette(palette);
+  }
 #ifndef _WIN32
   // Currently we only support tooltips with rounded corners on MacOS.
   // More investigation is need to make it work on Windows.

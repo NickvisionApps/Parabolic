@@ -12,7 +12,7 @@ namespace oclero::qlementine {
 class QlementineStyle;
 class WidgetAnimationManager;
 
-void polishToolTip(QWidget* widget);
+void polishToolTip(const QlementineStyle& style, QWidget* widget);
 
 void polishLineEditIconButton(QlementineStyle& style, WidgetAnimationManager& animations, QWidget* widget,
   PolishedWidgetRegistry::Entry& entry, bool eventFiltersInstalled);
