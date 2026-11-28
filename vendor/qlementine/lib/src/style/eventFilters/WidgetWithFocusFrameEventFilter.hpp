@@ -35,6 +35,18 @@ public:
             });
           }
           break;
+        case QEvent::ParentAboutToChange:
+          if (_added) {
+            detachFocusFrame();
+          }
+          break;
+        case QEvent::ParentChange:
+          if (_added && _widget && _widget->isVisible()) {
+            QTimer::singleShot(0, this, [this]() {
+              reattachFocusFrame();
+            });
+          }
+          break;
         case QEvent::Show:
           // Defer to avoid mapTo() on a partially-connected hierarchy
           // after reparenting (same pattern as the Paint path above).
@@ -63,14 +75,18 @@ private:
   void attachFocusFrame() {
     if (!_added && _widget && _focusFrame) {
       _added = true;
-      _focusFrame->setWidget(_widget);
+      if (!_widget->isWindow()) {
+        _focusFrame->setWidget(_widget);
+      }
     }
   }
 
   void reattachFocusFrame() {
     if (_widget && _focusFrame) {
       _focusFrame->setWidget(nullptr);
-      _focusFrame->setWidget(_widget);
+      if (!_widget->isWindow() && _widget->parentWidget()) {
+        _focusFrame->setWidget(_widget);
+      }
     }
   }
 
