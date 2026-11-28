@@ -30,6 +30,7 @@
 #include "PolishUtils.hpp"
 
 #include <QApplication>
+#include <QCalendarWidget>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QDateTimeEdit>
@@ -1158,6 +1159,20 @@ void QlementineStyle::drawPrimitive(PrimitiveElement pe, const QStyleOption* opt
     case PE_PanelItemViewItem:
       if (const auto* optItem = qstyleoption_cast<const QStyleOptionViewItem*>(opt)) {
         const auto& rect = optItem->rect;
+
+        if (w && w->objectName() == QLatin1String("qt_calendar_calendarview")) {
+          if (optItem->index.flags().testFlag(Qt::ItemIsSelectable)) {
+            const auto& calendarColor = listItemBackgroundColor(getMouseState(optItem->state),
+              getSelectionState(optItem->state), FocusState::Focused, ActiveState::Active, optItem->index, w);
+            const auto calendarInset = _impl->theme.spacing / 4;
+            p->setRenderHint(QPainter::Antialiasing, true);
+            p->setPen(Qt::NoPen);
+            p->setBrush(calendarColor);
+            p->drawRoundedRect(rect.marginsRemoved({ calendarInset, calendarInset, calendarInset, calendarInset }),
+              _impl->theme.borderRadius, _impl->theme.borderRadius);
+          }
+          return;
+        }
         const auto row = optItem->index.row();
         const auto column = optItem->index.column();
 
@@ -1236,6 +1251,9 @@ void QlementineStyle::drawPrimitive(PrimitiveElement pe, const QStyleOption* opt
       }
       return;
     case PE_PanelItemViewRow:
+      if (w && w->objectName() == QLatin1String("qt_calendar_calendarview")) {
+        return;
+      }
       if (const auto* optItem = qstyleoption_cast<const QStyleOptionViewItem*>(opt)) {
         // Draw alternate row color.
         const auto alternate = getAlternateState(optItem->features);
@@ -2548,6 +2566,27 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
       if (const auto* optItem = qstyleoption_cast<const QStyleOptionViewItem*>(opt)) {
         // Background.
         drawPrimitive(PE_PanelItemViewItem, optItem, p, w);
+
+        if (w && w->objectName() == QLatin1String("qt_calendar_calendarview")) {
+          const auto calendarSelectable = optItem->index.flags().testFlag(Qt::ItemIsSelectable);
+          const auto calendarSelected =
+            getSelectionState(optItem->state) == SelectionState::Selected && calendarSelectable;
+          const auto* calendarWidget = qobject_cast<const QCalendarWidget*>(w->parentWidget());
+          const auto calendarHeaderRows =
+            calendarWidget && calendarWidget->horizontalHeaderFormat() == QCalendarWidget::NoHorizontalHeader ? 0 : 1;
+          const auto calendarDateRow = optItem->index.row() - calendarHeaderRows;
+          const auto calendarDay = optItem->text.toInt();
+          const auto calendarOutOfMonth =
+            calendarSelectable && ((calendarDateRow == 0 && calendarDay > 7) || (calendarDateRow >= 3 && calendarDay < 15));
+          p->setFont(optItem->font);
+          p->setBrush(Qt::NoBrush);
+          p->setPen(calendarSelected                              ? _impl->theme.primaryColorForeground
+                    : !calendarSelectable                         ? _impl->theme.secondaryAlternativeColor
+                    : !optItem->state.testFlag(State_Enabled) || calendarOutOfMonth ? _impl->theme.secondaryColorDisabled
+                                                                                    : _impl->theme.secondaryColor);
+          p->drawText(optItem->rect, Qt::AlignCenter | Qt::TextSingleLine, optItem->text);
+          return;
+        }
 
         // Foreground.
         const auto& features = optItem->features;
@@ -5281,6 +5320,7 @@ void QlementineStyle::polish(QWidget* w) {
   polishMouseWheelBlocker(w, _impl->polishedWidgets, polishedWidgetInfo, eventFiltersInstalled);
   polishComboBox(*this, w);
   polishTabBar(w, _impl->polishedWidgets, polishedWidgetInfo, eventFiltersInstalled);
+  polishCalendarWidget(w);
 
   if (auto* label = qobject_cast<QLabel*>(w)) {
     const auto labelObjName = label->objectName();

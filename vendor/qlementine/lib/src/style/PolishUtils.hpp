@@ -37,6 +37,8 @@ void polishComboBox(QlementineStyle& style, QWidget* widget);
 void polishTabBar(
   QWidget* widget, PolishedWidgetRegistry& registry, PolishedWidgetRegistry::Entry& entry, bool eventFiltersInstalled);
 
+void polishCalendarWidget(QWidget* widget);
+
 void polishMessageBox(QWidget* widget, const QlementineStyle& style);
 
 void polishScrollArea(QWidget* widget);

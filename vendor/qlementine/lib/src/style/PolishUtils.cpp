@@ -13,6 +13,7 @@
 
 #include <QAbstractButton>
 #include <QAbstractItemView>
+#include <QCalendarWidget>
 #include <QComboBox>
 #include <QLabel>
 #include <QLayout>
@@ -23,6 +24,7 @@
 #include <QScrollArea>
 #include <QSpinBox>
 #include <QTabBar>
+#include <QTableView>
 #include <QTextEdit>
 #include <QToolButton>
 
@@ -200,6 +202,24 @@ void polishTabBar(
     if (!eventFiltersInstalled) {
       auto* eventFilter = new TabBarEventFilter(tabBar);
       registry.addEventFilter(tabBar, entry, eventFilter);
+    }
+  }
+}
+
+void polishCalendarWidget(QWidget* widget) {
+  if (auto* calendar = qobject_cast<QCalendarWidget*>(widget)) {
+    calendar->setHorizontalHeaderFormat(QCalendarWidget::ShortDayNames);
+    calendar->setWeekdayTextFormat(Qt::Saturday, QTextCharFormat{});
+    calendar->setWeekdayTextFormat(Qt::Sunday, QTextCharFormat{});
+
+    if (auto* navigationBar = calendar->findChild<QWidget*>(QStringLiteral("qt_calendar_navigationbar"))) {
+      navigationBar->setAutoFillBackground(false);
+    }
+
+    if (auto* view = calendar->findChild<QTableView*>(QStringLiteral("qt_calendar_calendarview"))) {
+      view->setFrameShape(QFrame::NoFrame);
+      view->setShowGrid(false);
+      view->setAlternatingRowColors(false);
     }
   }
 }
