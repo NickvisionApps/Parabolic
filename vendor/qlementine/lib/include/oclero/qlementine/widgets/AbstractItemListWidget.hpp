@@ -76,6 +76,8 @@ public:
 
   virtual void initStyleOptionFocus(QStyleOptionFocusRoundedRect& opt) const;
 
+  bool hasKeyboardFocus() const;
+
 Q_SIGNALS:
   void itemCountChanged();
   void currentIndexChanged();
@@ -94,6 +96,7 @@ protected: // QWidget override.
   void paintEvent(QPaintEvent* e) override;
   void resizeEvent(QResizeEvent* e) override;
   void focusInEvent(QFocusEvent* e) override;
+  void focusOutEvent(QFocusEvent* e) override;
   void showEvent(QShowEvent* e) override;
   bool event(QEvent* e) override;
   void changeEvent(QEvent* e) override;
@@ -186,6 +189,7 @@ private:
   bool _itemsShouldExpand{ false };
   int _currentIndex{ -1 };
   int _focusedIndex{ -1 };
+  bool _keyboardFocus{ false };
   int _hoveredIndex{ -1 };
   int _pressedIndex{ -1 };
   QSize _iconSize;

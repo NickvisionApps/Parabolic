@@ -327,6 +327,10 @@ bool AbstractItemListWidget::hitTestItemRect(
 
 void AbstractItemListWidget::keyPressEvent(QKeyEvent* e) {
   QWidget::keyPressEvent(e);
+  if (!_keyboardFocus) {
+    _keyboardFocus = true;
+    _focusFrame->update();
+  }
   const auto key = e->key();
   if (key == Qt::Key_Right) {
     const auto next = std::min(itemCount() - 1, _focusedIndex + 1);
@@ -734,9 +738,22 @@ void AbstractItemListWidget::resizeEvent(QResizeEvent* e) {
 
 void AbstractItemListWidget::focusInEvent(QFocusEvent* e) {
   QWidget::focusInEvent(e);
+  _keyboardFocus = e->reason() == Qt::TabFocusReason || e->reason() == Qt::BacktabFocusReason
+                   || e->reason() == Qt::ShortcutFocusReason;
   if (_focusedIndex == -1) {
     setFocusedIndex(0);
   }
+  _focusFrame->update();
+}
+
+void AbstractItemListWidget::focusOutEvent(QFocusEvent* e) {
+  QWidget::focusOutEvent(e);
+  _keyboardFocus = false;
+  _focusFrame->update();
+}
+
+bool AbstractItemListWidget::hasKeyboardFocus() const {
+  return _keyboardFocus;
 }
 
 void AbstractItemListWidget::showEvent(QShowEvent* e) {

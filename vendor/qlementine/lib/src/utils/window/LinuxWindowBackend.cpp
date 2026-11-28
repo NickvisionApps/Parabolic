@@ -15,6 +15,9 @@
 #include <QPalette>
 #include <QWindow>
 
+#include <algorithm>
+#include <cmath>
+
 // X11 frame extents need xcb. CMake must define QLEMENTINE_WITH_XCB and link xcb to enable them.
 #if defined(QLEMENTINE_WITH_XCB) && __has_include(<xcb/xcb.h>)
 #  include <QtGui/qguiapplication_platform.h>
@@ -99,12 +102,16 @@ public:
     const auto radius = static_cast<double>(cornerRadius());
     const auto frame = QRectF(_window.rect().marginsRemoved(margins));
 
-    // Soft shadow, slightly offset downwards.
+    constexpr auto sqrt2 = 1.4142135623730951;
     painter.setBrush(Qt::NoBrush);
     for (auto i = 0; i <= margins.left(); ++i) {
-      const auto falloff = 1. - static_cast<double>(i) / (margins.left() + 1);
-      painter.setPen(QPen(QColor(0, 0, 0, static_cast<int>(50 * falloff * falloff)), 1));
-      painter.drawRoundedRect(frame.adjusted(-i, -i, i, i).translated(0, 2), radius + i, radius + i);
+      const auto distance = i + .5;
+      const auto wide = .15 * .5 * std::erfc((distance - 5.) / (7. * sqrt2));
+      const auto tight = .10 * .5 * std::erfc((distance - 2.) / (2.5 * sqrt2));
+      const auto ring = i == 0 ? .05 : 0.;
+      const auto alpha = std::min(1., wide + tight + ring);
+      painter.setPen(QPen(QColor(0, 0, 0, qRound(alpha * 255)), 1));
+      painter.drawRoundedRect(frame.adjusted(-i, -i, i, i), radius + i, radius + i);
     }
 
     // Window background clipped to the rounded shape.
@@ -112,10 +119,7 @@ public:
     shape.addRoundedRect(frame, radius, radius);
     painter.fillPath(shape, background);
 
-    // 1px border.
-    auto border = _window.palette().color(QPalette::WindowText);
-    border.setAlpha(40);
-    painter.setPen(QPen(border, 1));
+    painter.setPen(QPen(QColor(255, 255, 255, 18), 1));
     painter.drawRoundedRect(frame.adjusted(.5, .5, -.5, -.5), radius, radius);
 
     painter.restore();

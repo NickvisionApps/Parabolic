@@ -2267,7 +2267,9 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
     case CE_FocusFrame:
       if (const auto* focusFrame = qobject_cast<const QFocusFrame*>(w)) {
         const auto* monitoredWidget = focusFrame->widget();
-        const auto hasFocus = monitoredWidget ? monitoredWidget->hasFocus() : false;
+        const auto* itemListWidget = qobject_cast<const AbstractItemListWidget*>(monitoredWidget);
+        const auto hasFocus =
+          monitoredWidget ? monitoredWidget->hasFocus() && (!itemListWidget || itemListWidget->hasKeyboardFocus()) : false;
         const auto borderW = _impl->theme.focusBorderWidth;
 
         QStyleOptionFocusRoundedRect optFocus;
