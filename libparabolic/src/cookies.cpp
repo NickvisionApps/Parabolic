@@ -2,6 +2,7 @@
 #include <string>
 #ifdef __linux__
 #include <filesystem>
+#include <format>
 #include <sago/platform_folders.h>
 #include <vector>
 #include "environment.h"

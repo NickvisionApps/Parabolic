@@ -461,7 +461,7 @@ namespace parabolic::discovery
     Result::Result(const nlohmann::json& json,
                    const Options& options,
                    std::string url,
-                   std::filesystem::path suggested_save_folder,
+                   const std::filesystem::path& suggested_save_folder,
                    std::string suggested_filename)
         : Result{ std::move(url), std::move(suggested_filename) }
     {

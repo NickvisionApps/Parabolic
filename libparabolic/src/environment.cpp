@@ -220,7 +220,7 @@ namespace parabolic::environment
         }
         else if (std::filesystem::exists("/proc/sys/fs/binfmt_misc/WSLInterop"))
         {
-            return DeploymentMode::WSL;
+            return DeploymentMode::Wsl;
         }
         else
         {

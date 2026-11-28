@@ -103,7 +103,7 @@ namespace parabolic::discovery
         Result(const nlohmann::json& json,
                const Options& options,
                std::string url,
-               std::filesystem::path suggested_save_folder,
+               const std::filesystem::path& suggested_save_folder,
                std::string suggested_filename);
         Result(std::string url, std::string title, const std::vector<Result>& results);
         [[nodiscard]] unsigned int id() const;
