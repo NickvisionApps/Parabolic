@@ -40,6 +40,10 @@ namespace parabolic::qt
         setStyle(style);
         m_theme_manager = new oclero::qlementine::ThemeManager{ style, this };
         m_theme_manager->loadDirectory(":/qlementine/resources/themes");
+        connect(m_theme_manager,
+                &oclero::qlementine::ThemeManager::systemColorSchemeChanged,
+                this,
+                &App::system_color_scheme_changed);
         switch (application::State::instance().configuration().theme())
         {
         case configuration::Theme::Light:
@@ -92,5 +96,13 @@ namespace parabolic::qt
             configuration.set_show_disclaimer_on_startup(!chk_show->isChecked());
         }
         return exec();
+    }
+
+    void App::system_color_scheme_changed(Qt::ColorScheme color_scheme)
+    {
+        if (application::State::instance().configuration().theme() == configuration::Theme::System)
+        {
+            m_theme_manager->setCurrentTheme(color_scheme == Qt::ColorScheme::Dark ? "Legacy Dark" : "Light");
+        }
     }
 }

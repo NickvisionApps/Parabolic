@@ -59,4 +59,27 @@ QColor systemAccentColor(bool dark) {
 #endif
   return {};
 }
+
+SystemAccentWatcher& SystemAccentWatcher::instance() {
+  static SystemAccentWatcher watcher;
+  return watcher;
+}
+
+SystemAccentWatcher::SystemAccentWatcher()
+  : QObject(nullptr) {
+#ifdef QLEMENTINE_WITH_DBUS
+  QDBusConnection::sessionBus().connect(QStringLiteral("org.freedesktop.portal.Desktop"),
+    QStringLiteral("/org/freedesktop/portal/desktop"), QStringLiteral("org.freedesktop.portal.Settings"),
+    QStringLiteral("SettingChanged"), this, SLOT(onSettingChanged(QString, QString, QDBusVariant)));
+#endif
+}
+
+#ifdef QLEMENTINE_WITH_DBUS
+void SystemAccentWatcher::onSettingChanged(const QString& settingNamespace, const QString& key, const QDBusVariant&) {
+  if (settingNamespace == QLatin1String("org.freedesktop.appearance")
+      && (key == QLatin1String("accent-color") || key == QLatin1String("color-scheme"))) {
+    Q_EMIT changed();
+  }
+}
+#endif
 } // namespace oclero::qlementine

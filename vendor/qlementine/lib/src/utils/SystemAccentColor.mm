@@ -15,4 +15,22 @@ QColor systemAccentColor(bool dark) {
   }];
   return result;
 }
+
+SystemAccentWatcher& SystemAccentWatcher::instance() {
+  static SystemAccentWatcher watcher;
+  return watcher;
+}
+
+SystemAccentWatcher::SystemAccentWatcher()
+  : QObject(nullptr) {
+  NSDistributedNotificationCenter* center = [NSDistributedNotificationCenter defaultCenter];
+  for (NSString* name in @[ @"AppleColorPreferencesChangedNotification", @"AppleInterfaceThemeChangedNotification" ]) {
+    [center addObserverForName:name
+                        object:nil
+                         queue:[NSOperationQueue mainQueue]
+                    usingBlock:^(NSNotification*) {
+                      Q_EMIT changed();
+                    }];
+  }
+}
 } // namespace oclero::qlementine
