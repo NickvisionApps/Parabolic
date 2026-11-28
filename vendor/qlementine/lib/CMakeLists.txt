@@ -69,6 +69,7 @@ set(SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/Popover.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/PopoverButton.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/QlementineTitleBarRenderer.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/RankingControl.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/RoundedFocusFrame.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/SegmentedControl.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/StatusBadgeWidget.cpp
@@ -150,6 +151,7 @@ set(HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/PlainTextEdit.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/Popover.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/PopoverButton.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/RankingControl.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/RoundedFocusFrame.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/SegmentedControl.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/StatusBadgeWidget.hpp
