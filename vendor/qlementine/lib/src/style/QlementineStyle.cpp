@@ -123,7 +123,7 @@ struct QlementineStyleImpl {
   PolishedWidgetRegistry polishedWidgets;
   std::optional<QFont> previousAppFont;
   AutoIconColor autoIconColor{ AutoIconColor::None };
-  bool toolTipMatchesTheme{ false };
+  bool toolTipMatchesTheme{ true };
   std::function<QString(QString)> iconPathFunc;
 
   explicit QlementineStyleImpl(QlementineStyle& o)

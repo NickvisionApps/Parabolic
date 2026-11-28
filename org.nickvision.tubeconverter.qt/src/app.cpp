@@ -36,7 +36,6 @@ namespace parabolic::qt
         oclero::qlementine::QlementineStyle* style{ new oclero::qlementine::QlementineStyle{ this } };
         style->setAutoIconColor(oclero::qlementine::AutoIconColor::TextColor);
         style->setIconPathGetter(oclero::qlementine::icons::fromFreeDesktop);
-        style->setToolTipMatchesTheme(true);
         setStyle(style);
         m_theme_manager = new oclero::qlementine::ThemeManager{ style, this };
         m_theme_manager->loadDirectory(":/qlementine/resources/themes");
