@@ -57,14 +57,21 @@ Q_SIGNALS:
   void currentThemeChanged();
   void themeCountChanged();
   void useSystemAccentColorChanged();
+  void systemColorSchemeChanged(Qt::ColorScheme colorScheme);
+
+protected:
+  bool eventFilter(QObject* watched, QEvent* event) override;
 
 private:
+  Q_SLOT void onSystemAccentChanged();
+  QColor resolveAccentColor(const Theme& theme) const;
   void synchronizeThemeOnStyle();
 
 private:
   std::vector<Theme> _themes;
   QPointer<QlementineStyle> _style{ nullptr };
   QColor _systemAccentColor;
+  QColor _appliedAccentColor;
   bool _useSystemAccentColor{ false };
   int _currentIndex{ -1 };
 };

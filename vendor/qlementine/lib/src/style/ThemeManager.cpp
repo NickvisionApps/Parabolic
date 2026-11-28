@@ -6,8 +6,10 @@
 #include "../utils/SystemAccentColor.hpp"
 
 #include <QDir>
+#include <QEvent>
 #include <QGuiApplication>
 #include <QPalette>
+#include <QStyleHints>
 
 namespace oclero::qlementine {
 ThemeManager::ThemeManager(QObject* parent)
@@ -16,6 +18,10 @@ ThemeManager::ThemeManager(QObject* parent)
 ThemeManager::ThemeManager(QlementineStyle* style, QObject* parent)
   : QObject(parent)
   , _systemAccentColor(QGuiApplication::palette().color(QPalette::Accent)) {
+  qApp->installEventFilter(this);
+  connect(&SystemAccentWatcher::instance(), &SystemAccentWatcher::changed, this, &ThemeManager::onSystemAccentChanged);
+  connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &ThemeManager::onSystemAccentChanged);
+  connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &ThemeManager::systemColorSchemeChanged);
   setStyle(style);
 }
 
@@ -132,6 +138,28 @@ int ThemeManager::themeIndex(const QString& key) const {
   return -1;
 }
 
+bool ThemeManager::eventFilter(QObject* watched, QEvent* event) {
+  if (watched == qApp && (event->type() == QEvent::ApplicationPaletteChange || event->type() == QEvent::ThemeChange)) {
+    onSystemAccentChanged();
+  }
+  return QObject::eventFilter(watched, event);
+}
+
+void ThemeManager::onSystemAccentChanged() {
+  if (!_useSystemAccentColor || _currentIndex < 0 || _currentIndex >= themeCount()) {
+    return;
+  }
+  if (resolveAccentColor(_themes.at(_currentIndex)) != _appliedAccentColor) {
+    synchronizeThemeOnStyle();
+  }
+}
+
+QColor ThemeManager::resolveAccentColor(const Theme& theme) const {
+  const auto isDarkTheme = theme.backgroundColorMain1.lightnessF() < 0.5;
+  const auto nativeAccentColor = systemAccentColor(isDarkTheme);
+  return nativeAccentColor.isValid() ? nativeAccentColor : _systemAccentColor;
+}
+
 void ThemeManager::synchronizeThemeOnStyle() {
   if (!_style)
     return;
@@ -142,10 +170,10 @@ void ThemeManager::synchronizeThemeOnStyle() {
   if (_currentIndex >= 0 && _currentIndex < themeCount()) {
     const auto& theme = _themes.at(_currentIndex);
     if (_useSystemAccentColor) {
-      const auto isDarkTheme = theme.backgroundColorMain1.lightnessF() < 0.5;
-      const auto nativeAccentColor = systemAccentColor(isDarkTheme);
-      _style->setTheme(theme.withAccentColor(nativeAccentColor.isValid() ? nativeAccentColor : _systemAccentColor));
+      _appliedAccentColor = resolveAccentColor(theme);
+      _style->setTheme(theme.withAccentColor(_appliedAccentColor));
     } else {
+      _appliedAccentColor = QColor();
       _style->setTheme(theme);
     }
   } else {

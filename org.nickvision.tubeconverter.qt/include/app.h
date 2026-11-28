@@ -23,6 +23,7 @@ namespace parabolic::qt
         App& operator=(App&&) = delete;
 
     private:
+        Q_SLOT void system_color_scheme_changed(Qt::ColorScheme color_scheme);
         oclero::qlementine::ThemeManager* m_theme_manager{ nullptr };
         helpers::TranslationNotifier m_translation_notifier;
     };
