@@ -23,7 +23,6 @@ constexpr auto badgeDiameter = 7;
 PillButton::PillButton(QWidget* parent)
   : QPushButton(parent) {
   setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-  setCursor(Qt::PointingHandCursor);
 }
 
 PillButton::PillButton(const QString& text, QWidget* parent)

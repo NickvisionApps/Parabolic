@@ -3,6 +3,8 @@
 
 #include <oclero/qlementine/style/ThemeManager.hpp>
 
+#include "../utils/SystemAccentColor.hpp"
+
 #include <QDir>
 #include <QGuiApplication>
 #include <QPalette>
@@ -140,7 +142,9 @@ void ThemeManager::synchronizeThemeOnStyle() {
   if (_currentIndex >= 0 && _currentIndex < themeCount()) {
     const auto& theme = _themes.at(_currentIndex);
     if (_useSystemAccentColor) {
-      _style->setTheme(theme.withAccentColor(_systemAccentColor));
+      const auto isDarkTheme = theme.backgroundColorMain1.lightnessF() < 0.5;
+      const auto nativeAccentColor = systemAccentColor(isDarkTheme);
+      _style->setTheme(theme.withAccentColor(nativeAccentColor.isValid() ? nativeAccentColor : _systemAccentColor));
     } else {
       _style->setTheme(theme);
     }

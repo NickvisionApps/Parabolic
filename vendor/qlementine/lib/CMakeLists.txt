@@ -78,9 +78,14 @@ set(SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/UnifiedWindow.cpp
 )
 
+list(APPEND SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/SystemAccentColor.hpp)
+
 # Platform-specific window backend used by UnifiedWindow.
 if(APPLE)
-  list(APPEND SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/window/MacWindowBackend.mm)
+  list(APPEND SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/window/MacWindowBackend.mm
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/SystemAccentColor.mm
+  )
 elseif(WIN32)
   list(APPEND SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/window/WinWindowBackend.cpp)
 else()
@@ -89,6 +94,9 @@ else()
     ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/window/LinuxButtonLayout.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/window/LinuxWindowBackend.cpp
   )
+endif()
+if(NOT APPLE)
+  list(APPEND SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/SystemAccentColor.cpp)
 endif()
 
 set(HEADERS
@@ -311,7 +319,7 @@ foreach(_target IN LISTS _targets_to_build)
       target_link_libraries(${_target} PRIVATE "-framework AppKit")
       target_compile_options(${_target} PRIVATE $<$<COMPILE_LANGUAGE:OBJCXX>:-fobjc-arc>)
     elseif(WIN32)
-      target_link_libraries(${_target} PRIVATE dwmapi user32 shell32)
+      target_link_libraries(${_target} PRIVATE dwmapi user32 shell32 advapi32)
     else()
       if(TARGET Qt6::DBus)
         target_link_libraries(${_target} PRIVATE Qt::DBus)
