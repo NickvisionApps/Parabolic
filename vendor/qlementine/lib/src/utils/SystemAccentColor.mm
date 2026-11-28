@@ -16,6 +16,12 @@ QColor systemAccentColor(bool dark) {
   return result;
 }
 
+Qt::ColorScheme querySystemColorScheme() {
+  NSString* style = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+  return style != nil && [style caseInsensitiveCompare:@"Dark"] == NSOrderedSame ? Qt::ColorScheme::Dark
+                                                                                  : Qt::ColorScheme::Light;
+}
+
 SystemAccentWatcher& SystemAccentWatcher::instance() {
   static SystemAccentWatcher watcher;
   return watcher;

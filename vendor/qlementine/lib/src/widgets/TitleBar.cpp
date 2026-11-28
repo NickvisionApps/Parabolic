@@ -498,7 +498,11 @@ void TitleBar::paintEvent(QPaintEvent*) {
   painter.setClipRect(QRect(backgroundLeft, 0, std::max(0, width() - backgroundLeft), height()));
   // The renderers draw the border in the last rows: they are moved outside of the widget to hide it.
   const auto backgroundRect = _impl->borderVisible ? rect() : rect().adjusted(0, 0, 0, std::max(1, theme.borderWidth));
-  renderer.paintBackground(painter, backgroundRect, theme, _impl->active, _impl->maximized);
+  const auto* qlementineStyle = qobject_cast<const QlementineStyle*>(style());
+  const auto& background = qlementineStyle && qobject_cast<QToolBar*>(_impl->contentWidget.data())
+                             ? qlementineStyle->toolBarBackgroundColor()
+                             : theme.backgroundColorMain1;
+  renderer.paintBackground(painter, backgroundRect, theme, background, _impl->active, _impl->maximized);
   painter.restore();
 
   // Title, in the space left by the content widget.

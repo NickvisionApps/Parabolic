@@ -319,8 +319,8 @@ namespace parabolic::qt::views
             break;
         default:
             QApplication::styleHints()->unsetColorScheme();
-            theme_manager->setCurrentTheme(QApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark"
-                                                                                                              : "Light");
+            theme_manager->setCurrentTheme(
+                    oclero::qlementine::ThemeManager::systemColorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark" : "Light");
             break;
         }
     }

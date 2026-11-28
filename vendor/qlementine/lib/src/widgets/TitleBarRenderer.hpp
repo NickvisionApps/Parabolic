@@ -30,8 +30,8 @@ public:
   /// Outer margin between the bar edges and the first/last caption button.
   virtual QMargins captionButtonMargins() const = 0;
 
-  virtual void paintBackground(QPainter& painter, const QRect& rect, const Theme& theme, bool windowActive,
-    bool maximized) const = 0;
+  virtual void paintBackground(QPainter& painter, const QRect& rect, const Theme& theme, const QColor& background,
+    bool windowActive, bool maximized) const = 0;
   virtual void paintTitle(QPainter& painter, const QRect& rect, const QString& title, const Theme& theme,
     bool windowActive) const = 0;
   virtual void paintCaptionButton(

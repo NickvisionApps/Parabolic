@@ -45,6 +45,8 @@ public:
   bool useSystemAccentColor() const;
   void setUseSystemAccentColor(bool useSystemAccentColor);
 
+  static Qt::ColorScheme systemColorScheme();
+
   Q_SLOT void setNextTheme();
   Q_SLOT void setPreviousTheme();
 
@@ -63,7 +65,7 @@ protected:
   bool eventFilter(QObject* watched, QEvent* event) override;
 
 private:
-  Q_SLOT void onSystemAccentChanged();
+  Q_SLOT void onSystemAppearanceChanged();
   QColor resolveAccentColor(const Theme& theme) const;
   void synchronizeThemeOnStyle();
 
@@ -72,6 +74,7 @@ private:
   QPointer<QlementineStyle> _style{ nullptr };
   QColor _systemAccentColor;
   QColor _appliedAccentColor;
+  Qt::ColorScheme _systemColorScheme{ Qt::ColorScheme::Unknown };
   bool _useSystemAccentColor{ false };
   int _currentIndex{ -1 };
 };

@@ -3,6 +3,9 @@
 
 #include "SystemAccentColor.hpp"
 
+#include <QGuiApplication>
+#include <QStyleHints>
+
 #ifdef _WIN32
 #  include <windows.h>
 #elif defined(QLEMENTINE_WITH_DBUS)
@@ -58,6 +61,41 @@ QColor systemAccentColor(bool dark) {
   Q_UNUSED(dark);
 #endif
   return {};
+}
+
+Qt::ColorScheme querySystemColorScheme() {
+#ifdef _WIN32
+  DWORD usesLightTheme = 1;
+  DWORD size = sizeof(usesLightTheme);
+  const auto status = RegGetValueW(HKEY_CURRENT_USER, L"Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+    L"AppsUseLightTheme", RRF_RT_REG_DWORD, nullptr, &usesLightTheme, &size);
+  if (status == ERROR_SUCCESS) {
+    return usesLightTheme == 0 ? Qt::ColorScheme::Dark : Qt::ColorScheme::Light;
+  }
+#elif defined(QLEMENTINE_WITH_DBUS)
+  if (QDBusConnection::sessionBus().isConnected()) {
+    auto message = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.portal.Desktop"),
+      QStringLiteral("/org/freedesktop/portal/desktop"), QStringLiteral("org.freedesktop.portal.Settings"),
+      QStringLiteral("Read"));
+    message << QStringLiteral("org.freedesktop.appearance") << QStringLiteral("color-scheme");
+    const auto reply = QDBusConnection::sessionBus().call(message, QDBus::Block, 250);
+    if (reply.type() == QDBusMessage::ReplyMessage && !reply.arguments().isEmpty()) {
+      auto value = reply.arguments().constFirst();
+      while (value.metaType() == QMetaType::fromType<QDBusVariant>()) {
+        value = value.value<QDBusVariant>().variant();
+      }
+      switch (value.toUInt()) {
+        case 1:
+          return Qt::ColorScheme::Dark;
+        case 2:
+          return Qt::ColorScheme::Light;
+        default:
+          break;
+      }
+    }
+  }
+#endif
+  return QGuiApplication::styleHints()->colorScheme();
 }
 
 SystemAccentWatcher& SystemAccentWatcher::instance() {

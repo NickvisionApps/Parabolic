@@ -51,10 +51,8 @@ public:
     return { barMargin, vertical, barMargin, barHeightDp - buttonDiameter - vertical };
   }
 
-  void paintBackground(
-    QPainter& painter, const QRect& rect, const Theme& theme, bool /*windowActive*/, bool maximized) const override {
-    const auto& background = theme.backgroundColorMain1;
-
+  void paintBackground(QPainter& painter, const QRect& rect, const Theme& theme, const QColor& background,
+    bool /*windowActive*/, bool maximized) const override {
     painter.save();
     painter.setRenderHint(QPainter::Antialiasing, true);
 

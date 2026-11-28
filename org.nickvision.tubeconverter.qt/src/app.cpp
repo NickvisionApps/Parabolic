@@ -56,7 +56,8 @@ namespace parabolic::qt
             break;
         default:
             styleHints()->unsetColorScheme();
-            m_theme_manager->setCurrentTheme(styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark" : "Light");
+            m_theme_manager->setCurrentTheme(
+                    oclero::qlementine::ThemeManager::systemColorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark" : "Light");
             break;
         }
         m_theme_manager->setUseSystemAccentColor(true);

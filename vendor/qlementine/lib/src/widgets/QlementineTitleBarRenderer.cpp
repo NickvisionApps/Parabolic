@@ -38,9 +38,9 @@ public:
     return QMargins();
   }
 
-  void paintBackground(
-    QPainter& painter, const QRect& rect, const Theme& theme, bool /*windowActive*/, bool /*maximized*/) const override {
-    painter.fillRect(rect, theme.backgroundColorMain1);
+  void paintBackground(QPainter& painter, const QRect& rect, const Theme& theme, const QColor& background,
+    bool /*windowActive*/, bool /*maximized*/) const override {
+    painter.fillRect(rect, background);
 
     // Bottom border.
     painter.fillRect(QRect(rect.left(), rect.bottom() + 1 - theme.borderWidth, rect.width(), theme.borderWidth),

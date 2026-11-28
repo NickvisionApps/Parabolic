@@ -12,6 +12,7 @@
 
 namespace oclero::qlementine {
 QColor systemAccentColor(bool dark);
+Qt::ColorScheme querySystemColorScheme();
 
 class SystemAccentWatcher : public QObject {
   Q_OBJECT
