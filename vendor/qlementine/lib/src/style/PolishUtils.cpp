@@ -219,13 +219,6 @@ void polishScrollArea(QWidget* widget) {
   }
 }
 
-void polishSlider(QWidget* widget) {
-  // Make the QSlider horizontal by default.
-  if (auto* slider = qobject_cast<QSlider*>(widget)) {
-    slider->setOrientation(Qt::Orientation::Horizontal);
-  }
-}
-
 void polishTextEditors(
   QWidget* widget, PolishedWidgetRegistry& registry, PolishedWidgetRegistry::Entry& entry, bool eventFiltersInstalled) {
   // Make the QPlainTextEdit have a frame by default.

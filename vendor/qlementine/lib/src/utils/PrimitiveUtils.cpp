@@ -370,11 +370,16 @@ void drawCheckerboard(
 }
 
 void drawProgressBarValueRect(QPainter* p, QRect const& rect, QColor const& color, qreal min, qreal max, qreal value,
-  qreal const radius, bool inverted) {
+  qreal const radius, bool inverted, Qt::Orientation orientation) {
   const auto ratio = (max != min) ? (value - min) / (max - min) : 0;
-  const auto w = static_cast<int>(rect.width() * ratio);
-  const auto x = inverted ? rect.x() + rect.width() - w : rect.x();
-  const auto valueRect = QRect{ x, rect.y(), w, rect.height() };
+  const auto valueRect = [&]() {
+    if (orientation == Qt::Horizontal) {
+      const auto w = static_cast<int>(rect.width() * ratio);
+      return QRect{ inverted ? rect.x() + rect.width() - w : rect.x(), rect.y(), w, rect.height() };
+    }
+    const auto h = static_cast<int>(rect.height() * ratio);
+    return QRect{ rect.x(), inverted ? rect.y() + rect.height() - h : rect.y(), rect.width(), h };
+  }();
 
   QPainterPath clipPath;
   clipPath.addRoundedRect(rect, radius, radius);
@@ -1008,22 +1013,26 @@ int getTickInterval(int tickInterval, int singleStep, int pageStep, int min, int
 }
 
 void drawSliderTickMarks(QPainter* p, QRect const& tickmarksRect, QColor const& tickColor, const int min, const int max,
-  const int interval, const int tickThickness, const int singleStep, const int pageStep) {
+  const int interval, const int tickThickness, const int singleStep, const int pageStep, Qt::Orientation orientation,
+  bool upsideDown) {
   QPainterStateGuard stateGuard(p);
-  const auto sliderLength = tickmarksRect.width();
+  const auto horizontal = orientation == Qt::Horizontal;
+  const auto sliderLength = horizontal ? tickmarksRect.width() : tickmarksRect.height();
   const auto tickInterval = getTickInterval(interval, singleStep, pageStep, min, max, sliderLength);
 
   p->setPen(QPen(tickColor, tickThickness, Qt::SolidLine, Qt::FlatCap));
   p->setBrush(Qt::NoBrush);
 
-  const auto y1 = tickmarksRect.top();
-  const auto y2 = tickmarksRect.bottom() + 1;
-
   auto v = min;
   while (v <= max) {
-    const auto x1 = std::min(
-      tickmarksRect.right(), tickmarksRect.left() + QStyle::sliderPositionFromValue(min, max, v, sliderLength));
-    p->drawLine(x1, y1, x1, y2);
+    const auto offset = QStyle::sliderPositionFromValue(min, max, v, sliderLength, upsideDown);
+    if (horizontal) {
+      const auto x = std::min(tickmarksRect.right(), tickmarksRect.left() + offset);
+      p->drawLine(x, tickmarksRect.top(), x, tickmarksRect.bottom() + 1);
+    } else {
+      const auto y = std::min(tickmarksRect.bottom(), tickmarksRect.top() + offset);
+      p->drawLine(tickmarksRect.left(), y, tickmarksRect.right() + 1, y);
+    }
     v += tickInterval;
   }
 }

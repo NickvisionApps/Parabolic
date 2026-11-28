@@ -41,7 +41,6 @@ void polishMessageBox(QWidget* widget, const QlementineStyle& style);
 
 void polishScrollArea(QWidget* widget);
 
-void polishSlider(QWidget* widget);
 
 void polishTextEditors(
   QWidget* widget, PolishedWidgetRegistry& registry, PolishedWidgetRegistry::Entry& entry, bool eventFiltersInstalled);

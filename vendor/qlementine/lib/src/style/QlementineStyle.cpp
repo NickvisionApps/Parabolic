@@ -402,10 +402,20 @@ struct QlementineStyleImpl {
     const QlementineStyle& style, const QStyleOptionSlider& opt, const qreal position, const QWidget* widget) {
     const auto handleW = style.pixelMetric(QStyle::PM_SliderLength, &opt, widget);
     const auto handleH = style.pixelMetric(QStyle::PM_SliderThickness, &opt, widget);
-    const auto handleY = opt.rect.y() + (opt.rect.height() - handleH) / 2;
     const auto range = opt.maximum - opt.minimum;
     const auto ratio = range == 0 ? 0. : (position - opt.minimum) / range;
-    const auto handleX = opt.rect.x() + static_cast<int>(ratio * (opt.rect.width() - handleW));
+    const auto orientedRatio = opt.upsideDown ? 1. - ratio : ratio;
+    if (opt.orientation == Qt::Horizontal) {
+      const auto inset = style.pixelMetric(QStyle::PM_FocusFrameHMargin, &opt, widget) / 2;
+      const auto handleY = opt.rect.y() + (opt.rect.height() - handleH) / 2;
+      const auto handleX =
+        opt.rect.x() + inset + static_cast<int>(orientedRatio * (opt.rect.width() - handleW - 2 * inset));
+      return QRect{ handleX, handleY, handleW, handleH };
+    }
+    const auto inset = style.pixelMetric(QStyle::PM_FocusFrameVMargin, &opt, widget) / 2;
+    const auto handleX = opt.rect.x() + (opt.rect.width() - handleW) / 2;
+    const auto handleY =
+      opt.rect.y() + inset + static_cast<int>(orientedRatio * (opt.rect.height() - handleH - 2 * inset));
     return QRect{ handleX, handleY, handleW, handleH };
   }
 
@@ -1620,7 +1630,7 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
         optContent.rect = subElementRect(SE_ProgressBarContents, optProgressBar, w);
         drawControl(CE_ProgressBarContents, &optContent, p, w);
 
-        if (optProgressBar->textVisible) {
+        if (optProgressBar->textVisible && optProgressBar->state.testFlag(State_Horizontal)) {
           auto optText = QStyleOptionProgressBar(*optProgressBar);
           optText.rect = subElementRect(SE_ProgressBarLabel, optProgressBar, w);
           drawControl(CE_ProgressBarLabel, &optText, p, w);
@@ -1630,7 +1640,9 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
     case CE_ProgressBarGroove:
       if (const auto* optProgressBar = qstyleoption_cast<const QStyleOptionProgressBar*>(opt)) {
         // Background.
-        const auto radius = optProgressBar->rect.height() / 2.;
+        const auto radius = (optProgressBar->state.testFlag(State_Horizontal) ? optProgressBar->rect.height()
+                                                                               : optProgressBar->rect.width()) /
+                            2.;
         const auto mouse = getMouseState(optProgressBar->state);
         const auto& color = progressBarGrooveColor(mouse);
         drawRoundedRect(p, optProgressBar->rect, color, radius);
@@ -1639,7 +1651,8 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
     case CE_ProgressBarContents:
       if (const auto* optProgressBar = qstyleoption_cast<const QStyleOptionProgressBar*>(opt)) {
         // Draw foreground rect.
-        const auto radius = optProgressBar->rect.height() / 2.;
+        const auto horizontal = optProgressBar->state.testFlag(State_Horizontal);
+        const auto radius = (horizontal ? optProgressBar->rect.height() : optProgressBar->rect.width()) / 2.;
         const auto mouse = getMouseState(optProgressBar->state);
         const auto& color = progressBarValueColor(mouse);
         const auto indeterminate = optProgressBar->maximum == 0 && optProgressBar->minimum == 0;
@@ -1653,8 +1666,11 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
 
           const auto valueRectW = static_cast<int>(optProgressBar->rect.width() * 0.25);
           const auto valueRectX = optProgressBar->rect.x() + (optProgressBar->rect.width() - valueRectW) * currentRatio;
+          const auto valueRectH = static_cast<int>(optProgressBar->rect.height() * 0.25);
+          const auto valueRectY = optProgressBar->rect.y() + (optProgressBar->rect.height() - valueRectH) * currentRatio;
           const auto valueRect =
-            QRectF(valueRectX, optProgressBar->rect.y(), valueRectW, optProgressBar->rect.height());
+            horizontal ? QRectF(valueRectX, optProgressBar->rect.y(), valueRectW, optProgressBar->rect.height())
+                       : QRectF(optProgressBar->rect.x(), valueRectY, optProgressBar->rect.width(), valueRectH);
 
           p->setPen(Qt::NoPen);
           p->setBrush(color);
@@ -1664,7 +1680,8 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
           const auto progress = optProgressBar->progress;
           const auto currentProgress = _impl->animations.animateProgress(w, progress, _impl->theme.animationDuration);
           drawProgressBarValueRect(p, optProgressBar->rect, color, optProgressBar->minimum, optProgressBar->maximum,
-            currentProgress, radius, optProgressBar->invertedAppearance);
+            currentProgress, radius, horizontal ? optProgressBar->invertedAppearance : !optProgressBar->invertedAppearance,
+            horizontal ? Qt::Horizontal : Qt::Vertical);
         }
       }
       return;
@@ -2741,7 +2758,8 @@ QRect QlementineStyle::subElementRect(SubElement se, const QStyleOption* opt, co
     case SE_ProgressBarContents:
     case SE_ProgressBarGroove:
       if (const auto* optProgressBar = qstyleoption_cast<const QStyleOptionProgressBar*>(opt)) {
-        const auto showText = optProgressBar->textVisible;
+        const auto horizontal = optProgressBar->state.testFlag(State_Horizontal);
+        const auto showText = optProgressBar->textVisible && horizontal;
         const auto labelW = showText ? optProgressBar->fontMetrics
                                          .boundingRect(optProgressBar->rect, Qt::AlignRight, QStringLiteral("100%"))
                                          .width()
@@ -2749,6 +2767,9 @@ QRect QlementineStyle::subElementRect(SubElement se, const QStyleOption* opt, co
         const auto spacing = showText ? _impl->theme.spacing : 0;
         const auto barW = opt->rect.width() - labelW - spacing;
         const auto barH = _impl->theme.progressBarGrooveHeight;
+        if (!horizontal) {
+          return QRect{ opt->rect.x() + (opt->rect.width() - barH) / 2, opt->rect.y(), barH, opt->rect.height() };
+        }
         const auto barY = opt->rect.y() + (opt->rect.height() - barH) / 2;
         return QRect{ opt->rect.x(), barY, barW, barH };
       }
@@ -3249,6 +3270,9 @@ void QlementineStyle::drawComplexControl(
         const auto mouse = widgetMouse == MouseState::Disabled ? MouseState::Disabled : MouseState::Normal;
         const auto handleRect = QlementineStyleImpl::sliderHandleRect(*this, *sliderOpt, currentProgress, w);
         const auto disabled = mouse == MouseState::Disabled;
+        const auto horizontal = sliderOpt->orientation == Qt::Horizontal;
+        const auto handleClipRect =
+          horizontal ? handleRect.adjusted(1, 0, -1, 0) : handleRect.adjusted(0, 1, 0, -1);
 
         // Draw tickmarks.
         if (sliderOpt->subControls.testFlag(SC_SliderTickmarks) && sliderOpt->tickPosition != QSlider::NoTicks) {
@@ -3260,13 +3284,13 @@ void QlementineStyle::drawComplexControl(
           if (disabled) {
             p->save();
             auto clipRegion = QRegion{ tickmarksRect };
-            clipRegion = clipRegion.subtracted(handleRect.adjusted(1, 0, -1, 0));
+            clipRegion = clipRegion.subtracted(handleClipRect);
             p->setClipRegion(clipRegion);
           }
 
           // TODO other tick positions.
           drawSliderTickMarks(p, tickmarksRect, tickColor, min, max, sliderOpt->tickInterval, tickThickness,
-            sliderOpt->singleStep, sliderOpt->pageStep);
+            sliderOpt->singleStep, sliderOpt->pageStep, sliderOpt->orientation, sliderOpt->upsideDown);
           if (disabled) {
             p->restore();
           }
@@ -3278,21 +3302,26 @@ void QlementineStyle::drawComplexControl(
         if (sliderOpt->subControls.testFlag(SC_SliderGroove) && grooveRect.isValid()) {
           const auto& grooveColor = sliderGrooveColor(mouse);
           const auto& valueColor = sliderValueColor(mouse);
-          const auto radius = grooveRect.height() / 2.;
+          const auto radius = (horizontal ? grooveRect.height() : grooveRect.width()) / 2.;
 
           // Little trick to avoid having two colors with alpha<255 above one another.
           if (disabled) {
             p->save();
             auto clipRegion = QRegion{ grooveRect };
-            clipRegion = clipRegion.subtracted(handleRect.adjusted(1, 0, -1, 0));
+            clipRegion = clipRegion.subtracted(handleClipRect);
             p->setClipRegion(clipRegion);
           }
           drawRoundedRect(p, grooveRect, grooveColor, radius);
           if (disabled) {
             p->restore();
           }
-          const auto valueRect = grooveRect.adjusted(0, 0, -handleRect.width() + 1, 0);
-          drawProgressBarValueRect(p, valueRect, valueColor, min, max, currentProgress, radius);
+          const auto valueRect =
+            horizontal ? (sliderOpt->upsideDown ? grooveRect.adjusted(handleRect.width() - 1, 0, 0, 0)
+                                                : grooveRect.adjusted(0, 0, -handleRect.width() + 1, 0))
+                       : (sliderOpt->upsideDown ? grooveRect.adjusted(0, handleRect.height() - 1, 0, 0)
+                                                : grooveRect.adjusted(0, 0, 0, -handleRect.height() + 1));
+          drawProgressBarValueRect(
+            p, valueRect, valueColor, min, max, currentProgress, radius, sliderOpt->upsideDown, sliderOpt->orientation);
         }
 
         // Draw handle.
@@ -3683,9 +3712,10 @@ QStyle::SubControl QlementineStyle::hitTestComplexControl(
         }
 
         const auto grooveRect = subControlRect(cc, optSlider, SC_SliderGroove, w);
-        const auto& clickRect = !handleRect.isValid()
-                                  ? grooveRect
-                                  : QRect{ grooveRect.x(), handleRect.y(), grooveRect.width(), handleRect.height() };
+        const auto& clickRect = !handleRect.isValid() ? grooveRect
+                                : optSlider->orientation == Qt::Horizontal
+                                  ? QRect{ grooveRect.x(), handleRect.y(), grooveRect.width(), handleRect.height() }
+                                  : QRect{ handleRect.x(), grooveRect.y(), handleRect.width(), grooveRect.height() };
         if (clickRect.isValid() && clickRect.contains(pos)) {
           return SC_SliderGroove;
         }
@@ -3918,11 +3948,15 @@ QRect QlementineStyle::subControlRect(
       if (const auto* sliderOpt = qstyleoption_cast<const QStyleOptionSlider*>(opt)) {
         switch (sc) {
           case SC_SliderGroove: {
-            const auto grooveW = opt->rect.width();
-            const auto grooveH = _impl->theme.sliderGrooveHeight;
-            const auto grooveX = opt->rect.x();
-            const auto grooveY = opt->rect.y() + (opt->rect.height() - grooveH) / 2;
-            return QRect{ grooveX, grooveY, grooveW, grooveH };
+            const auto grooveThickness = _impl->theme.sliderGrooveHeight;
+            if (sliderOpt->orientation == Qt::Horizontal) {
+              const auto inset = pixelMetric(PM_FocusFrameHMargin, opt, w) / 2;
+              const auto grooveY = opt->rect.y() + (opt->rect.height() - grooveThickness) / 2;
+              return QRect{ opt->rect.x() + inset, grooveY, opt->rect.width() - 2 * inset, grooveThickness };
+            }
+            const auto inset = pixelMetric(PM_FocusFrameVMargin, opt, w) / 2;
+            const auto grooveX = opt->rect.x() + (opt->rect.width() - grooveThickness) / 2;
+            return QRect{ grooveX, opt->rect.y() + inset, grooveThickness, opt->rect.height() - 2 * inset };
           } break;
           case SC_SliderHandle: {
             return QlementineStyleImpl::sliderHandleRect(
@@ -3934,11 +3968,17 @@ QRect QlementineStyle::subControlRect(
                 const auto grooveRect = subControlRect(cc, opt, SubControl::SC_SliderGroove, w);
                 const auto handleThickness = pixelMetric(PM_SliderLength);
                 const auto tickOffset = pixelMetric(PM_SliderTickmarkOffset);
-                const auto tickMarksX = opt->rect.x() + handleThickness / 2;
-                const auto tickMarksH = _impl->theme.sliderTickSize;
-                const auto tickMarksY = grooveRect.top() - tickOffset - tickMarksH;
-                const auto tickMarksW = grooveRect.width() - handleThickness;
-                return QRect{ tickMarksX, tickMarksY, tickMarksW, tickMarksH };
+                const auto tickMarksSize = _impl->theme.sliderTickSize;
+                if (sliderOpt->orientation == Qt::Horizontal) {
+                  const auto tickMarksX = grooveRect.x() + handleThickness / 2;
+                  const auto tickMarksY = grooveRect.top() - tickOffset - tickMarksSize;
+                  const auto tickMarksW = grooveRect.width() - handleThickness;
+                  return QRect{ tickMarksX, tickMarksY, tickMarksW, tickMarksSize };
+                }
+                const auto tickMarksX = grooveRect.left() - tickOffset - tickMarksSize;
+                const auto tickMarksY = grooveRect.y() + handleThickness / 2;
+                const auto tickMarksH = grooveRect.height() - handleThickness;
+                return QRect{ tickMarksX, tickMarksY, tickMarksSize, tickMarksH };
               } break;
               // TODO other tick positions.
               default:
@@ -4299,7 +4339,8 @@ QSize QlementineStyle::sizeFromContents(
     case CT_ProgressBar:
       if (const auto* optProgressBar = qstyleoption_cast<const QStyleOptionProgressBar*>(opt)) {
         const auto indeterminate = optProgressBar->maximum == 0 && optProgressBar->minimum == 0;
-        const auto showText = !indeterminate && optProgressBar->textVisible;
+        const auto horizontal = optProgressBar->state.testFlag(State_Horizontal);
+        const auto showText = !indeterminate && optProgressBar->textVisible && horizontal;
         const auto& maximumText = indeterminate ? QString{} : QString("%1%").arg(optProgressBar->maximum);
         const auto labelW =
           showText ? optProgressBar->fontMetrics.boundingRect(optProgressBar->rect, Qt::AlignRight, maximumText).width()
@@ -4310,7 +4351,7 @@ QSize QlementineStyle::sizeFromContents(
         const auto defaultH = _impl->theme.controlHeightMedium;
         const auto h = std::min(defaultH, std::max(labelH, barH));
         const auto w = _impl->theme.controlDefaultWidth + (showText ? spacing + labelW : 0);
-        return QSize{ w, h };
+        return horizontal ? QSize{ w, h } : QSize{ h, w };
       }
       break;
     case CT_MenuItem:
@@ -4624,7 +4665,12 @@ int QlementineStyle::pixelMetric(PixelMetric m, const QStyleOption* opt, const Q
       return _impl->theme.sliderTickSpacing;
     case PM_SliderSpaceAvailable:
       if (const auto* optSlider = qstyleoption_cast<const QStyleOptionSlider*>(opt)) {
-        return optSlider->rect.width() - pixelMetric(PM_SliderLength, optSlider, w);
+        if (optSlider->orientation == Qt::Horizontal) {
+          return optSlider->rect.width() - pixelMetric(PM_SliderLength, optSlider, w) -
+                 pixelMetric(PM_FocusFrameHMargin, optSlider, w);
+        }
+        return optSlider->rect.height() - pixelMetric(PM_SliderLength, optSlider, w) -
+               pixelMetric(PM_FocusFrameVMargin, optSlider, w);
       }
       break;
     case PM_MaximumDragDistance:
@@ -5246,7 +5292,6 @@ void QlementineStyle::polish(QWidget* w) {
 
   polishMessageBox(w, *this);
   polishScrollArea(w);
-  polishSlider(w);
   polishTextEditors(w, _impl->polishedWidgets, polishedWidgetInfo, eventFiltersInstalled);
   polishLineEditMenus(w, _impl->polishedWidgets, polishedWidgetInfo, eventFiltersInstalled);
   polishDestructionTracking(w, this, _impl->polishedWidgets, polishedWidgetInfo, eventFiltersInstalled);

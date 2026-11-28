@@ -73,7 +73,7 @@ QLEMENTINE_EXPORT void drawCheckerboard(
 /// Draws the value of a progress bar. A clipping mask is used to ensure the rectangle radiuses are respected
 /// even for values close to min or max.
 QLEMENTINE_EXPORT void drawProgressBarValueRect(QPainter* p, QRect const& rect, QColor const& color, qreal min,
-  qreal max, qreal value, qreal const radius = 0., bool inverted = false);
+  qreal max, qreal value, qreal const radius = 0., bool inverted = false, Qt::Orientation orientation = Qt::Horizontal);
 
 /// Draws a color mark. Will draw a border if the contrast between color and background is not high enough.
 QLEMENTINE_EXPORT void drawColorMark(
@@ -151,7 +151,8 @@ QLEMENTINE_EXPORT int getTickInterval(
 
 /// Draws the Slider tick marks.
 QLEMENTINE_EXPORT void drawSliderTickMarks(QPainter* p, QRect const& tickmarksRect, QColor const& tickColor,
-  const int min, const int max, const int interval, const int tickThickness, const int singleStep, const int pageStep);
+  const int min, const int max, const int interval, const int tickThickness, const int singleStep, const int pageStep,
+  Qt::Orientation orientation = Qt::Horizontal, bool upsideDown = false);
 
 /// Draws the Dial tick marks.
 QLEMENTINE_EXPORT void drawDialTickMarks(QPainter* p, QRect const& tickmarksRect, QColor const& tickColor,
