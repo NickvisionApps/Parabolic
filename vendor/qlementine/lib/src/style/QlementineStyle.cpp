@@ -2743,8 +2743,18 @@ QRect QlementineStyle::subElementRect(SubElement se, const QStyleOption* opt, co
           paddingRight = padding * 2;
         }
 
-        if (paddingLeft + paddingRight >= opt->rect.width()) {
+        const auto totalPadding = paddingLeft + paddingRight;
+        if (totalPadding >= opt->rect.width()) {
           return opt->rect;
+        }
+
+        if (hasText && totalPadding > 0) {
+          const auto idealWidth = qlementine::textWidth(optButton->fontMetrics, optButton->text) + totalPadding;
+          if (opt->rect.width() < idealWidth) {
+            const auto reduction = std::min(idealWidth - opt->rect.width(), totalPadding);
+            paddingLeft -= paddingLeft * reduction / totalPadding;
+            paddingRight -= paddingRight * reduction / totalPadding;
+          }
         }
         return opt->rect.marginsRemoved({ paddingLeft, 0, paddingRight, 0 });
       }
